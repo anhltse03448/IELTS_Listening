@@ -24,7 +24,18 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7A-c9-vbD">
                                 <rect key="frame" x="0.0" y="220" width="600" height="380"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKR-ft-Ome">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="380"/>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aKR-ft-Ome" secondAttribute="bottom" id="4Oa-Bk-Q8C"/>
+                                    <constraint firstAttribute="trailing" secondItem="aKR-ft-Ome" secondAttribute="trailing" id="6eu-ZP-k9i"/>
+                                    <constraint firstItem="aKR-ft-Ome" firstAttribute="leading" secondItem="x7A-c9-vbD" secondAttribute="leading" id="AJi-G1-T7P"/>
+                                    <constraint firstItem="aKR-ft-Ome" firstAttribute="top" secondItem="x7A-c9-vbD" secondAttribute="top" id="c9w-hy-A2x"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -40,7 +51,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="content" destination="x7A-c9-vbD" id="dtJ-gL-tXG"/>
+                        <outlet property="scrollView" destination="aKR-ft-Ome" id="cdw-Xw-8FD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

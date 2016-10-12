@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
-    //@IBOutlet weak var scrollView : UIScrollView!
-    @IBOutlet weak var content : UIView!
+    @IBOutlet weak var scrollView : UIScrollView!
+    var countLine : Int = 1
+    var sizeHeight : CGFloat = 0
+    var content : UIView!
     var SIZE_WIDTH : CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        let str = "Just tried it on xcode 7.3. In order for this CGRectMake() to take effect, the UIView (my view is actually a subclassed from UIView) needs to have View->Mode set to 'Redraw' or 'Scale to Fit' and the CGRectMake() needs to be in my subclass' drawRect() method. Otherwise the size definitions in the storyboard will take effect. – rockhammer Jul 13 at 14:42 "
+        content = UIView()
+        let str = Utils.readFile("data1")
+        NSLog("\(str)")
         let arrStr = Utils.seperateWord(str)
         SIZE_WIDTH = UIScreen.mainScreen().bounds.size.width
         var currentLength : CGFloat = 0
@@ -22,12 +27,11 @@ class ViewController: UIViewController {
         var previousTop : UIView?
         for i in arrStr {
             let number = arrStr.indexOf(i)
-            
-            
             let tmpView = UIView()
+            
             let lbl = UILabel()
             lbl.text = i
-            lbl.font = lbl.font.fontWithSize(20)
+            lbl.font = lbl.font.fontWithSize(12)
             lbl.sizeToFit()
             
             tmpView.addSubview(lbl)
@@ -39,12 +43,12 @@ class ViewController: UIViewController {
             
             tmpView.snp_makeConstraints(closure: { (make) in
                 make.width.equalTo(lbl.snp_width).offset(4)
-                make.height.equalTo(lbl.snp_height).offset(4)
+                make.height.equalTo(lbl.snp_height).offset(8)
             })
-            
             
             tmpView.layoutIfNeeded()
             
+            sizeHeight = tmpView.frame.height
             
             if currentLength + tmpView.frame.width < SIZE_WIDTH {
                 currentLength = currentLength + tmpView.frame.width
@@ -71,6 +75,7 @@ class ViewController: UIViewController {
                     previousTop = tmpView
                 }
             } else {
+                countLine = countLine + 1
                 currentLength = tmpView.frame.width
                 previousLeft = nil
                 if previousLeft == nil {
@@ -95,10 +100,14 @@ class ViewController: UIViewController {
                 previousTop = tmpView
             }
         }
+        scrollView.addSubview(content)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * sizeHeight)
     }
   
 }
