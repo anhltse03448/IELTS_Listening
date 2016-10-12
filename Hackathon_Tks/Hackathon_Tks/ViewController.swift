@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class TestViewController : UIViewController {
     @IBOutlet weak var scrollView : UIScrollView!
     var countLine : Int = 1
     var sizeHeight : CGFloat = 0
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         var previousTop : UILabel?
         content = UIView()
         content.userInteractionEnabled = true
-        content.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.labelTap(_:))))
+        content.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.labelTap(_:))))
         var listLabel = [UILabel]()
         for i in arrStr {
             let number = arrStr.indexOf(i)
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                 lbl.backgroundColor = UIColor(rgba: "#eeac57")
             }
             lbl.userInteractionEnabled = true
-            lbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.labelTap(_:))))
+            lbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.labelTap(_:))))
         
             content.addSubview(lbl)
             listLabel.append(lbl)
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
                     lblAnswer.font = lblAnswer.font.fontWithSize(12)                    
                     viewAnswers?.addSubview(lblAnswer)
                     lblAnswer.userInteractionEnabled = true
-                    lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.answerTap(_:))))
+                    lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.answerTap(_:))))
                     lblAnswer.snp_makeConstraints(closure: { (make) in
                         make.top.equalTo(viewAnswers!).offset(25 * pos!)
                         make.left.equalTo(viewAnswers!)
