@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		01DBB9A6DF2C597435BA8EF3 /* Pods_Hackathon_Tks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D014AFA01F9EF8A3928457C /* Pods_Hackathon_Tks.framework */; };
+		3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8791DADEC350000F4E5 /* MyString.swift */; };
+		3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E87B1DADF8C80000F4E5 /* MyLabel.swift */; };
 		3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619985C1DAD397D00EBDB78 /* MyUIView.swift */; };
 		361998601DAD3DB900EBDB78 /* data1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3619985F1DAD3DB900EBDB78 /* data1.txt */; };
 		366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3612E8791DADEC350000F4E5 /* MyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyString.swift; sourceTree = "<group>"; };
+		3612E87B1DADF8C80000F4E5 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		3619985C1DAD397D00EBDB78 /* MyUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUIView.swift; sourceTree = "<group>"; };
 		3619985F1DAD3DB900EBDB78 /* data1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data1.txt; sourceTree = "<group>"; };
 		366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Hex-Swift.swift"; sourceTree = "<group>"; };
@@ -50,10 +54,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3612E87D1DAE19E10000F4E5 /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Gesture;
+			sourceTree = "<group>";
+		};
 		3619985B1DAD396A00EBDB78 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				3612E87D1DAE19E10000F4E5 /* Gesture */,
 				3619985C1DAD397D00EBDB78 /* MyUIView.swift */,
+				3612E8791DADEC350000F4E5 /* MyString.swift */,
+				3612E87B1DADF8C80000F4E5 /* MyLabel.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -266,11 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */,
 				3678D1021DACD2D20000F342 /* ViewController.swift in Sources */,
 				366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */,
 				3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */,
 				366D70721DACDEB10056B487 /* UIView+IBInspectable.swift in Sources */,
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
+				3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */,
 				366D70771DACE0A90056B487 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,8 +9,32 @@
 import UIKit
 
 class Utils: NSObject {
-    class func seperateWord(content : String) -> [String] {
-        return content.characters.split{$0 == " "}.map(String.init)
+    class func seperateWord(content : String) -> [MyString] {
+        var result = [MyString]()
+        let tmp =  content.characters.split{$0 == " "}.map(String.init)
+        var pos = 0
+        var pre : Bool = false
+        var tmpAnswer = [String]()
+        while true {
+            if tmp[pos] == "{" {
+                tmpAnswer.removeAll()
+                pre = true
+            } else if tmp[pos] == "}" {
+                result.append(MyString(content: "Choose a word", answer: tmpAnswer))
+                pre = false
+            } else {
+                if pre == false {
+                    result.append(MyString(content: tmp[pos]))
+                } else {
+                    tmpAnswer.append(tmp[pos])
+                }
+            }
+            pos = pos + 1
+            if pos == tmp.count {
+                break
+            }
+        }
+        return result
     }
     
     class func readFile(fileName : String) -> String {
@@ -24,3 +48,4 @@ class Utils: NSObject {
         return ""
     }
 }
+

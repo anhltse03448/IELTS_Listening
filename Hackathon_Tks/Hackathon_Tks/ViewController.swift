@@ -15,100 +15,169 @@ class ViewController: UIViewController {
     var sizeHeight : CGFloat = 0
     var content : UIView!
     var SIZE_WIDTH : CGFloat = 0
+    var FONT_SIZE : CGFloat = 19
+    var viewAnswers : UIView?
+    var currentTargetLabel : MyLabel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        content = UIView()
         let str = Utils.readFile("data1")
-        NSLog("\(str)")
         let arrStr = Utils.seperateWord(str)
-        SIZE_WIDTH = UIScreen.mainScreen().bounds.size.width
+        SIZE_WIDTH = UIScreen.mainScreen().bounds.size.width - 8
         var currentLength : CGFloat = 0
-        var previousLeft : UIView?
-        var previousTop : UIView?
+        var previousLeft : UILabel?
+        var previousTop : UILabel?
+        content = UIView()
+        content.userInteractionEnabled = true
+        content.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.labelTap(_:))))
+        var listLabel = [UILabel]()
         for i in arrStr {
             let number = arrStr.indexOf(i)
-            let tmpView = UIView()
             
-            let lbl = UILabel()
-            lbl.text = i
-            lbl.font = lbl.font.fontWithSize(12)
+            let lbl = MyLabel()
+            
+            lbl.text = " " + i.content + " "
+            lbl.font = lbl.font.fontWithSize(FONT_SIZE)
             lbl.sizeToFit()
+            lbl.textAlignment = .Center
+            if i.answer != nil {
+                lbl.setAnswers(i.answer!)
+                lbl.cornerRadius = 5
+                lbl.clipsToBounds = true
+                lbl.snp_makeConstraints(closure: { (make) in
+                    make.width.equalTo(150)
+                })
+            }
+            if i.answer != nil {
+                lbl.backgroundColor = UIColor(rgba: "#eeac57")
+            }
+            lbl.userInteractionEnabled = true
+            lbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.labelTap(_:))))
+        
+            content.addSubview(lbl)
+            listLabel.append(lbl)
+            sizeHeight = lbl.frame.height
             
-            tmpView.addSubview(lbl)
-            lbl.snp_makeConstraints(closure: { (make) in
-                make.centerX.equalTo(tmpView)
-                make.centerY.equalTo(tmpView)
-            })
-            content.addSubview(tmpView)
-            
-            tmpView.snp_makeConstraints(closure: { (make) in
-                make.width.equalTo(lbl.snp_width).offset(4)
-                make.height.equalTo(lbl.snp_height).offset(8)
-            })
-            
-            tmpView.layoutIfNeeded()
-            
-            sizeHeight = tmpView.frame.height
-            
-            if currentLength + tmpView.frame.width < SIZE_WIDTH {
-                currentLength = currentLength + tmpView.frame.width
+            if currentLength + lbl.frame.width < SIZE_WIDTH {
+                currentLength = currentLength + lbl.frame.width
                 if previousLeft == nil {
                     if previousTop == nil {
-                        tmpView.snp_makeConstraints(closure: { (make) in
-                            make.top.equalTo(content)
-                            make.left.equalTo(content.snp_left)
+                        lbl.snp_makeConstraints(closure: { (make) in
+                            make.top.equalTo(content).offset(8)
+                            make.left.equalTo(content.snp_left).offset(4)
                         })
                     } else {
-                        tmpView.snp_makeConstraints(closure: { (make) in
-                            make.top.equalTo((previousTop?.snp_bottom)!)
+                        lbl.snp_makeConstraints(closure: { (make) in
+                            make.top.equalTo((previousTop?.snp_bottom)!).offset(8)
                             make.left.equalTo((previousTop?.snp_left)!)
                         })
                     }
                 } else {
-                    tmpView.snp_makeConstraints(closure: { (make) in
+                    lbl.snp_makeConstraints(closure: { (make) in
                         make.top.equalTo((previousLeft?.snp_top)!)
                         make.left.equalTo((previousLeft?.snp_right)!)
                     })
                 }
-                previousLeft = tmpView
+                previousLeft = lbl
                 if number == 0 {
-                    previousTop = tmpView
+                    previousTop = lbl
                 }
             } else {
                 countLine = countLine + 1
-                currentLength = tmpView.frame.width
+                currentLength = lbl.frame.width
                 previousLeft = nil
                 if previousLeft == nil {
                     if previousTop == nil {
-                        tmpView.snp_makeConstraints(closure: { (make) in
-                            make.top.equalTo(content)
-                            make.left.equalTo(content.snp_left)
+                        lbl.snp_makeConstraints(closure: { (make) in
+                            make.top.equalTo(content).offset(8)
+                            make.left.equalTo(content.snp_left).offset(4)
                         })
                     } else {
-                        tmpView.snp_makeConstraints(closure: { (make) in
-                            make.top.equalTo((previousTop?.snp_bottom)!)
+                        lbl.snp_makeConstraints(closure: { (make) in
+                            make.top.equalTo((previousTop?.snp_bottom)!).offset(8)
                             make.left.equalTo((previousTop?.snp_left)!)
                         })
                     }
                 } else {
-                    tmpView.snp_makeConstraints(closure: { (make) in
+                    lbl.snp_makeConstraints(closure: { (make) in
                         make.top.equalTo((previousLeft?.snp_top)!)
                         make.left.equalTo((previousLeft?.snp_right)!)
                     })
                 }
-                previousLeft = tmpView
-                previousTop = tmpView
+                previousLeft = lbl
+                previousTop = lbl
             }
         }
-        scrollView.addSubview(content)
+        self.scrollView.addSubview(content)
     }
-
+    func labelTap (gesture : UITapGestureRecognizer){
+        currentTargetLabel = nil
+        if self.viewAnswers != nil {
+            for subview in (self.viewAnswers?.subviews)! {
+                subview.removeFromSuperview()
+            }
+            self.viewAnswers?.removeFromSuperview()
+            self.view.layoutIfNeeded()
+        }
+        let lbl = gesture.view as? MyLabel
+        if lbl != nil {
+            currentTargetLabel = lbl
+            let text = lbl?.text?.stringByReplacingOccurrencesOfString(" ", withString: "")
+            if lbl?.type == 1 {
+                if self.viewAnswers == nil {
+                    self.viewAnswers = UIView()
+                }
+                lbl?.backgroundColor = UIColor.init(rgba: "#d38426")
+                
+                viewAnswers?.cornerRadius = 5
+                viewAnswers?.borderColor = UIColor.init(rgba: "#c5c5c5")
+                viewAnswers?.borderWidth = 1
+                
+                
+                self.content.addSubview(viewAnswers!)
+                viewAnswers!.backgroundColor = UIColor.whiteColor()
+                viewAnswers!.snp_makeConstraints(closure: { (make) in
+                    make.top.equalTo((lbl?.snp_bottom)!).offset(4)
+                    make.left.equalTo((lbl?.snp_left)!)
+                    make.width.equalTo((lbl?.snp_width)!)
+                    make.height.equalTo(100)
+                })
+                
+                self.view.layoutIfNeeded()
+                
+                for item in (lbl?.answer)! {
+                    let lblAnswer = UILabel()
+                    let pos = lbl?.answer.indexOf(item)
+                    lblAnswer.tag = pos!
+                    lblAnswer.textAlignment = .Center
+                    lblAnswer.text = item
+                    lblAnswer.font = lblAnswer.font.fontWithSize(12)                    
+                    viewAnswers?.addSubview(lblAnswer)
+                    lblAnswer.userInteractionEnabled = true
+                    lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.answerTap(_:))))
+                    lblAnswer.snp_makeConstraints(closure: { (make) in
+                        make.top.equalTo(viewAnswers!).offset(25 * pos!)
+                        make.left.equalTo(viewAnswers!)
+                        make.right.equalTo(viewAnswers!)
+                        make.height.equalTo(25)
+                    })
+                }
+            }
+        }
+    }
+    
+    func answerTap(gesture : UITapGestureRecognizer) {
+        let lbl = gesture.view as? UILabel
+        if lbl != nil {
+            currentTargetLabel?.text = lbl?.text
+            self.viewAnswers?.removeFromSuperview()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * sizeHeight)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8))
+        //content.contentSize = CGSize(width: self.view.frame.width, height: 1000)
+        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8))
     }
-  
 }
-
