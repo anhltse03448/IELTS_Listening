@@ -20,6 +20,7 @@ class DetailCategoryViewController: BaseViewController {
     var listSong = [SongObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        listSong.removeAll()
         loadSongInCategory()
         
         self.navigationController?.navigationBarHidden = true
@@ -30,13 +31,12 @@ class DetailCategoryViewController: BaseViewController {
     
     func loadSongInCategory() {
         let realm = try! Realm()
-        let listSongDB = realm.objects(Genre.self).filter("id = \(self.idCategory)")
+        let listSongDB = realm.objects(Genre.self).filter("id == %@", self.idCategory ?? 0)
         if listSongDB.count != 0 {
             for item in listSongDB[0].listSong {
                 listSong.append(SongObject(song: item))
             }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,12 +59,14 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
+        cell.lbl.text = listSong[indexPath.row].title
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.showLoadingHUD()
         tbl.deselectRowAtIndexPath(indexPath, animated: true)
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as! TestViewController
+        dest.currentSong = listSong[indexPath.row]
         dest.titleTab = "ahihi"        
         self.presentViewController(dest, animated: true) { 
             self.hideLoadingHUD()

@@ -18,7 +18,7 @@ class CategoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        InitData.initType()
+        //InitData.initType()
         loadData()
         self.navigationController?.navigationBarHidden = true
         tbl.tableFooterView = UIView(frame: CGRectZero)
@@ -31,8 +31,7 @@ class CategoryViewController: BaseViewController {
         let realm = try! Realm()
         let listCategoryDB = realm.objects(Genre.self)
         for item in listCategoryDB {
-            listCategory.append(CategoryObject(title: item.title, img: item.img))
-            NSLog("\(item.img)")
+            listCategory.append(CategoryObject(title: item.title, img: item.img))            
         }
         self.tbl.reloadData()
     }

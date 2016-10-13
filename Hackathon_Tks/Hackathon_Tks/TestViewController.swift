@@ -14,6 +14,8 @@ class TestViewController : BaseViewController {
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblShowMyScore : UILabel!
+    
+    var currentSong : SongObject?
     var titleTab : String?
     var countLine : Int = 1
     var sizeHeight : CGFloat = 0
@@ -25,6 +27,7 @@ class TestViewController : BaseViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        NSLog("\(currentSong?.linkYoutube)")
         
         
         initViewController()
