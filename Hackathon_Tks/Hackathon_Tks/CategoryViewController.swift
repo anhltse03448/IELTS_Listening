@@ -18,7 +18,7 @@ class CategoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //InitData.initType()
+        InitData.initType()
         loadData()
         self.navigationController?.navigationBarHidden = true
         tbl.tableFooterView = UIView(frame: CGRectZero)
