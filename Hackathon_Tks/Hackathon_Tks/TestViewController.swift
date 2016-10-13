@@ -9,8 +9,12 @@
 import UIKit
 import SnapKit
 
-class TestViewController : UIViewController {
+class TestViewController : BaseViewController {
     @IBOutlet weak var scrollView : UIScrollView!
+    @IBOutlet weak var backImg: UIImageView!
+    @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var lblShowMyScore : UILabel!
+    var titleTab : String?
     var countLine : Int = 1
     var sizeHeight : CGFloat = 0
     var content : UIView!
@@ -19,7 +23,11 @@ class TestViewController : UIViewController {
     var viewAnswers : UIView?
     var currentTargetLabel : MyLabel?
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        
+        initViewController()
         let str = Utils.readFile("data1")
         let arrStr = Utils.seperateWord(str)
         SIZE_WIDTH = UIScreen.mainScreen().bounds.size.width - 8
@@ -32,6 +40,9 @@ class TestViewController : UIViewController {
         var listLabel = [UILabel]()
         for i in arrStr {
             let number = arrStr.indexOf(i)
+            if number == arrStr.count - 1 {
+                 self.hideLoadingHUD()
+            }
             
             let lbl = MyLabel()
             
@@ -109,6 +120,19 @@ class TestViewController : UIViewController {
         }
         self.scrollView.addSubview(content)
     }
+    
+    func initViewController() {
+        self.lblTitle.text = titleTab
+        backImg.userInteractionEnabled = true
+        backImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
+        
+    }
+    
+    func backTap(gesture : UITapGestureRecognizer) {
+        self.dismissViewControllerAnimated(true) { 
+            
+        }
+    }
     func labelTap (gesture : UITapGestureRecognizer){
         currentTargetLabel = nil
         if self.viewAnswers != nil {
@@ -121,7 +145,6 @@ class TestViewController : UIViewController {
         let lbl = gesture.view as? MyLabel
         if lbl != nil {
             currentTargetLabel = lbl
-            let text = lbl?.text?.stringByReplacingOccurrencesOfString(" ", withString: "")
             if lbl?.type == 1 {
                 if self.viewAnswers == nil {
                     self.viewAnswers = UIView()
@@ -139,7 +162,7 @@ class TestViewController : UIViewController {
                     make.top.equalTo((lbl?.snp_bottom)!).offset(4)
                     make.left.equalTo((lbl?.snp_left)!)
                     make.width.equalTo((lbl?.snp_width)!)
-                    make.height.equalTo(100)
+                    make.height.equalTo(150)
                 })
                 
                 self.view.layoutIfNeeded()
@@ -150,15 +173,17 @@ class TestViewController : UIViewController {
                     lblAnswer.tag = pos!
                     lblAnswer.textAlignment = .Center
                     lblAnswer.text = item
-                    lblAnswer.font = lblAnswer.font.fontWithSize(12)                    
+                    lblAnswer.font = lblAnswer.font.fontWithSize(20)
                     viewAnswers?.addSubview(lblAnswer)
                     lblAnswer.userInteractionEnabled = true
                     lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.answerTap(_:))))
+                    lblAnswer.borderColor = UIColor.blackColor()
+                    lblAnswer.borderWidth = 1
                     lblAnswer.snp_makeConstraints(closure: { (make) in
-                        make.top.equalTo(viewAnswers!).offset(25 * pos!)
+                        make.top.equalTo(viewAnswers!).offset(37 * pos!)
                         make.left.equalTo(viewAnswers!)
                         make.right.equalTo(viewAnswers!)
-                        make.height.equalTo(25)
+                        make.height.equalTo(37)
                     })
                 }
             }
@@ -176,8 +201,13 @@ class TestViewController : UIViewController {
         super.didReceiveMemoryWarning()
     }
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8))
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8 ) + 100)
         //content.contentSize = CGSize(width: self.view.frame.width, height: 1000)
-        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8))
+        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8) + 100)
     }
+    
+    func showMyScore(gesture : UITapGestureRecognizer){
+        NSLog("Show me score")
+    }
+    
 }

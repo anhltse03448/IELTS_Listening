@@ -8,6 +8,4 @@
 
 import UIKit
 
-class Configure: UITapGestureRecognizer {
-
-}
+let TINT_COLOR = UIColor.init(rgba: "#5fb760")

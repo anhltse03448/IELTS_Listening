@@ -7,22 +7,34 @@
 //
 
 import UIKit
+import RealmSwift
+import AlamofireImage
+import Alamofire
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
-    var categoryTitle = ["Art and Culture" , "Daily conversation" , "Education" , "IELTS Listening" ,"Joke" ,
-                         "Leisure & Entertainment", "Music", "Nature & Environment 8","News","Places",
-                         "Science", "Story" , "Technology"]
+    var listCategory = [CategoryObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        InitData.initType()
+        loadData()
         self.navigationController?.navigationBarHidden = true
         tbl.tableFooterView = UIView(frame: CGRectZero)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    func loadData() {
+        let realm = try! Realm()
+        let listCategoryDB = realm.objects(Genre.self)
+        for item in listCategoryDB {
+            listCategory.append(CategoryObject(title: item.title, img: item.img))
+            NSLog("\(item.img)")
+        }
+        self.tbl.reloadData()
     }
 }
 extension CategoryViewController : UITableViewDataSource , UITableViewDelegate {
@@ -31,20 +43,28 @@ extension CategoryViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryTitle.count
+        return listCategory.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("CategoryTableViewCell") as! CategoryTableViewCell
-        cell.lbl.text = categoryTitle[indexPath.row]
+        cell.lbl.text = listCategory[indexPath.row].title
+        cell.img.clipsToBounds = true
+        cell.img.image = UIImage(named: listCategory[indexPath.row].img)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
-        //dest.lblTitle.text = categoryTitle[indexPath.row]
+        dest.idCategory = indexPath.row
+        tbl.deselectRowAtIndexPath(indexPath, animated: true)
+        dest.titleView = listCategory[indexPath.row].title
+        
         self.navigationController?.presentViewController(dest, animated: true, completion: { 
             
         })
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
     }
 }

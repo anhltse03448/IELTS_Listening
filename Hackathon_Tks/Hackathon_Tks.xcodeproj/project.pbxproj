@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01DBB9A6DF2C597435BA8EF3 /* Pods_Hackathon_Tks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D014AFA01F9EF8A3928457C /* Pods_Hackathon_Tks.framework */; };
+		360926E71DAF69CE00EDF8CC /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360926E61DAF69CE00EDF8CC /* Genre.swift */; };
+		360926EA1DAF6A2800EDF8CC /* InitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360926E91DAF6A2800EDF8CC /* InitData.swift */; };
+		360926EC1DAF6ADE00EDF8CC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360926EB1DAF6ADE00EDF8CC /* Song.swift */; };
 		3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8791DADEC350000F4E5 /* MyString.swift */; };
 		3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E87B1DADF8C80000F4E5 /* MyLabel.swift */; };
 		3612E8811DAE22C00000F4E5 /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8801DAE22C00000F4E5 /* Configure.swift */; };
@@ -22,17 +25,23 @@
 		3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */; };
 		3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619985C1DAD397D00EBDB78 /* MyUIView.swift */; };
 		361998601DAD3DB900EBDB78 /* data1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3619985F1DAD3DB900EBDB78 /* data1.txt */; };
+		361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AFA011DAF304D005D5768 /* BaseViewController.swift */; };
 		366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */; };
 		366D70721DACDEB10056B487 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */; };
 		366D70771DACE0A90056B487 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D70761DACE0A90056B487 /* Utils.swift */; };
 		3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678D0FF1DACD2D20000F342 /* AppDelegate.swift */; };
-		3678D1021DACD2D20000F342 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678D1011DACD2D20000F342 /* ViewController.swift */; };
+		3678D1021DACD2D20000F342 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678D1011DACD2D20000F342 /* TestViewController.swift */; };
 		3678D1051DACD2D20000F342 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1031DACD2D20000F342 /* Main.storyboard */; };
 		3678D1071DACD2D20000F342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1061DACD2D20000F342 /* Assets.xcassets */; };
 		3678D10A1DACD2D20000F342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1081DACD2D20000F342 /* LaunchScreen.storyboard */; };
+		368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368806B21DAF8BBB00210163 /* CategoryObject.swift */; };
+		36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B41DAFB9B500517E3B /* SongObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		360926E61DAF69CE00EDF8CC /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		360926E91DAF6A2800EDF8CC /* InitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitData.swift; sourceTree = "<group>"; };
+		360926EB1DAF6ADE00EDF8CC /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		3612E8791DADEC350000F4E5 /* MyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyString.swift; sourceTree = "<group>"; };
 		3612E87B1DADF8C80000F4E5 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		3612E8801DAE22C00000F4E5 /* Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
@@ -47,16 +56,19 @@
 		3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		3619985C1DAD397D00EBDB78 /* MyUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUIView.swift; sourceTree = "<group>"; };
 		3619985F1DAD3DB900EBDB78 /* data1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data1.txt; sourceTree = "<group>"; };
+		361AFA011DAF304D005D5768 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Hex-Swift.swift"; sourceTree = "<group>"; };
 		366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		366D70761DACE0A90056B487 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3678D0FC1DACD2D20000F342 /* Hackathon_Tks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackathon_Tks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3678D0FF1DACD2D20000F342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3678D1011DACD2D20000F342 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3678D1011DACD2D20000F342 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		3678D1041DACD2D20000F342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3678D1061DACD2D20000F342 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3678D1091DACD2D20000F342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3678D10B1DACD2D20000F342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		368806B21DAF8BBB00210163 /* CategoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryObject.swift; sourceTree = "<group>"; };
+		36E8C3B41DAFB9B500517E3B /* SongObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongObject.swift; sourceTree = "<group>"; };
 		7D014AFA01F9EF8A3928457C /* Pods_Hackathon_Tks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hackathon_Tks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9970AA41C3F23C38754C6B /* Pods-Hackathon_Tks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon_Tks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hackathon_Tks/Pods-Hackathon_Tks.debug.xcconfig"; sourceTree = "<group>"; };
 		C3FEACDB8A850774FF059C4D /* Pods-Hackathon_Tks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon_Tks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackathon_Tks/Pods-Hackathon_Tks.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,12 +86,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360926E81DAF6A1700EDF8CC /* InitData */ = {
+			isa = PBXGroup;
+			children = (
+				360926E91DAF6A2800EDF8CC /* InitData.swift */,
+			);
+			name = InitData;
+			sourceTree = "<group>";
+		};
 		3612E88E1DAE27410000F4E5 /* CustomeType */ = {
 			isa = PBXGroup;
 			children = (
 				3619985C1DAD397D00EBDB78 /* MyUIView.swift */,
 				3612E8791DADEC350000F4E5 /* MyString.swift */,
 				3612E87B1DADF8C80000F4E5 /* MyLabel.swift */,
+				36E8C3B41DAFB9B500517E3B /* SongObject.swift */,
 			);
 			name = CustomeType;
 			sourceTree = "<group>";
@@ -102,11 +123,21 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		36142C3D1DAF691100344090 /* InitData */ = {
+			isa = PBXGroup;
+			children = (
+				360926E61DAF69CE00EDF8CC /* Genre.swift */,
+				360926EB1DAF6ADE00EDF8CC /* Song.swift */,
+			);
+			name = InitData;
+			sourceTree = "<group>";
+		};
 		3619985B1DAD396A00EBDB78 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				3612E88F1DAE274F0000F4E5 /* Cell */,
 				3612E88E1DAE27410000F4E5 /* CustomeType */,
+				368806B21DAF8BBB00210163 /* CategoryObject.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -122,12 +153,14 @@
 		366D706D1DACDE340056B487 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				360926E81DAF6A1700EDF8CC /* InitData */,
 				3612E8961DAE28960000F4E5 /* Category */,
-				3678D1011DACD2D20000F342 /* ViewController.swift */,
+				3678D1011DACD2D20000F342 /* TestViewController.swift */,
 				3612E8861DAE24CF0000F4E5 /* SearchViewController.swift */,
 				3612E8881DAE24DC0000F4E5 /* FavoriteViewController.swift */,
 				3612E88A1DAE24E80000F4E5 /* PlayListViewController.swift */,
 				3612E88C1DAE24F70000F4E5 /* SettingViewController.swift */,
+				361AFA011DAF304D005D5768 /* BaseViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -173,13 +206,14 @@
 		3678D0FE1DACD2D20000F342 /* Hackathon_Tks */ = {
 			isa = PBXGroup;
 			children = (
+				36142C3D1DAF691100344090 /* InitData */,
 				3619985B1DAD396A00EBDB78 /* Entity */,
 				366D70751DACE09B0056B487 /* Utils */,
 				366D706E1DACDE430056B487 /* Helper */,
 				366D706D1DACDE340056B487 /* ViewController */,
 				3678D0FF1DACD2D20000F342 /* AppDelegate.swift */,
-				3678D1031DACD2D20000F342 /* Main.storyboard */,
 				3678D1061DACD2D20000F342 /* Assets.xcassets */,
+				3678D1031DACD2D20000F342 /* Main.storyboard */,
 				3678D1081DACD2D20000F342 /* LaunchScreen.storyboard */,
 				3678D10B1DACD2D20000F342 /* Info.plist */,
 			);
@@ -328,8 +362,10 @@
 			files = (
 				3612E88B1DAE24E80000F4E5 /* PlayListViewController.swift in Sources */,
 				3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */,
-				3678D1021DACD2D20000F342 /* ViewController.swift in Sources */,
+				3678D1021DACD2D20000F342 /* TestViewController.swift in Sources */,
+				360926EA1DAF6A2800EDF8CC /* InitData.swift in Sources */,
 				366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */,
+				361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */,
 				3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */,
 				3612E88D1DAE24F70000F4E5 /* SettingViewController.swift in Sources */,
 				3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */,
@@ -340,10 +376,14 @@
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
 				3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */,
 				3612E8951DAE28930000F4E5 /* DetailCategoryViewController.swift in Sources */,
+				360926EC1DAF6ADE00EDF8CC /* Song.swift in Sources */,
+				36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */,
+				360926E71DAF69CE00EDF8CC /* Genre.swift in Sources */,
 				3612E8891DAE24DC0000F4E5 /* FavoriteViewController.swift in Sources */,
 				3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */,
 				3612E8851DAE24BE0000F4E5 /* CategoryViewController.swift in Sources */,
 				366D70771DACE0A90056B487 /* Utils.swift in Sources */,
+				368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
