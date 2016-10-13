@@ -30,7 +30,7 @@ class InitData: NSObject {
                 obj.img = linkCategory[number!]
                 for i in 0 ..< 4 {
                     let songs = Song()
-                    songs.setValue("Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "https://youtu.be/Rqk-JqaAg1w", result: 0)
+                    songs.setValue("Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "Rqk-JqaAg1w", result: 0)
                     obj.listSong.append(songs)
                 }
                 try! realm.write {
