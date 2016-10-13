@@ -8,12 +8,24 @@
 
 import UIKit
 import SnapKit
-
-class TestViewController : BaseViewController {
+import CoreMedia
+import youtube_ios_player_helper
+class TestViewController : BaseViewController,YTPlayerViewDelegate {
     @IBOutlet weak var scrollView : UIScrollView!
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblShowMyScore : UILabel!
+    
+    @IBOutlet weak var btnNextVideo: UIButton!
+    
+    @IBOutlet weak var tbnPlayVideo: UIButton!
+    
+    @IBOutlet weak var btnPre: UIButton!
+    
+    let playerView = YTPlayerView()
+    @IBOutlet weak var playSlider: UISlider!
+    var duration : CMTime?
+    var seconds : Float64?
     
     var currentSong : SongObject?
     var titleTab : String?
@@ -29,6 +41,7 @@ class TestViewController : BaseViewController {
         super.viewDidLoad()
         NSLog("\(currentSong?.linkYoutube)")
         
+        playVideo()
         
         initViewController()
         let str = Utils.readFile("data1")
@@ -122,6 +135,7 @@ class TestViewController : BaseViewController {
             }
         }
         self.scrollView.addSubview(content)
+        
     }
     
     func initViewController() {
@@ -129,6 +143,48 @@ class TestViewController : BaseViewController {
         backImg.userInteractionEnabled = true
         backImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
         
+    }
+    
+    func playVideo(){
+        self.playerView.delegate = self
+        let playerVars = ["playsinline": 1]
+        playerView.loadWithVideoId((currentSong?.linkYoutube)!, playerVars: playerVars)
+       // playerView.playVideo()
+    }
+    func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState){
+        switch (state) {
+        case YTPlayerState.Unstarted:
+            print("Unstarted")
+            break
+        case YTPlayerState.Playing:
+            print("playing")
+            break
+        case YTPlayerState.Paused:
+            
+            break;
+        default:
+            break;
+        }
+    }
+    @IBAction func btnPlayTouchUp(sender: AnyObject) {
+       // self.showLoadingHUD()
+        playerView.playVideo()
+        let duration : CMTime = CMTimeMake(Int64(self.playerView.duration()), 10000)
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        playSlider.minimumValue = 0
+        playSlider.maximumValue = Float(seconds)
+        playSlider.continuous = true
+        playSlider.tintColor = UIColor.greenColor()
+    }
+    
+    
+    @IBAction func playSliderValueChanged(sender: AnyObject) {
+        let seekToTime = Float(self.playerView.duration()) * self.playSlider.value
+        playerView.seekToSeconds(seekToTime, allowSeekAhead: true)
+    }
+    @IBAction func btnNextTouchUp(sender: AnyObject) {
+        let timeCurent = Float(playerView.currentTime()) + 5.0
+        playerView.seekToSeconds(timeCurent, allowSeekAhead: true)
     }
     
     func backTap(gesture : UITapGestureRecognizer) {

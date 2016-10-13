@@ -670,10 +670,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-uU-gRl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7A-c9-vbD">
                                 <rect key="frame" x="0.0" y="124" width="600" height="426"/>
                                 <subviews>
@@ -729,7 +725,7 @@
                                         <rect key="frame" x="100" y="4" width="400" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOW ME MY SCORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1C-Ht-jSO">
-                                                <rect key="frame" x="115" y="10.5" width="170" height="21"/>
+                                                <rect key="frame" x="115" y="10" width="170" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -754,6 +750,71 @@
                                     <constraint firstItem="Beg-fR-07h" firstAttribute="centerX" secondItem="ySg-8C-8NJ" secondAttribute="centerX" id="BIj-gJ-ySf"/>
                                     <constraint firstItem="Beg-fR-07h" firstAttribute="height" secondItem="ySg-8C-8NJ" secondAttribute="height" constant="-8" id="uzt-Sc-8e0"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-uU-gRl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-OU-P3X">
+                                        <rect key="frame" x="0.0" y="-64" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPJ-k0-cox">
+                                        <rect key="frame" x="0.0" y="-64" width="30" height="30"/>
+                                        <state key="normal" title="next"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-l3-hUR">
+                                        <rect key="frame" x="365" y="30" width="30" height="30"/>
+                                        <state key="normal" title="next"/>
+                                        <connections>
+                                            <action selector="btnNextTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qvX-6t-gm1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-aK-zqa">
+                                        <rect key="frame" x="285" y="30" width="30" height="30"/>
+                                        <state key="normal" title="play"/>
+                                        <connections>
+                                            <action selector="btnPlayTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJy-LV-tie"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
+                                        <rect key="frame" x="192.5" y="0.0" width="215" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="211" id="nr3-dX-qXJ"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="playSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zpl-HL-3aA"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-SP-ggf">
+                                        <rect key="frame" x="189" y="30" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="1wa-dy-VU0"/>
+                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="leading" secondItem="dPu-aK-zqa" secondAttribute="trailing" constant="50" id="7FW-d5-abY"/>
+                                    <constraint firstItem="tZt-OZ-K1a" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="BSy-Zw-Rmx"/>
+                                    <constraint firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="P87-Cc-EpV"/>
+                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="SCu-qP-Lgh"/>
+                                    <constraint firstItem="RUg-SP-ggf" firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="Sis-Wg-AkC"/>
+                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="UCp-NV-x9T"/>
+                                    <constraint firstItem="RUg-SP-ggf" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="VhH-Ho-SCb"/>
+                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="hvv-bM-KUf"/>
+                                    <constraint firstItem="tZt-OZ-K1a" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="top" id="lm3-Yb-6mF"/>
+                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="m6D-Hw-Zi8"/>
+                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="leading" secondItem="RUg-SP-ggf" secondAttribute="trailing" constant="50" id="mFW-mF-Im5"/>
+                                    <constraint firstAttribute="bottom" secondItem="RUg-SP-ggf" secondAttribute="bottom" constant="15" id="o3G-0M-jil"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VhH-Ho-SCb"/>
+                                        <exclude reference="o3G-0M-jil"/>
+                                        <exclude reference="1wa-dy-VU0"/>
+                                        <exclude reference="UCp-NV-x9T"/>
+                                        <exclude reference="SCu-qP-Lgh"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -786,9 +847,13 @@
                     </view>
                     <connections>
                         <outlet property="backImg" destination="uFA-KI-Mly" id="NMy-aF-nbH"/>
+                        <outlet property="btnNextVideo" destination="sPW-l3-hUR" id="VKJ-H0-IoR"/>
+                        <outlet property="btnPre" destination="RUg-SP-ggf" id="c9J-Sk-gWj"/>
                         <outlet property="lblShowMyScore" destination="X1C-Ht-jSO" id="nFF-KE-whB"/>
                         <outlet property="lblTitle" destination="Lzj-2a-wOh" id="HUS-G7-FLA"/>
+                        <outlet property="playSlider" destination="tZt-OZ-K1a" id="E1n-ar-7p6"/>
                         <outlet property="scrollView" destination="aKR-ft-Ome" id="cdw-Xw-8FD"/>
+                        <outlet property="tbnPlayVideo" destination="dPu-aK-zqa" id="nf0-it-IE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
