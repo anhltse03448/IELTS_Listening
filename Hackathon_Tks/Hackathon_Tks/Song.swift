@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class Song: Object {
+    dynamic var index : Int = 0
     dynamic var title : String = ""
     dynamic var img : String = ""
     dynamic var length : String = ""
@@ -18,7 +19,7 @@ class Song: Object {
     dynamic var fileSource : String = ""
     dynamic var linkYoutube : String = ""
     
-    func setValue(title : String , img : String , length : String , number_word : Int , fileSource : String , linkYoutube : String , result : Double) {
+    func setValue(index : Int , title : String , img : String , length : String , number_word : Int , fileSource : String , linkYoutube : String , result : Double) {
         self.title = title
         self.img = img
         self.length = length

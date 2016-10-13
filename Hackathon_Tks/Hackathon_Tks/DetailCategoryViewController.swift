@@ -14,6 +14,7 @@ class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     @IBOutlet weak var back_img : UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var backView : UIView!
     var titleView : String?
     var idCategory : Int?
     
@@ -26,6 +27,8 @@ class DetailCategoryViewController: BaseViewController {
         self.navigationController?.navigationBarHidden = true
         back_img.userInteractionEnabled = true
         back_img.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryViewController.backTap(_:))))
+        backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryViewController.backTap(_:))))
+        
         self.lblTitle.text = titleView
     }
     
@@ -44,9 +47,7 @@ class DetailCategoryViewController: BaseViewController {
         
     }
     func backTap(gesture : UITapGestureRecognizer) {
-        self.dismissViewControllerAnimated(true) { 
-            
-        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
 extension DetailCategoryViewController : UITableViewDataSource , UITableViewDelegate {

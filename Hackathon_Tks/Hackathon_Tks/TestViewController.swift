@@ -15,6 +15,9 @@ class TestViewController : BaseViewController {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblShowMyScore : UILabel!
     
+    
+    
+    @IBOutlet weak var backView : UIView!
     var currentSong : SongObject?
     var titleTab : String?
     var countLine : Int = 1
@@ -128,7 +131,7 @@ class TestViewController : BaseViewController {
         self.lblTitle.text = titleTab
         backImg.userInteractionEnabled = true
         backImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
-        
+        backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
     }
     
     func backTap(gesture : UITapGestureRecognizer) {
@@ -180,8 +183,6 @@ class TestViewController : BaseViewController {
                     viewAnswers?.addSubview(lblAnswer)
                     lblAnswer.userInteractionEnabled = true
                     lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.answerTap(_:))))
-                    lblAnswer.borderColor = UIColor.blackColor()
-                    lblAnswer.borderWidth = 1
                     lblAnswer.snp_makeConstraints(closure: { (make) in
                         make.top.equalTo(viewAnswers!).offset(37 * pos!)
                         make.left.equalTo(viewAnswers!)
