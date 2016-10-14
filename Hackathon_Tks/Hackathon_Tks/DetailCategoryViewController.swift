@@ -9,6 +9,8 @@
 import UIKit
 import Realm
 import RealmSwift
+import Alamofire
+import AlamofireImage
 
 class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
@@ -23,6 +25,7 @@ class DetailCategoryViewController: BaseViewController {
         super.viewDidLoad()
         listSong.removeAll()
         loadSongInCategory()
+        tbl.tableFooterView = UIView(frame: CGRectZero)
         
         self.navigationController?.navigationBarHidden = true
         back_img.userInteractionEnabled = true
@@ -60,7 +63,23 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
+        
         cell.lbl.text = listSong[indexPath.row].title
+        cell.durationLbl.text = listSong[indexPath.row].length
+        cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
+        var url = listSong[indexPath.row].img
+        cell.delegate = self
+        url = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        Alamofire.request( .GET , url).responseImage { response in
+            if let image = response.result.value {
+                //print("image downloaded: \(image)")
+                cell.img.image = image
+            }
+        }
+
+        NSLog("\(listSong[indexPath.row].img)")
+        
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -68,9 +87,25 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         tbl.deselectRowAtIndexPath(indexPath, animated: true)
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as! TestViewController
         dest.currentSong = listSong[indexPath.row]
-        dest.titleTab = "ahihi"        
+        dest.titleTab = listSong[indexPath.row].title
         self.presentViewController(dest, animated: true) { 
             self.hideLoadingHUD()
         }
+    }
+}
+extension DetailCategoryViewController : DetailCategoryDelegate {
+    func click(cell: DetailCategoryTableViewCell) {
+//        let number = tbl.indexPathForCell(cell)
+        
+        let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Add to Favorites", "Add to Playlist")
+        actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
+        
+        actionSheet.showInView(self.view)
+        
+    }
+}
+extension DetailCategoryViewController : UIActionSheetDelegate {
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
     }
 }

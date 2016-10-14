@@ -13,11 +13,12 @@ import Alamofire
 
 class CategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
+    @IBOutlet weak var viewTop : UIView!
     var listCategory = [CategoryObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tbl.showsVerticalScrollIndicator = false
         InitData.initType()
         loadData()
         self.navigationController?.navigationBarHidden = true
