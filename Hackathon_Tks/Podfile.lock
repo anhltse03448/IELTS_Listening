@@ -9,12 +9,14 @@ PODS:
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
   - SnapKit (0.22.0)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - AlamofireImage
   - MBProgressHUD
   - RealmSwift
   - SnapKit
+  - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
@@ -23,7 +25,8 @@ SPEC CHECKSUMS:
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: a14572bf9bf2fd4b797adc73374f18cc293bd997
+PODFILE CHECKSUM: 5e5bf98b1a3fecfda043a7ddf4d3603c969b88fc
 
 COCOAPODS: 1.0.1

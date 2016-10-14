@@ -11,6 +11,7 @@ import UIKit
 class MyString: NSObject {
     var content : String
     var answer : [String]?
+    
     init(content : String) {
         self.content = content
         answer = nil
