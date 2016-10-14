@@ -36,9 +36,14 @@
 		3678D1071DACD2D20000F342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1061DACD2D20000F342 /* Assets.xcassets */; };
 		3678D10A1DACD2D20000F342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1081DACD2D20000F342 /* LaunchScreen.storyboard */; };
 		368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368806B21DAF8BBB00210163 /* CategoryObject.swift */; };
+		36E5E53E1DB124220055C43C /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5E53D1DB124210055C43C /* Favorite.swift */; };
 		36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B41DAFB9B500517E3B /* SongObject.swift */; };
-		36E8C3B71DAFC6E600517E3B /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B61DAFC6E600517E3B /* Favorite.swift */; };
-		36E8C3B91DAFD33900517E3B /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B81DAFD33900517E3B /* PlaylistTableViewCell.swift */; };
+		619567381DB0B83900B640DD /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619567361DB0B83900B640DD /* PlayingView.swift */; };
+		6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673B1DB0BA5300B640DD /* UTM Avo.ttf */; };
+		6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */; };
+		619567401DB0C21600B640DD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6195673F1DB0C21600B640DD /* UIView.swift */; };
+		61C0681D1DB105B50095EFEF /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */; };
+		61D1941B1DB0C6980065D677 /* PlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D1941A1DB0C6980065D677 /* PlayingView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,9 +77,14 @@
 		3678D1091DACD2D20000F342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3678D10B1DACD2D20000F342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		368806B21DAF8BBB00210163 /* CategoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryObject.swift; sourceTree = "<group>"; };
+		36E5E53D1DB124210055C43C /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		36E8C3B41DAFB9B500517E3B /* SongObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongObject.swift; sourceTree = "<group>"; };
-		36E8C3B61DAFC6E600517E3B /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
-		36E8C3B81DAFD33900517E3B /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		619567361DB0B83900B640DD /* PlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
+		6195673B1DB0BA5300B640DD /* UTM Avo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM Avo.ttf"; sourceTree = "<group>"; };
+		6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM God's WordR.ttf"; sourceTree = "<group>"; };
+		6195673F1DB0C21600B640DD /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		61D1941A1DB0C6980065D677 /* PlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayingView.xib; sourceTree = "<group>"; };
 		7D014AFA01F9EF8A3928457C /* Pods_Hackathon_Tks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hackathon_Tks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9970AA41C3F23C38754C6B /* Pods-Hackathon_Tks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon_Tks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hackathon_Tks/Pods-Hackathon_Tks.debug.xcconfig"; sourceTree = "<group>"; };
 		C3FEACDB8A850774FF059C4D /* Pods-Hackathon_Tks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon_Tks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackathon_Tks/Pods-Hackathon_Tks.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,7 +126,7 @@
 			children = (
 				3612E8901DAE27600000F4E5 /* CategoryTableViewCell.swift */,
 				3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */,
-				36E8C3B81DAFD33900517E3B /* PlaylistTableViewCell.swift */,
+				61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -133,9 +143,9 @@
 		36142C3D1DAF691100344090 /* InitData */ = {
 			isa = PBXGroup;
 			children = (
+				36E5E53D1DB124210055C43C /* Favorite.swift */,
 				360926E61DAF69CE00EDF8CC /* Genre.swift */,
 				360926EB1DAF6ADE00EDF8CC /* Song.swift */,
-				36E8C3B61DAFC6E600517E3B /* Favorite.swift */,
 			);
 			name = InitData;
 			sourceTree = "<group>";
@@ -161,6 +171,7 @@
 		366D706D1DACDE340056B487 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				619567331DB0B78E00B640DD /* CustomView */,
 				360926E81DAF6A1700EDF8CC /* InitData */,
 				3612E8961DAE28960000F4E5 /* Category */,
 				3678D1011DACD2D20000F342 /* TestViewController.swift */,
@@ -179,6 +190,7 @@
 			children = (
 				366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */,
 				366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */,
+				6195673F1DB0C21600B640DD /* UIView.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -186,6 +198,7 @@
 		366D70751DACE09B0056B487 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6195673A1DB0BA5300B640DD /* Font */,
 				366D70761DACE0A90056B487 /* Utils.swift */,
 				3612E8801DAE22C00000F4E5 /* Configure.swift */,
 				3612E8821DAE22CC0000F4E5 /* Constant.swift */,
@@ -227,6 +240,24 @@
 				3678D10B1DACD2D20000F342 /* Info.plist */,
 			);
 			path = Hackathon_Tks;
+			sourceTree = "<group>";
+		};
+		619567331DB0B78E00B640DD /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				619567361DB0B83900B640DD /* PlayingView.swift */,
+				61D1941A1DB0C6980065D677 /* PlayingView.xib */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		6195673A1DB0BA5300B640DD /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6195673B1DB0BA5300B640DD /* UTM Avo.ttf */,
+				6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		6AE75D5536F9F8164D33FA5D /* Pods */ = {
@@ -308,9 +339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3678D10A1DACD2D20000F342 /* LaunchScreen.storyboard in Resources */,
+				6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */,
 				3678D1071DACD2D20000F342 /* Assets.xcassets in Resources */,
 				361998601DAD3DB900EBDB78 /* data1.txt in Resources */,
 				3678D1051DACD2D20000F342 /* Main.storyboard in Resources */,
+				6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */,
+				61D1941B1DB0C6980065D677 /* PlayingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,12 +403,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619567401DB0C21600B640DD /* UIView.swift in Sources */,
 				3612E88B1DAE24E80000F4E5 /* PlayListViewController.swift in Sources */,
 				3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */,
+				36E5E53E1DB124220055C43C /* Favorite.swift in Sources */,
 				3678D1021DACD2D20000F342 /* TestViewController.swift in Sources */,
 				360926EA1DAF6A2800EDF8CC /* InitData.swift in Sources */,
 				366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */,
 				361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */,
+				619567381DB0B83900B640DD /* PlayingView.swift in Sources */,
 				3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */,
 				3612E88D1DAE24F70000F4E5 /* SettingViewController.swift in Sources */,
 				3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */,
@@ -384,18 +421,17 @@
 				3612E8871DAE24CF0000F4E5 /* SearchViewController.swift in Sources */,
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
 				3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */,
-				36E8C3B91DAFD33900517E3B /* PlaylistTableViewCell.swift in Sources */,
 				3612E8951DAE28930000F4E5 /* DetailCategoryViewController.swift in Sources */,
 				360926EC1DAF6ADE00EDF8CC /* Song.swift in Sources */,
 				36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */,
 				360926E71DAF69CE00EDF8CC /* Genre.swift in Sources */,
 				3612E8891DAE24DC0000F4E5 /* FavoriteViewController.swift in Sources */,
-				36E8C3B71DAFC6E600517E3B /* Favorite.swift in Sources */,
 				3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */,
 				3612E8851DAE24BE0000F4E5 /* CategoryViewController.swift in Sources */,
 				366D70771DACE0A90056B487 /* Utils.swift in Sources */,
 				368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */,
 				363453A21DB1017500D12CE0 /* ResultViewController.swift in Sources */,
+				61C0681D1DB105B50095EFEF /* PlaylistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

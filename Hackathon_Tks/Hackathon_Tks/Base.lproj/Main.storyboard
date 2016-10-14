@@ -1111,7 +1111,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-uU-gRl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="73"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-OU-P3X">
                                         <rect key="frame" x="0.0" y="-64" width="46" height="30"/>
@@ -1150,30 +1150,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="1wa-dy-VU0"/>
-                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="leading" secondItem="dPu-aK-zqa" secondAttribute="trailing" constant="50" id="7FW-d5-abY"/>
-                                    <constraint firstItem="tZt-OZ-K1a" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="BSy-Zw-Rmx"/>
-                                    <constraint firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="P87-Cc-EpV"/>
-                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="SCu-qP-Lgh"/>
-                                    <constraint firstItem="RUg-SP-ggf" firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="Sis-Wg-AkC"/>
-                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="UCp-NV-x9T"/>
-                                    <constraint firstItem="RUg-SP-ggf" firstAttribute="centerY" secondItem="dxa-uU-gRl" secondAttribute="centerY" id="VhH-Ho-SCb"/>
-                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="centerX" secondItem="dxa-uU-gRl" secondAttribute="centerX" id="hvv-bM-KUf"/>
-                                    <constraint firstItem="tZt-OZ-K1a" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="top" id="lm3-Yb-6mF"/>
-                                    <constraint firstItem="sPW-l3-hUR" firstAttribute="bottom" secondItem="dPu-aK-zqa" secondAttribute="bottom" id="m6D-Hw-Zi8"/>
-                                    <constraint firstItem="dPu-aK-zqa" firstAttribute="leading" secondItem="RUg-SP-ggf" secondAttribute="trailing" constant="50" id="mFW-mF-Im5"/>
-                                    <constraint firstAttribute="bottom" secondItem="RUg-SP-ggf" secondAttribute="bottom" constant="15" id="o3G-0M-jil"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VhH-Ho-SCb"/>
-                                        <exclude reference="o3G-0M-jil"/>
-                                        <exclude reference="1wa-dy-VU0"/>
-                                        <exclude reference="UCp-NV-x9T"/>
-                                        <exclude reference="SCu-qP-Lgh"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1182,8 +1158,8 @@
                             <constraint firstAttribute="trailing" secondItem="ySg-8C-8NJ" secondAttribute="trailing" id="41G-9o-RfS"/>
                             <constraint firstItem="dxa-uU-gRl" firstAttribute="top" secondItem="Rze-9F-Qqt" secondAttribute="bottom" id="4is-jf-hdh"/>
                             <constraint firstAttribute="trailing" secondItem="Rze-9F-Qqt" secondAttribute="trailing" id="7JC-BC-O5n"/>
-                            <constraint firstItem="dxa-uU-gRl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3:3" id="7vm-YQ-bB5"/>
-                            <constraint firstItem="x7A-c9-vbD" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="bottom" id="DRe-0g-taL"/>
+                            <constraint firstItem="dxa-uU-gRl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3:3" constant="13.000000000000007" id="7vm-YQ-bB5"/>
+                            <constraint firstItem="x7A-c9-vbD" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="bottom" constant="-13" id="DRe-0g-taL"/>
                             <constraint firstAttribute="trailing" secondItem="Ehj-Cm-NFi" secondAttribute="trailing" id="Oao-o0-iT3"/>
                             <constraint firstItem="dxa-uU-gRl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PeX-HE-ISU"/>
                             <constraint firstItem="Ehj-Cm-NFi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QDr-If-YOv"/>
@@ -1205,13 +1181,14 @@
                         </variation>
                     </view>
                     <connections>
+
                         <outlet property="backImg" destination="KRA-LE-mFr" id="e9t-Qc-1Z0"/>
                         <outlet property="backView" destination="Dta-i1-WZo" id="mhB-5L-7VS"/>
                         <outlet property="btnNextVideo" destination="sPW-l3-hUR" id="VKJ-H0-IoR"/>
                         <outlet property="btnPre" destination="RUg-SP-ggf" id="c9J-Sk-gWj"/>
                         <outlet property="lblShowMyScore" destination="X1C-Ht-jSO" id="nFF-KE-whB"/>
                         <outlet property="lblTitle" destination="Lzj-2a-wOh" id="HUS-G7-FLA"/>
-                        <outlet property="playSlider" destination="tZt-OZ-K1a" id="E1n-ar-7p6"/>
+                        <outlet property="playerView" destination="dxa-uU-gRl" id="2ds-L6-eDQ"/>
                         <outlet property="scrollView" destination="aKR-ft-Ome" id="cdw-Xw-8FD"/>
                         <outlet property="tbnPlayVideo" destination="dPu-aK-zqa" id="nf0-it-IE7"/>
                         <outlet property="viewShowMyScore" destination="Beg-fR-07h" id="U7q-td-grR"/>

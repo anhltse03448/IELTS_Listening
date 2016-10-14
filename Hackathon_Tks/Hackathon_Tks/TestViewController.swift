@@ -10,9 +10,11 @@ import UIKit
 import SnapKit
 import CoreMedia
 import youtube_ios_player_helper
+
 import STPopup
 
 class TestViewController : BaseViewController,YTPlayerViewDelegate {
+
     @IBOutlet weak var scrollView : UIScrollView!
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
@@ -27,13 +29,13 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     @IBOutlet weak var btnPre: UIButton!
     
-    let playerView = YTPlayerView()
     @IBOutlet weak var playSlider: UISlider!
      var meterTimer:NSTimer?
     var duration : NSTimer?
     var seconds : Float64?
     
     var listLabel = [MyLabel]()
+    @IBOutlet weak var playerView: UIView!
     var currentSong : SongObject?
     var titleTab : String?
     var countLine : Int = 1
@@ -47,8 +49,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         
         super.viewDidLoad()
         NSLog("\(currentSong?.linkYoutube)")
-        
-        playVideo()
+        initPlayerView()
         
         initViewController()
         let str = Utils.readFile("data1")
@@ -153,55 +154,11 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         lblShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
         viewShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
     }
-    
-    func playVideo(){
-        self.playerView.delegate = self
-        let playerVars = ["playsinline": 1]
-        playerView.loadWithVideoId((currentSong?.linkYoutube)!, playerVars: playerVars)
-        
-        self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
-    }
-    func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState){
-        switch (state) {
-        case YTPlayerState.Unstarted:
-            print("Unstarted")
-            break
-        case YTPlayerState.Playing:
-            print("playing")
-            break
-        case YTPlayerState.Paused:
-            
-            break;
-        default:
-            break;
-        }
-    }
-//    func playerView(playerView: YTPlayerView, didPlayTime playTime: Float) {
-//        let progress = playTime/Float(self.playerView.duration())
-//        playSlider.value = progress
-//    }
-    @IBAction func btnPlayTouchUp(sender: AnyObject) {
-       // self.showLoadingHUD()
-        playerView.playVideo()
-        let duration : CMTime = CMTimeMake(Int64(playerView.duration()),1)
-        let seconds : Float64 = CMTimeGetSeconds(duration)
-        playSlider.minimumValue = 0
-        playSlider.maximumValue = Float(seconds)
-        playSlider.continuous = true
-        playSlider.tintColor = UIColor.greenColor()
-    }
-    
-    
-    @IBAction func playSliderValueChanged(sender: AnyObject) {
-        let seekToTime = Float(self.playerView.duration()) * self.playSlider.value
-        playerView.seekToSeconds(seekToTime, allowSeekAhead: true)
-    }
-    @IBAction func btnNextTouchUp(sender: AnyObject) {
-        let timeCurent = Float(playerView.currentTime()) + 5.0
-        playerView.seekToSeconds(timeCurent, allowSeekAhead: true)
-    }
-    func UpdateSlider(sender:AnyObject){
-        playSlider.value = Float(self.playerView.currentTime())
+    func initPlayerView(){
+        let viewPlayer = UIView.loadFromNibNamed("PlayingView") as! PlayingView
+        viewPlayer.frame = CGRect(x: 0,y: 64,width: Constant.Systems.screen_size.width,height: 73)
+        viewPlayer.currentSong = currentSong!.linkYoutube
+        self.view.addSubview(viewPlayer)
     }
     func backTap(gesture : UITapGestureRecognizer) {
         self.dismissViewControllerAnimated(true) { 

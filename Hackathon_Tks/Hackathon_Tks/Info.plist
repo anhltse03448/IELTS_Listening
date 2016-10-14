@@ -54,5 +54,10 @@
     <string>UIStatusBarStyleLightContent</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>UIAppFonts</key>
+    <array>
+        <string>UTM-Avo.ttf</string>
+        <string>UTM-God's-WordR</string>
+    </array>
 </dict>
 </plist>
