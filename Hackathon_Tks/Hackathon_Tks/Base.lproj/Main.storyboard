@@ -776,7 +776,7 @@
                                             <action selector="btnPlayTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJy-LV-tie"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
                                         <rect key="frame" x="192.5" y="0.0" width="215" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="211" id="nr3-dX-qXJ"/>

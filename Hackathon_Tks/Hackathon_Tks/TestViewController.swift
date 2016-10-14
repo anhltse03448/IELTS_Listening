@@ -24,7 +24,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     let playerView = YTPlayerView()
     @IBOutlet weak var playSlider: UISlider!
-    var duration : CMTime?
+     var meterTimer:NSTimer?
+    var duration : NSTimer?
     var seconds : Float64?
     
     var currentSong : SongObject?
@@ -149,7 +150,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         self.playerView.delegate = self
         let playerVars = ["playsinline": 1]
         playerView.loadWithVideoId((currentSong?.linkYoutube)!, playerVars: playerVars)
-       // playerView.playVideo()
+        
+        self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
     }
     func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState){
         switch (state) {
@@ -166,10 +168,14 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
             break;
         }
     }
+//    func playerView(playerView: YTPlayerView, didPlayTime playTime: Float) {
+//        let progress = playTime/Float(self.playerView.duration())
+//        playSlider.value = progress
+//    }
     @IBAction func btnPlayTouchUp(sender: AnyObject) {
        // self.showLoadingHUD()
         playerView.playVideo()
-        let duration : CMTime = CMTimeMake(Int64(self.playerView.duration()), 10000)
+        let duration : CMTime = CMTimeMake(Int64(playerView.duration()),1)
         let seconds : Float64 = CMTimeGetSeconds(duration)
         playSlider.minimumValue = 0
         playSlider.maximumValue = Float(seconds)
@@ -186,7 +192,9 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         let timeCurent = Float(playerView.currentTime()) + 5.0
         playerView.seekToSeconds(timeCurent, allowSeekAhead: true)
     }
-    
+    func UpdateSlider(sender:AnyObject){
+        playSlider.value = Float(self.playerView.currentTime())
+    }
     func backTap(gesture : UITapGestureRecognizer) {
         self.dismissViewControllerAnimated(true) { 
             
