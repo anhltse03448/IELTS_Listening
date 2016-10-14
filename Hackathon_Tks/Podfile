@@ -10,4 +10,5 @@ target 'Hackathon_Tks' do
   pod 'RealmSwift'
   pod 'MBProgressHUD'
   pod 'AlamofireImage'
+  pod 'youtube-ios-player-helper'
 end
