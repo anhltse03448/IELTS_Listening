@@ -48,13 +48,8 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                 print("play")
                 btnPlay.selected = false
                 playerView!.playVideo()
-                let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
-                let seconds : Float64 = CMTimeGetSeconds(duration)
-                sliderProgress.minimumValue = 0
-                sliderProgress.maximumValue = Float(seconds)
-                sliderProgress.continuous = true
-                sliderProgress.tintColor = UIColor.greenColor()
-                self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
+                
+                
             }else{
                 self.playerPause()
                 print("pause")
@@ -114,12 +109,14 @@ class PlayingView: UIView,YTPlayerViewDelegate {
 //            
 //            break
         case YTPlayerState.Playing:
-            
-//            let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
-//            
-//            lblDuration.text = self.formatTime(CGFloat(self.playerView!.duration())) as String
-            
-            
+            self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
+            lblDuration.text = self.formatTime(CGFloat(self.playerView!.duration())) as String
+            let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
+            let seconds : Float64 = CMTimeGetSeconds(duration)
+            sliderProgress.minimumValue = 0
+            sliderProgress.maximumValue = Float(seconds)
+            sliderProgress.continuous = true
+            sliderProgress.tintColor = UIColor.greenColor()
             break
         case YTPlayerState.Paused:
             self.meterTimer?.invalidate()
