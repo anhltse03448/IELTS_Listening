@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8F399E43268EC88CA31FED10F03EE9F"
-               BuildableName = "Pods_Hackathon_Tks.framework"
-               BlueprintName = "Pods-Hackathon_Tks"
+               BlueprintIdentifier = "3AC579ED72C0B20505F129F151B6DE0D"
+               BuildableName = "youtube_ios_player_helper.framework"
+               BlueprintName = "youtube-ios-player-helper"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8F399E43268EC88CA31FED10F03EE9F"
-            BuildableName = "Pods_Hackathon_Tks.framework"
-            BlueprintName = "Pods-Hackathon_Tks"
+            BlueprintIdentifier = "3AC579ED72C0B20505F129F151B6DE0D"
+            BuildableName = "youtube_ios_player_helper.framework"
+            BlueprintName = "youtube-ios-player-helper"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

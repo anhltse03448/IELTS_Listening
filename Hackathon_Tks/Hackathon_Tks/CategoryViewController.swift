@@ -59,9 +59,7 @@ extension CategoryViewController : UITableViewDataSource , UITableViewDelegate {
         tbl.deselectRowAtIndexPath(indexPath, animated: true)
         dest.titleView = listCategory[indexPath.row].title
         
-        self.navigationController?.presentViewController(dest, animated: true, completion: { 
-            
-        })
+        self.navigationController?.pushViewController(dest, animated: true)
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100

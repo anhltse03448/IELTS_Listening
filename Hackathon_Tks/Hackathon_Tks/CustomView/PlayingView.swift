@@ -36,9 +36,11 @@ class PlayingView: UIView,YTPlayerViewDelegate {
     func initPlayerView(){
         playerView = YTPlayerView()
         self.playerView!.delegate = self
-        let playerVars = ["playsinline": 1]
+        let playerVars = ["playsinline": 1,"autohide":0]
         // if currentSong != nil{
         playerView!.loadWithVideoId("Rqk-JqaAg1w", playerVars: playerVars)
+        playerView?.playVideo()
+        
     }
     
     @IBAction func btnPlayTouchUp(sender: AnyObject) {
@@ -46,7 +48,13 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                 print("play")
                 btnPlay.selected = false
                 playerView!.playVideo()
-                
+                let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
+                let seconds : Float64 = CMTimeGetSeconds(duration)
+                sliderProgress.minimumValue = 0
+                sliderProgress.maximumValue = Float(seconds)
+                sliderProgress.continuous = true
+                sliderProgress.tintColor = UIColor.greenColor()
+                self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
             }else{
                 self.playerPause()
                 print("pause")
@@ -102,18 +110,16 @@ class PlayingView: UIView,YTPlayerViewDelegate {
     
     func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState) {
         switch (state) {
-        case YTPlayerState.Unstarted:
-            let duration : CMTime = CMTimeMake(Int64(playerView.duration()),1)
-            let seconds : Float64 = CMTimeGetSeconds(duration)
-            lblDuration.text = self.formatTime(CGFloat(playerView.duration())) as String
-            sliderProgress.minimumValue = 0
-            sliderProgress.maximumValue = Float(seconds)
-            sliderProgress.continuous = true
-            sliderProgress.tintColor = UIColor.greenColor()
-            break
+//        case YTPlayerState.Unstarted:
+//            
+//            break
         case YTPlayerState.Playing:
             
-            self.meterTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UpdateSlider), userInfo: nil, repeats: true)
+//            let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
+//            
+//            lblDuration.text = self.formatTime(CGFloat(self.playerView!.duration())) as String
+            
+            
             break
         case YTPlayerState.Paused:
             self.meterTimer?.invalidate()
@@ -133,6 +139,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         lblCurentTime.text = "00:00"
         
     }
+    
     func formatTime(time:CGFloat) ->NSString{
         let hours:NSInteger = NSInteger(time) / 3600
         let seconds:NSInteger = NSInteger(time) % 60

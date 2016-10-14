@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
 
 class SearchViewController: BaseViewController {
+    @IBOutlet weak var tbl : UITableView!
+    var listSong = [SongObject]()
+    var realm : Realm?
     @IBOutlet weak var searchTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewController()
+        
+        try! realm = Realm()
 
     }
     
@@ -47,23 +54,17 @@ class SearchViewController: BaseViewController {
         //tbl.hidden = true
     }
     func textFieldDidChange(textField: UITextField) {
-        NSLog("abc")
-//        APIManager.shareInstance.searchMSNStockWithKeyword(textField.text!).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { [weak self](task) -> AnyObject? in
-//            guard let result = task.result as? [StockModel], let wSelf = self else {
-//                self!.listStock.removeAll()
-//                self!.tbl.reloadData()
-//                return nil
-//            }
-//            self!.listStock.removeAll()
-//            for i in 0 ..< result.count {
-//                self!.listStock.append(result[i])
-//            }
-//            
-//            self!.tbl.reloadData()
-//            //wSelf.tableView.reloadData()
-//            return nil
-//            })
+        let result = realm?.objects(Song.self).filter("title CONTAINS %@",textField.text!).sorted("title")
+        listSong.removeAll()
+        if result != nil {
+            for item in result! {
+                listSong.append(SongObject(song: item))
+            }
+        }
+        tbl.reloadData()
     }
+    
+    
 
 }
 extension SearchViewController : UITextFieldDelegate {
@@ -75,15 +76,35 @@ extension SearchViewController : UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if textField.isEqual(searchTextField) {
-//            searchTextField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
-//            self.textFieldDidChange(self.searchTextField)
-//            return false
-//        }
-//        self.textFieldDidChange(self.searchTextField)
+        self.textFieldDidChange(self.searchTextField)
         return true
     }
     
+}
+extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listSong.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
+        cell.lbl.text = listSong[indexPath.row].title
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 61
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let dest = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as! TestViewController
+        dest.currentSong = listSong[indexPath.row]
+        dest.titleTab = listSong[indexPath.row].title
+        self.presentViewController(dest, animated: true) { 
+            
+        }
+    }
 }
 

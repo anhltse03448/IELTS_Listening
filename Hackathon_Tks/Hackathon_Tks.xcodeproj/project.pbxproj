@@ -40,6 +40,7 @@
 		6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673B1DB0BA5300B640DD /* UTM Avo.ttf */; };
 		6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */; };
 		619567401DB0C21600B640DD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6195673F1DB0C21600B640DD /* UIView.swift */; };
+		61C0681D1DB105B50095EFEF /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */; };
 		61D1941B1DB0C6980065D677 /* PlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D1941A1DB0C6980065D677 /* PlayingView.xib */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		6195673B1DB0BA5300B640DD /* UTM Avo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM Avo.ttf"; sourceTree = "<group>"; };
 		6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM God's WordR.ttf"; sourceTree = "<group>"; };
 		6195673F1DB0C21600B640DD /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		61D1941A1DB0C6980065D677 /* PlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayingView.xib; sourceTree = "<group>"; };
 		7D014AFA01F9EF8A3928457C /* Pods_Hackathon_Tks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hackathon_Tks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9970AA41C3F23C38754C6B /* Pods-Hackathon_Tks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon_Tks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hackathon_Tks/Pods-Hackathon_Tks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				3612E8901DAE27600000F4E5 /* CategoryTableViewCell.swift */,
 				3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */,
+				61C0681C1DB105B50095EFEF /* PlaylistTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				3612E8851DAE24BE0000F4E5 /* CategoryViewController.swift in Sources */,
 				366D70771DACE0A90056B487 /* Utils.swift in Sources */,
 				368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */,
+				61C0681D1DB105B50095EFEF /* PlaylistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
