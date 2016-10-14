@@ -11,4 +11,5 @@ target 'Hackathon_Tks' do
   pod 'MBProgressHUD'
   pod 'AlamofireImage'
   pod 'youtube-ios-player-helper'
+  pod 'STPopup'
 end

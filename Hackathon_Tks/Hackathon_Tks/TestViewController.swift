@@ -10,11 +10,14 @@ import UIKit
 import SnapKit
 import CoreMedia
 import youtube_ios_player_helper
+import STPopup
+
 class TestViewController : BaseViewController,YTPlayerViewDelegate {
     @IBOutlet weak var scrollView : UIScrollView!
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblShowMyScore : UILabel!
+    @IBOutlet weak var viewShowMyScore : UIView!
     
     @IBOutlet weak var backView : UIView!
 
@@ -30,6 +33,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     var duration : NSTimer?
     var seconds : Float64?
     
+    var listLabel = [MyLabel]()
     var currentSong : SongObject?
     var titleTab : String?
     var countLine : Int = 1
@@ -56,7 +60,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         content = UIView()
         content.userInteractionEnabled = true
         content.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.labelTap(_:))))
-        var listLabel = [UILabel]()
+        
         for i in arrStr {
             let number = arrStr.indexOf(i)
             if number == arrStr.count - 1 {
@@ -76,6 +80,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                 lbl.snp_makeConstraints(closure: { (make) in
                     make.width.equalTo(150)
                 })
+                listLabel.append(lbl)
             }
             if i.answer != nil {
                 lbl.backgroundColor = UIColor(rgba: "#eeac57")
@@ -84,7 +89,6 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
             lbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.labelTap(_:))))
         
             content.addSubview(lbl)
-            listLabel.append(lbl)
             sizeHeight = lbl.frame.height
             
             if currentLength + lbl.frame.width < SIZE_WIDTH {
@@ -146,6 +150,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         backImg.userInteractionEnabled = true
         backImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
+        lblShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
+        viewShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
     }
     
     func playVideo(){
@@ -264,6 +270,18 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
             self.viewAnswers?.removeFromSuperview()
         }
     }
+    
+    
+    func checkMyScore(gesture : UITapGestureRecognizer) {
+        for item in listLabel {
+            if item.isTrue == true {
+                item.backgroundColor = GREEN_COLOR
+            } else {
+                item.backgroundColor = RED_COLOR
+            }
+        }
+        self.showResultViewController()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -275,6 +293,12 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     func showMyScore(gesture : UITapGestureRecognizer){
         NSLog("Show me score")
+    }
+    
+    func showResultViewController(){
+        let voteApp = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
+        let popupController = STPopupController(rootViewController: voteApp)
+        popupController.presentInViewController(self)
     }
     
 }

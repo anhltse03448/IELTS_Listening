@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>STPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,17 +52,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04D7860611DD8A1F88EAD63AA11B716B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>05094CC4A047119F7ADC14EE74C4881C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3AC579ED72C0B20505F129F151B6DE0D</key>
+		<key>0BC0C5AEB58E11C9B2CF93AF93BD4046</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>361B410F2BC7BEDAFAD6415EC9BD821F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71E2159F92693D4BDA8FD163B22836F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,17 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8385E49E83362DB86050A89596501986</key>
+		<key>A2320A151F4DFD2F005D4E34703EBABF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8F399E43268EC88CA31FED10F03EE9F</key>
+		<key>B191BEAD3CBA82758FB902145DE87E9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3CE1303ED08B2E2276DE3FEC174DECB</key>
+		<key>DB80B5DA6C1E676DA735D221B1706E26</key>
 		<dict>
 			<key>primary</key>
 			<true/>

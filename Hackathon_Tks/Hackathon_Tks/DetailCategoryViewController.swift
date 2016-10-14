@@ -69,17 +69,14 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
         var url = listSong[indexPath.row].img
         cell.delegate = self
-        url = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        //url = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        url = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%20Class.jpg"
         
         Alamofire.request( .GET , url).responseImage { response in
             if let image = response.result.value {
-                //print("image downloaded: \(image)")
                 cell.img.image = image
             }
         }
-
-        NSLog("\(listSong[indexPath.row].img)")
-        
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -106,6 +103,15 @@ extension DetailCategoryViewController : DetailCategoryDelegate {
 }
 extension DetailCategoryViewController : UIActionSheetDelegate {
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch buttonIndex {
+        case 0:
+            // add to favorites
+            break
+        default:
+            break
+            // add to Playlist
+        }
         
     }
 }
