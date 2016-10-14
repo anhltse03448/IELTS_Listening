@@ -48,5 +48,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>UTM-Avo.ttf</string>
+        <string>UTM-God's-WordR</string>
+    </array>
 </dict>
 </plist>
