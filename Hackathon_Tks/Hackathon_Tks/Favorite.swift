@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
 
-class Favorite: NSObject {
+class Favorite: Object {
     dynamic var genre : Int = 0
     dynamic var index : Int = 0
 }

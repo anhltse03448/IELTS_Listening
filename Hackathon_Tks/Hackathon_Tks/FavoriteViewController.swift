@@ -30,8 +30,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         return 5
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
-        cell.textLabel?.text = "abc"
+        let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell        
         return cell
     }
 }

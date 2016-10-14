@@ -20,6 +20,7 @@ class Song: Object {
     dynamic var linkYoutube : String = ""
     
     func setValue(index : Int , title : String , img : String , length : String , number_word : Int , fileSource : String , linkYoutube : String , result : Double) {
+        self.index = index
         self.title = title
         self.img = img
         self.length = length

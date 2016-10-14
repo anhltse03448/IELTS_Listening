@@ -19,6 +19,7 @@ class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var backView : UIView!
     var titleView : String?
     var idCategory : Int?
+    var currentIndex : Int?
     
     var listSong = [SongObject]()
     override func viewDidLoad() {
@@ -92,10 +93,11 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
 }
 extension DetailCategoryViewController : DetailCategoryDelegate {
     func click(cell: DetailCategoryTableViewCell) {
-//        let number = tbl.indexPathForCell(cell)
+        let number = tbl.indexPathForCell(cell)
         
         let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Add to Favorites", "Add to Playlist")
         actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
+        currentIndex = number?.row
         
         actionSheet.showInView(self.view)
         
@@ -106,11 +108,16 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
         
         switch buttonIndex {
         case 0:
-            // add to favorites
+            
             break
         default:
-            break
-            // add to Playlist
+            let realm = try! Realm()
+            let obj = Favorite()
+            obj.genre = idCategory!
+            obj.index = currentIndex!
+            try! realm.write {
+                realm.add(obj)
+            }
         }
         
     }
