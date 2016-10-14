@@ -11,6 +11,5 @@ import Realm
 import RealmSwift
 
 class Favorite: Object {
-    dynamic var genre : Int = 0
-    dynamic var index : Int = 0
+    dynamic var songID : String = ""
 }

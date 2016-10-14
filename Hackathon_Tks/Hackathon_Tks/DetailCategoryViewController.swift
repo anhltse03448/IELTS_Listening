@@ -18,8 +18,8 @@ class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var backView : UIView!
     var titleView : String?
-    var idCategory : Int?
-    var currentIndex : Int?
+    var idCategory : String = ""
+    var currentSongID : String?
     
     var listSong = [SongObject]()
     override func viewDidLoad() {
@@ -38,9 +38,9 @@ class DetailCategoryViewController: BaseViewController {
     
     func loadSongInCategory() {
         let realm = try! Realm()
-        let listSongDB = realm.objects(Genre.self).filter("id == %@", self.idCategory ?? 0)
+        let listSongDB = realm.objects(Song.self).filter("genreID == %@",self.idCategory ?? "")
         if listSongDB.count != 0 {
-            for item in listSongDB[0].listSong {
+            for item in listSongDB {
                 listSong.append(SongObject(song: item))
             }
         }
@@ -70,7 +70,6 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
         var url = listSong[indexPath.row].img
         cell.delegate = self
-        //url = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         url = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%20Class.jpg"
         
         Alamofire.request( .GET , url).responseImage { response in
@@ -97,7 +96,7 @@ extension DetailCategoryViewController : DetailCategoryDelegate {
         
         let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Add to Favorites", "Add to Playlist")
         actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
-        currentIndex = number?.row
+        currentSongID = listSong[(number?.row)!].uuid
         
         actionSheet.showInView(self.view)
         
@@ -113,8 +112,7 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
         default:
             let realm = try! Realm()
             let obj = Favorite()
-            obj.genre = idCategory!
-            obj.index = currentIndex!
+            obj.songID = currentSongID!
             try! realm.write {
                 realm.add(obj)
             }

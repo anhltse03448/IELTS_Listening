@@ -5,7 +5,7 @@
 //  Created by Anh Tuan on 10/13/16.
 //  Copyright © 2016 Anh Tuan. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import RealmSwift
 
@@ -25,17 +25,20 @@ class InitData: NSObject {
             for item in categoryTitle {
                 let obj = Genre()
                 let number = categoryTitle.indexOf(item)
-                obj.id = number!
+                obj.uuid = NSUUID().UUIDString
                 obj.title = item
                 obj.img = linkCategory[number!]
-                for i in 0 ..< 4 {
-                    let songs = Song()
-                    songs.setValue(i , title : "Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "Rqk-JqaAg1w", result: 0)
-                    obj.listSong.append(songs)
-                }
                 try! realm.write {
                     realm.add(obj)
                 }
+                for i in 0 ..< 4 {
+                    let song = Song()
+                    song.setValue(NSUUID().UUIDString , genreID: obj.uuid, title : "Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "Rqk-JqaAg1w", result: 0)
+                    try! realm.write {
+                        realm.add(song)
+                    }
+                }
+                
             }
         } catch let _ as NSError {
             // handle error

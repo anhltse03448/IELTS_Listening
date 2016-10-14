@@ -32,7 +32,7 @@ class CategoryViewController: BaseViewController {
         let realm = try! Realm()
         let listCategoryDB = realm.objects(Genre.self)
         for item in listCategoryDB {
-            listCategory.append(CategoryObject(title: item.title, img: item.img))            
+            listCategory.append(CategoryObject(uuid: item.uuid, title: item.title, img: item.img))
         }
         self.tbl.reloadData()
     }
@@ -56,7 +56,7 @@ extension CategoryViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
-        dest.idCategory = indexPath.row
+        dest.idCategory = listCategory[indexPath.row].uuid
         tbl.deselectRowAtIndexPath(indexPath, animated: true)
         dest.titleView = listCategory[indexPath.row].title
         

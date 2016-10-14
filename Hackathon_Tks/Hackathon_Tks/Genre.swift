@@ -10,14 +10,15 @@ import Foundation
 import RealmSwift
 
 class Genre: Object {
-    dynamic var id : Int = 0 
+    dynamic var uuid : String = ""
     dynamic var title : String = ""
     dynamic var img : String = ""
-    var listSong = List<Song>()
+    //var listSong = List<Song>()
     
-    func setValue(title : String, img : String , list : List<Song>) {
+    func setValue(uuid : String , title : String, img : String) {
+        self.uuid = uuid
         self.title = title
-        self.listSong = list
+        //self.listSong = list
         self.img = img
     }
 }

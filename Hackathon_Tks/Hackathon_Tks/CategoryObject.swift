@@ -9,9 +9,11 @@
 import UIKit
 
 class CategoryObject: NSObject {
+    var uuid : String
     var title : String
     var img : String
-    init(title : String , img : String) {
+    init(uuid : String , title : String , img : String) {
+        self.uuid = uuid
         self.title = title
         self.img = img
     }

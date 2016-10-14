@@ -9,6 +9,7 @@
 import UIKit
 
 class SongObject: NSObject {
+    var uuid : String = ""
     var title : String = ""
     var img : String = ""
     var length : String = ""
@@ -18,6 +19,7 @@ class SongObject: NSObject {
     var linkYoutube : String = ""
     
     init(song : Song) {
+        self.uuid = song.uuid
         self.title = song.title
         self.img = song.img
         self.length = song.length
