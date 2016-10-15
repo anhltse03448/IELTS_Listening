@@ -45,7 +45,7 @@
                                 <action selector="btnPlayTouchUp:" destination="Go7-O8-uHa" eventType="touchUpInside" id="I6f-Sy-fqR"/>
                             </connections>
                         </button>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wrj-NZ-cu4">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wrj-NZ-cu4">
                             <rect key="frame" x="62" y="3" width="311" height="31"/>
                             <connections>
                                 <action selector="sliderProgressTouchDow:" destination="Go7-O8-uHa" eventType="touchDown" id="u3b-rN-WIG"/>
