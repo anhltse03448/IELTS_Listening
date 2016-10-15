@@ -33,4 +33,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell        
         return cell
     }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 103
+    }
 }

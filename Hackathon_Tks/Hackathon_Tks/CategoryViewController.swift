@@ -18,6 +18,8 @@ class CategoryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("\(Realm.Configuration.defaultConfiguration.fileURL)")
+        
         tbl.showsVerticalScrollIndicator = false
         InitData.initType()
         tbl.separatorStyle = .None

@@ -28,7 +28,7 @@ class ResultViewController: BaseViewController {
         viewResult.cornerRadius = viewResult.frame.width / 2
         viewResult.backgroundColor = UIColor.init(rgba: "#5fb760")
         
-        lblResult.text = String(format: "%.0f", (count_true_answer! / total!) * 100)
+        lblResult.text = String(format: "%.0f", (Float(count_true_answer!) / Float(total!) ) * 100) + "%"
         lblTrueAnswers.text = "\(count_true_answer!)"
         lblTotal.text = "\(total! - count_true_answer!)"
         

@@ -10,7 +10,8 @@ import UIKit
 import SnapKit
 import CoreMedia
 import youtube_ios_player_helper
-
+import Realm
+import RealmSwift
 import STPopup
 
 class TestViewController : BaseViewController,YTPlayerViewDelegate {
@@ -78,6 +79,9 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
             lbl.sizeToFit()
             lbl.textAlignment = .Center
             if i.answer != nil {
+                lbl.frame = CGRect(x: lbl.frame.minX, y: lbl.frame.minY, width: lbl.frame.width, height: lbl.frame.height + 20)
+                lbl.layoutIfNeeded()
+                lbl.textColor = UIColor.whiteColor()
                 lbl.setAnswers(i.answer!)
                 lbl.cornerRadius = 5
                 lbl.clipsToBounds = true
@@ -151,6 +155,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     func initViewController() {
         self.lblTitle.text = titleTab
+        scrollView.delegate = self
+        scrollView.showsVerticalScrollIndicator = false
         backImg.userInteractionEnabled = true
         backImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
@@ -191,15 +197,30 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                 viewAnswers?.borderColor = UIColor.init(rgba: "#c5c5c5")
                 viewAnswers?.borderWidth = 1
                 
-                
                 self.content.addSubview(viewAnswers!)
                 viewAnswers!.backgroundColor = UIColor.whiteColor()
-                viewAnswers!.snp_makeConstraints(closure: { (make) in
-                    make.top.equalTo((lbl?.snp_bottom)!).offset(4)
-                    make.left.equalTo((lbl?.snp_left)!)
-                    make.width.equalTo((lbl?.snp_width)!)
-                    make.height.equalTo(150)
-                })
+                var ok = false
+                if (lbl?.frame.maxY)! + 150 > scrollView.frame.maxY {
+                    ok = false
+                } else {
+                    ok = true
+                }
+                if ok == true { //bottom
+                    viewAnswers!.snp_makeConstraints(closure: { (make) in
+                        make.top.equalTo((lbl?.snp_bottom)!).offset(4)
+                        make.left.equalTo((lbl?.snp_left)!)
+                        make.width.equalTo((lbl?.snp_width)!)
+                        make.height.equalTo(150)
+                    })
+                } else { //top
+                    viewAnswers!.snp_makeConstraints(closure: { (make) in
+                        make.top.equalTo((lbl?.snp_top)!).offset(-154)
+                        make.left.equalTo((lbl?.snp_left)!)
+                        make.width.equalTo((lbl?.snp_width)!)
+                        make.height.equalTo(150)
+                    })
+                }
+                
                 
                 self.view.layoutIfNeeded()
                 
@@ -229,6 +250,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     func answerTap(gesture : UITapGestureRecognizer) {
         let lbl = gesture.view as? UILabel
         if lbl != nil {
+            currentTargetLabel?.backgroundColor = UIColor.init(rgba: "#377bb5")
+            currentTargetLabel?.textColor = UIColor.whiteColor()
             currentTargetLabel?.text = lbl?.text
             if gesture.view?.tag == 0 {
                 self.currentTargetLabel?.isTrue = true
@@ -256,9 +279,9 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         super.didReceiveMemoryWarning()
     }
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8 ) + 180)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8 ))
         //content.contentSize = CGSize(width: self.view.frame.width, height: 1000)
-        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8) + 180)
+        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8))
     }
     
     func showMyScore(gesture : UITapGestureRecognizer){
@@ -273,8 +296,35 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         let resultViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
         resultViewController.total = total
         resultViewController.count_true_answer = number_true_answer
+        //update Result
+        
+        let res = Double(number_true_answer) / Double(total)
+        
+        if currentSong?.result < res {//update
+            let realm = try! Realm()
+            let result = realm.objects(Song.self).filter(" uuid = %@", (currentSong?.uuid)!)
+            if result.count != 0 {
+                let song = result[0]
+                try! realm.write({ 
+                    song.result = res
+                })
+            }
+        }
+        
         let popupController = STPopupController(rootViewController: resultViewController)
+        
         popupController.presentInViewController(self)
     }
     
+}
+extension TestViewController : UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.viewAnswers != nil {
+            for subview in (self.viewAnswers?.subviews)! {
+                subview.removeFromSuperview()
+            }
+            self.viewAnswers?.removeFromSuperview()
+            self.view.layoutIfNeeded()
+        }
+    }
 }
