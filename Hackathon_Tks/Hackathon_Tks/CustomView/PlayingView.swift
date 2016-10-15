@@ -21,15 +21,12 @@ class PlayingView: UIView,YTPlayerViewDelegate {
     var sliderEditing:Bool?
     var meterTimer:NSTimer?
     var check:NSTimer?
-//    var duration : NSTimer?
-//    var seconds : Float64?
     var currentSong:String?
     override func awakeFromNib() {
         //        self.animate(duration: 0.4, animations: {
         //            self.center.y += -Constant.Systems.screen_size.height
         //            }, completion: nil)
         //initPlayerView()
-        
         sliderEditing = false
         check = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(checkPlayer), userInfo: nil, repeats: true)
     }
