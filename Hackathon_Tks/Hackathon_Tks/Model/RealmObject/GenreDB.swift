@@ -9,16 +9,17 @@
 import Foundation
 import RealmSwift
 
-class Genre: Object {
+class GenreDB: Object {
     dynamic var uuid : String = ""
     dynamic var title : String = ""
     dynamic var img : String = ""
+    dynamic var createDate = NSDate()
     //var listSong = List<Song>()
     
-    func setValue(uuid : String , title : String, img : String) {
-        self.uuid = uuid
-        self.title = title
-        //self.listSong = list
-        self.img = img
-    }
+//    func setValue(uuid : String , title : String, img : String) {
+//        self.uuid = uuid
+//        self.title = title
+//        //self.listSong = list
+//        self.img = img
+//    }
 }

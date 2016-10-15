@@ -10,9 +10,10 @@ import UIKit
 import RealmSwift
 
 class InitData: NSObject {
-    
+    // khi nào cần mới thêm data. Vì mỗi lần thêm data ID sẽ khác nhau.
     class func initType() {
-        InitData.clearData()
+        SongDataManager.shareInstance.DeleteAllSong()
+        GenreDataManager.shareInstance.DeleteAllGenreDB()
         let categoryTitle = ["Art and Culture" , "Conversation" , "Education" , "IELTS Listening" ,
                              "Entertainment", "Music", "Environment","News","Places",
                              "Science", "Story" , "Technology"]
@@ -20,33 +21,27 @@ class InitData: NSObject {
                             "Ielts", "Leisure" ,
                             "Music","Nature","News",
                             "place","science","story","tech"]
+        
         do {
-            let realm = try Realm()
+            let realm = try! Realm()
             for item in categoryTitle {
-                let obj = Genre()
+                var genre = Genre()
                 let number = categoryTitle.indexOf(item)
-                obj.uuid = NSUUID().UUIDString
-                obj.title = item
-                obj.img = linkCategory[number!]
-                try! realm.write {
-                    realm.add(obj)
-                }
+                genre.title = item
+                genre.img = linkCategory[number!]
+                
+                GenreDataManager.shareInstance.insertGallryRealm(genre)
+               
                 for i in 0 ..< 4 {
-                    let song = Song()
-                    song.setValue(NSUUID().UUIDString , genreID: obj.uuid, title : "Making Music", img: "making_music", length: " 01:16", number_word: 142, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8", result: 0)
-                    try! realm.write {
-                        realm.add(song)
-                    }
+                    let song = Song(genreID: genre.uuid, title: "Making Music", img: "making_music", length: "01:16", number_word: 142, result: 0, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8")
+                    
+                    SongDataManager.shareInstance.insertSongRealm(song)
                 }
             }
         } catch let _ as NSError {
             // handle error
         }
     }
-    class func clearData() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-    }
+   
+
 }

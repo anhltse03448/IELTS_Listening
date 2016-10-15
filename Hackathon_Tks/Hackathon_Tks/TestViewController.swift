@@ -40,7 +40,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     var listLabel = [MyLabel]()
     @IBOutlet weak var playerView: UIView!
-    var currentSong : SongObject?
+    var currentSong : Song?
     var titleTab : String?
     var countLine : Int = 1
     var sizeHeight : CGFloat = 0
@@ -308,7 +308,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         if currentSong?.result < res {//update
             let realm = try! Realm()
             currentSong?.result = res
-            let result = realm.objects(Song.self).filter(" uuid = %@", (currentSong?.uuid)!)
+            let result = realm.objects(SongDB.self).filter(" uuid = %@", (currentSong?.uuid)!)
             if result.count != 0 {
                 let song = result[0]
                 try! realm.write({ 

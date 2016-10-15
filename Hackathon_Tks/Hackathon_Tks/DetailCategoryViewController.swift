@@ -21,7 +21,7 @@ class DetailCategoryViewController: BaseViewController {
     var idCategory : String = ""
     var currentSongID : String?
     
-    var listSong = [SongObject]()
+    var listSong = [Song]()
     override func viewDidLoad() {
         super.viewDidLoad()
         listSong.removeAll()
@@ -38,10 +38,10 @@ class DetailCategoryViewController: BaseViewController {
     
     func loadSongInCategory() {
         let realm = try! Realm()
-        let listSongDB = realm.objects(Song.self).filter("genreID == %@",self.idCategory ?? "")
+        let listSongDB = realm.objects(SongDB).filter("genreID == %@",self.idCategory ?? "")
         if listSongDB.count != 0 {
             for item in listSongDB {
-                listSong.append(SongObject(song: item))
+                listSong.append(Song(songDb: item))
             }
         }
     }
@@ -103,9 +103,7 @@ extension DetailCategoryViewController : DetailCategoryDelegate {
         actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
         currentSongID = listSong[(number?.row)!].uuid
         
-        actionSheet.showInView(self.view)
-        
-    }
+        actionSheet.showInView(self.view)    }
 }
 extension DetailCategoryViewController : UIActionSheetDelegate {
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
@@ -115,12 +113,9 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
             
             break
         default:
-            let realm = try! Realm()
-            let obj = Favorite()
-            obj.songID = currentSongID!
-            try! realm.write {
-                realm.add(obj)
-            }
+            var favorite = Favorite()
+            favorite.songID = currentSongID!
+            FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
         }
         
     }

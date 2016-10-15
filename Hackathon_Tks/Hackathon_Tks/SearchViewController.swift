@@ -12,7 +12,7 @@ import RealmSwift
 
 class SearchViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
-    var listSong = [SongObject]()
+    var listSong = [Song]()
     var realm : Realm?
     @IBOutlet weak var searchTextField: UITextField!
     override func viewDidLoad() {
@@ -54,11 +54,11 @@ class SearchViewController: BaseViewController {
         //tbl.hidden = true
     }
     func textFieldDidChange(textField: UITextField) {
-        let result = realm?.objects(Song.self).filter("title CONTAINS %@",textField.text!).sorted("title")
+        let result = realm?.objects(SongDB).filter("title CONTAINS %@",textField.text!).sorted("title")
         listSong.removeAll()
         if result != nil {
             for item in result! {
-                listSong.append(SongObject(song: item))
+                listSong.append(Song(songDb: item))
             }
         }
         tbl.reloadData()

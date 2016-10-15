@@ -33,7 +33,7 @@ class CategoryViewController: BaseViewController {
     }
     func loadData() {
         let realm = try! Realm()
-        let listCategoryDB = realm.objects(Genre.self)
+        let listCategoryDB = realm.objects(GenreDB.self)
         for item in listCategoryDB {
             listCategory.append(CategoryObject(uuid: item.uuid, title: item.title, img: item.img))
         }
