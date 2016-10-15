@@ -1754,7 +1754,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-uU-gRl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="73"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="67"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -1764,8 +1764,8 @@
                             <constraint firstAttribute="trailing" secondItem="ySg-8C-8NJ" secondAttribute="trailing" id="41G-9o-RfS"/>
                             <constraint firstItem="dxa-uU-gRl" firstAttribute="top" secondItem="Rze-9F-Qqt" secondAttribute="bottom" id="4is-jf-hdh"/>
                             <constraint firstAttribute="trailing" secondItem="Rze-9F-Qqt" secondAttribute="trailing" id="7JC-BC-O5n"/>
-                            <constraint firstItem="dxa-uU-gRl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3:3" constant="13.000000000000007" id="7vm-YQ-bB5"/>
-                            <constraint firstItem="x7A-c9-vbD" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="bottom" constant="-3" id="DRe-0g-taL"/>
+                            <constraint firstItem="dxa-uU-gRl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3:3" constant="7.0000000000000071" id="7vm-YQ-bB5"/>
+                            <constraint firstItem="x7A-c9-vbD" firstAttribute="top" secondItem="dxa-uU-gRl" secondAttribute="bottom" constant="3" id="DRe-0g-taL"/>
                             <constraint firstAttribute="trailing" secondItem="Ehj-Cm-NFi" secondAttribute="trailing" id="Oao-o0-iT3"/>
                             <constraint firstItem="dxa-uU-gRl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PeX-HE-ISU"/>
                             <constraint firstItem="Ehj-Cm-NFi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QDr-If-YOv"/>

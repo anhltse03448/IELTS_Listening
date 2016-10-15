@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreMedia
+import MBProgressHUD
 import youtube_ios_player_helper
 class PlayingView: UIView,YTPlayerViewDelegate {
     
@@ -30,6 +31,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         sliderEditing = false
         sliderProgress.setThumbImage(UIImage(named: "ic-thumb"), forState: .Normal)
         check = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(checkPlayer), userInfo: nil, repeats: true)
+        showLoadingHUD()
     }
     
     //MARK: Play youtube
@@ -137,6 +139,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         if playerView?.duration() != 0{
             btnPlay.selected = true
             check?.invalidate()
+            hideLoadingHUD()
         }
     }
     //MARK: youtubeAPI Delegate
@@ -175,5 +178,14 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         let seconds:NSInteger = NSInteger(time) % 60
         let minutes:NSInteger = (NSInteger(time) - NSInteger(hours) * 3600 - seconds) / 60
         return NSString(format:"%02ld:%02ld",minutes,seconds)
+    }
+    
+    func showLoadingHUD() {
+        let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
+        hud.label.text = "Loading..."
+    }
+    
+    func hideLoadingHUD() {
+        MBProgressHUD.hideAllHUDsForView(self, animated: true)
     }
 }
