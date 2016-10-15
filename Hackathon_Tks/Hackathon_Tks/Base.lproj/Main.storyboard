@@ -148,7 +148,7 @@
                             <constraint firstItem="Lqw-it-LcG" firstAttribute="top" secondItem="aC5-zQ-Q0D" secondAttribute="bottom" id="wbw-IW-CfU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="5T3-I4-dQS"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="tabSearchIcon" id="5T3-I4-dQS"/>
                     <connections>
                         <outlet property="searchTextField" destination="o0M-2l-QAH" id="F6I-C2-5bp"/>
                         <outlet property="tbl" destination="Lqw-it-LcG" id="Ngu-6U-Hsw"/>
@@ -223,7 +223,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-tC-C3w">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-tC-C3w">
                                         <rect key="frame" x="8" y="11.5" width="53" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -394,7 +394,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Playlist" id="oQ0-hd-phA"/>
+                    <tabBarItem key="tabBarItem" title="Playlist" image="tabPlaylist" id="oQ0-hd-phA"/>
                     <connections>
                         <outlet property="lblCancel" destination="fDr-tC-C3w" id="Tpg-UM-uKd"/>
                         <outlet property="tbl" destination="Cg3-Mz-FR0" id="Use-TU-AAy"/>
@@ -452,7 +452,7 @@
                             <constraint firstAttribute="trailing" secondItem="LEA-fm-UVy" secondAttribute="trailing" id="lzc-Tq-wIm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" id="J2L-0s-g0y"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="tabSetting" id="J2L-0s-g0y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPa-3l-2Oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -584,7 +584,7 @@
                                                                     <rect key="frame" x="0.0" y="22" width="60" height="60"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wan-ZH-eTh">
-                                                                            <rect key="frame" x="1.5" y="16.5" width="57.5" height="26.5"/>
+                                                                            <rect key="frame" x="1" y="16" width="57.5" height="26.5"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                                             <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -685,22 +685,19 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbW-5o-j8O">
-                                        <rect key="frame" x="532" y="7" width="45" height="30"/>
-                                        <state key="normal" title="Delete">
-                                            <color key="titleColor" red="0.93515220210000005" green="0.39910598650000001" blue="0.21763510829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="DeleteAllTouchUp:" destination="rf7-Fd-1vZ" eventType="touchUpInside" id="nkT-3o-Al6"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZz-Yb-nkd">
+                                        <rect key="frame" x="554" y="11.5" width="30" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="xbW-5o-j8O" secondAttribute="trailing" constant="23" id="7UQ-Tt-F5O"/>
+                                    <constraint firstItem="xZz-Yb-nkd" firstAttribute="centerY" secondItem="d3o-Ps-w6E" secondAttribute="centerY" id="GVX-b3-YNJ"/>
                                     <constraint firstItem="G4r-R5-Wv8" firstAttribute="centerY" secondItem="d3o-Ps-w6E" secondAttribute="centerY" id="Sma-KV-EN6"/>
-                                    <constraint firstItem="xbW-5o-j8O" firstAttribute="centerY" secondItem="d3o-Ps-w6E" secondAttribute="centerY" id="bya-Ej-R7h"/>
                                     <constraint firstAttribute="height" constant="44" id="k4e-FF-Jbf"/>
+                                    <constraint firstAttribute="trailing" secondItem="xZz-Yb-nkd" secondAttribute="trailing" constant="16" id="nCE-UD-KsU"/>
                                     <constraint firstItem="G4r-R5-Wv8" firstAttribute="centerX" secondItem="d3o-Ps-w6E" secondAttribute="centerX" id="qxa-xq-3h9"/>
                                 </constraints>
                             </view>
@@ -728,8 +725,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="2KC-8c-7dZ"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="tabFavorite" id="2KC-8c-7dZ"/>
                     <connections>
+                        <outlet property="lblEdit" destination="xZz-Yb-nkd" id="Ctm-uH-sSz"/>
                         <outlet property="tbl" destination="zQG-Hb-rp1" id="h68-9v-jii"/>
                         <outlet property="tbvFavorite" destination="zQG-Hb-rp1" id="NPH-zt-dc9"/>
                     </connections>
@@ -1669,6 +1667,10 @@
         <image name="document" width="100" height="100"/>
         <image name="heart_white" width="100" height="100"/>
         <image name="item_length" width="96" height="96"/>
-        <image name="tabStar" width="100" height="100"/>
+        <image name="tabFavorite" width="50" height="50"/>
+        <image name="tabPlaylist" width="50" height="50"/>
+        <image name="tabSearchIcon" width="50" height="50"/>
+        <image name="tabSetting" width="50" height="50"/>
+        <image name="tabStar" width="50" height="50"/>
     </resources>
 </document>
