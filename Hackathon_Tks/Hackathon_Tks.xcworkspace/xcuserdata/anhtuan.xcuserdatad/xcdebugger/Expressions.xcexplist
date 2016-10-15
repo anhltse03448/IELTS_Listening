@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SongPlaylistDataManager.getCountPlaylistRealmById(String) -&gt; Int:SongPlaylistDataManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "playlistsDb.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CategoryViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():CategoryViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -14,26 +22,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SongPlaylistDataManager.getCountPlaylistRealmById(String) -&gt; Int:SongPlaylistDataManager.swift">
+         contextName = "TestViewController.heart_tap(UITapGestureRecognizer) -&gt; ():TestViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "playlistsDb.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DetailCategoryViewController.actionSheet(UIActionSheet, clickedButtonAtIndex : Int) -&gt; ():DetailCategoryViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentSongID">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CategoryViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:CategoryViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "listCategory[indexPath.row].img">
+               value = "currentSong">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -46,10 +38,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FavoriteViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:FavoriteViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "favorites[indexPath.row].songID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CategoryViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:CategoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listCategory[indexPath.row].img">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SearchViewController.textFieldDidChange(UITextField) -&gt; ():SearchViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "textField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailCategoryViewController.actionSheet(UIActionSheet, clickedButtonAtIndex : Int) -&gt; ():DetailCategoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentSongID">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

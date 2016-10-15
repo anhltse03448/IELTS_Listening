@@ -162,6 +162,11 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
         lblShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
         viewShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
+        if Utils.checkIsFavorite((currentSong?.uuid)!) == true {
+            img_favorite.image = UIImage(named: "heart_red")
+        } else {
+            img_favorite.image = UIImage(named: "heart_white")
+        }
         img_favorite.userInteractionEnabled = true
         img_favorite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.heart_tap(_:))))
     }
@@ -289,9 +294,11 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     }
     
     func heart_tap(gesture : UITapGestureRecognizer){
-        if Utils.checkIsFavorite((currentSong?.uuid)!) == true {
+        if Utils.checkIsFavorite((currentSong?.uuid)!) {
+            FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID((currentSong?.uuid)!)
             img_favorite.image = UIImage(named: "heart_white")
         } else {
+            FavoriteDataManager.shareInstance.insertFavoriteRealm(Favorite(songID: (currentSong?.uuid)!))
             img_favorite.image = UIImage(named: "heart_red")
         }
         

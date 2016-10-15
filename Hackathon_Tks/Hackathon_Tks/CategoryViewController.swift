@@ -21,7 +21,7 @@ class CategoryViewController: BaseViewController {
         NSLog("\(Realm.Configuration.defaultConfiguration.fileURL)")
         
         tbl.showsVerticalScrollIndicator = false
-        InitData.initType()
+        //InitData.initType()
         tbl.separatorStyle = .None
         loadData()
         self.navigationController?.navigationBarHidden = true

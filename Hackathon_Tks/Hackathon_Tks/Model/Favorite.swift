@@ -17,4 +17,7 @@ struct Favorite {
     init(favoriteDB:FavoriteDB){
         self.songID = favoriteDB.songID
     }
+    init(songID : String){
+        self.songID = songID
+    }
 }

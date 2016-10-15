@@ -93,10 +93,12 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
         let song = SongDataManager.shareInstance.findFistSongDbByID(favorites[indexPath.row].songID)
         if song.uuid != ""{
-            cell.img.sd_setImageWithURL(NSURL(string: song.img))
+            let url = song.img
+            cell.img.image = UIImage(named: url)
             cell.lbl.text = song.title
             cell.durationLbl.text = song.length
             cell.countLbl.text = String(format: "%d",song.number_word)
+            cell.lblScore.text = "0%"
         }
         return cell
     }
@@ -118,6 +120,18 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
                 listCellTap.removeAtIndex(listCellTap.indexOf(indexPath.row)!)
             } else {
                 listCellTap.append(indexPath.row)
+            }
+        } else {
+            self.showLoadingHUD()
+            tbl.deselectRowAtIndexPath(indexPath, animated: true)
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as! TestViewController
+            let tmp = favorites[indexPath.row]
+            let songDB = SongDataManager.shareInstance.findFistSongDbByID(tmp.songID)
+            let song = Song(songDb: songDB)
+            dest.currentSong = song
+            dest.titleTab = song.title
+            self.presentViewController(dest, animated: true) {
+                self.hideLoadingHUD()
             }
         }
     }
