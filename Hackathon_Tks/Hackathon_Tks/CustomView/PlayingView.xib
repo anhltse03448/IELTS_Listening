@@ -21,8 +21,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCO-sl-iLc">
                     <rect key="frame" x="0.0" y="0.0" width="435" height="73"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdX-My-TgS">
-                            <rect key="frame" x="8" y="8" width="43" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdX-My-TgS">
+                            <rect key="frame" x="8" y="8" width="35" height="20"/>
                             <fontDescription key="fontDescription" name="UTM-Avo" family="UTM Avo" pointSize="14"/>
                             <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -46,15 +46,18 @@
                             </connections>
                         </button>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wrj-NZ-cu4">
-                            <rect key="frame" x="62" y="3" width="311" height="31"/>
+                            <rect key="frame" x="90.5" y="3" width="254" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="dmr-JI-MI4"/>
+                            </constraints>
                             <connections>
                                 <action selector="sliderProgressTouchDow:" destination="Go7-O8-uHa" eventType="touchDown" id="u3b-rN-WIG"/>
                                 <action selector="sliderProgressTouchUp:" destination="Go7-O8-uHa" eventType="touchUpInside" id="xOx-D6-Kxf"/>
                                 <action selector="sliderProgressValueChanged:" destination="Go7-O8-uHa" eventType="valueChanged" id="Pod-Mi-mfe"/>
                             </connections>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01 : 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-x4-TPa">
-                            <rect key="frame" x="384" y="8" width="43" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-x4-TPa">
+                            <rect key="frame" x="392" y="8" width="35" height="20"/>
                             <fontDescription key="fontDescription" name="UTM-Avo" family="UTM Avo" pointSize="14"/>
                             <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -117,8 +120,10 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="TLW-l8-kjO"/>
+                            <exclude reference="fn8-Xh-jaq"/>
                             <exclude reference="FGz-kC-6kx"/>
                             <exclude reference="pp3-u6-yz4"/>
+                            <exclude reference="g7Q-JZ-Md0"/>
                         </mask>
                     </variation>
                 </view>

@@ -45,7 +45,7 @@ class GenreDataManager: NSObject {
     func findFistgenreDbByID(uuid:String) -> GenreDB{
         let genres = realm.objects(GenreDB).filter("uuid = %@",uuid)
         var genre = GenreDB()
-        if genres.count == 1{
+        if genres.count != 0{
             genre = genres[0]
             return genre
         }else {

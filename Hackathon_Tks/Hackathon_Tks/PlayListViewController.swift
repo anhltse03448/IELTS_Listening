@@ -13,14 +13,16 @@ class PlayListViewController: BaseViewController {
     @IBOutlet weak var lblCancel : UILabel!
     
     @IBOutlet weak var tbvPlaylist: UITableView!
-  //  var listPlayList = [String]()
+  
+    var uuidSong : String?
+    var isFromOther : Bool = false
     var listPlayList:[Playlist] = [Playlist]()
     let alert = UIAlertView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViewController()        
+        initViewController()
     }
     override func viewDidAppear(animated: Bool) {
         self.refresh()
@@ -36,8 +38,15 @@ class PlayListViewController: BaseViewController {
         tbvPlaylist.reloadData()
     }
     func initViewController() {
+        tbvPlaylist.showsVerticalScrollIndicator = false
+        tbvPlaylist.tableFooterView = UIView(frame: CGRectZero)
         viewAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.addTap(_:))))
         lblCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.dismisViewController(_:))))
+        if isFromOther == true {
+            lblCancel.hidden = false
+        } else {
+            lblCancel.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,19 +70,19 @@ class PlayListViewController: BaseViewController {
         alert.addButtonWithTitle("Cancel")
         alert.addButtonWithTitle("Save")
         alert.show()
-        
     }
 }
 extension PlayListViewController : UIAlertViewDelegate {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 0 { //cancel
-            
-        } else {
+        if buttonIndex == 1 { //OK
             let namTexfiled = alert.textFieldAtIndex(0)?.text
             var playList = Playlist()
             playList.title = namTexfiled!
             PlaylistDataManager.shareInstance.insertPlaylistRealm(playList)
+            refresh()
             self.tbvPlaylist.reloadData()
+        } else {
+            
         }
     }
 }
@@ -87,7 +96,49 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbvPlaylist.dequeueReusableCellWithIdentifier("PlaylistTableViewCell") as! PlaylistTableViewCell
+        cell.lblTitle.text = listPlayList[indexPath.row].title
+        let uuid = listPlayList[indexPath.row].uuid
         
+        let number = SongPlaylistDataManager.shareInstance.getCountPlaylistRealmById(uuid)
+        if number != 1 {
+            cell.lblCount.text = "\(number) videos"
+        } else {
+            cell.lblCount.text = "\(number) video"
+        }
+        
+        let songid = SongPlaylistDataManager.shareInstance.findFistSongPlaylistDbByID(uuid).uuidSong
+        let image = SongDataManager.shareInstance.findFistSongDbByID(songid).img
+        if image == "" {
+            cell.img.image = UIImage(named: "defaultPlaylist")
+        } else {
+            cell.img.image = UIImage(named: image)
+        }
         return cell
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if isFromOther == true {
+            //add to playlist
+            //uuid Playlist 
+            let uuidPlaylist = listPlayList[indexPath.row].uuid
+            //uuid Song
+            
+            let songPlayList = SongPlaylist(uuidPlaylist: uuidPlaylist, uuidSong: self.uuidSong!)
+            SongPlaylistDataManager.shareInstance.insertSongPlaylistRealm(songPlayList)
+            
+            
+            NSLog("add \(uuidSong) to \(uuidPlaylist)")
+            self.dismissViewControllerAnimated(true, completion: { 
+                
+            })
+            
+        } else {
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
+            
+            
+            self.navigationController?.pushViewController(dest, animated: true)
+        }
     }
 }

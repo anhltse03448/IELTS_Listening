@@ -53,7 +53,7 @@ class SongDataManager: NSObject {
     func findFistSongDbByID(uuid:String) -> SongDB{
         let songs = realm.objects(SongDB).filter("uuid = %@",uuid)
         var song = SongDB()
-        if songs.count == 1{
+        if songs.count != 0{
             song = songs[0]
             return song
         }else {
