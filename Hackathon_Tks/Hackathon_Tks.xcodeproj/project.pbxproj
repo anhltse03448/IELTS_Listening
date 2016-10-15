@@ -380,6 +380,7 @@
 				TargetAttributes = {
 					3678D0FB1DACD2D20000F342 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9K25G2ZLRD;
 					};
 				};
 			};
@@ -627,10 +628,13 @@
 			baseConfigurationReference = 9F9970AA41C3F23C38754C6B /* Pods-Hackathon_Tks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hackathon_Tks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TuanAnh.Hackathon-Tks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -639,10 +643,13 @@
 			baseConfigurationReference = C3FEACDB8A850774FF059C4D /* Pods-Hackathon_Tks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hackathon_Tks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TuanAnh.Hackathon-Tks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

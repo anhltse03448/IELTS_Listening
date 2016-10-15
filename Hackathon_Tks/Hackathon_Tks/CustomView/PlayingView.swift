@@ -41,6 +41,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         let playerVars = ["playsinline": 1,"autohide":0,"autoplay" :1]
         // if currentSong != nil{
         playerView!.loadWithVideoId(videoID, playerVars: playerVars)
+       // playerView?.frame = CGRect(x: 0,y: 0,width: 30,height: 30)
         self.addSubview(playerView!)
     }
     
@@ -128,7 +129,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                 
             }
             playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
-            meterTimer?.invalidate()
+         //   meterTimer?.invalidate()
             self.UpdateSlider()
             
         }
