@@ -13,7 +13,7 @@ class SongPlaylistDataManager: NSObject {
     static var shareInstance = SongPlaylistDataManager()
     var realm = try! Realm()
     
-    func insertSongPlaylistRealm(songPlayListDb:SongPlaylistDB){
+    func insertSongPlaylistRealm(songPlayListDb:SongPlaylist){
         let newSongPlaylistDb = findFistSongPlaylistDbByID(songPlayListDb.uuidSong)
         if newSongPlaylistDb.uuidSong != "" {
             try! realm.write {
@@ -39,11 +39,17 @@ class SongPlaylistDataManager: NSObject {
         
         return playlists
     }
-    
+    //truyen id -> sl bai
+    func getCountPlaylistRealmById(uuid:String) -> Int{
+        let playlistsDb = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@", uuid)
+        return playlistsDb.count
+    }
+    //truyen id -> song first
     func findFistSongPlaylistDbByID(uuid:String) -> SongPlaylistDB{
-        let songPlaylists = realm.objects(SongPlaylistDB).filter("uuidSong = %@",uuid)
+        //let pre = NSPredicate.init(format: "uuidSong = %@", uuid)
+        let songPlaylists = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@",uuid)
         var songPlaylist = SongPlaylistDB()
-        if songPlaylists.count == 1{
+        if songPlaylists.count != 0{
             songPlaylist = songPlaylists[0]
             return songPlaylist
         }else {

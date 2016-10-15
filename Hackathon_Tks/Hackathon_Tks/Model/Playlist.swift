@@ -11,7 +11,7 @@ struct Playlist {
     var uuid : String
     var title : String
     init(){
-        self.uuid = ""
+        self.uuid = NSUUID().UUIDString
         self.title = ""
     }
     

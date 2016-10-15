@@ -43,7 +43,7 @@ class PlaylistDataManager: NSObject {
     func findFistPlaylistDbByID(uuid:String) -> PlaylistDB{
         let playlists = realm.objects(PlaylistDB).filter("uuid = %@",uuid)
         var playlist = PlaylistDB()
-        if playlists.count == 1{
+        if playlists.count != 0{
             playlist = playlists[0]
             return playlist
         }else {
@@ -64,4 +64,5 @@ class PlaylistDataManager: NSObject {
             }
         }
     }
+   
 }

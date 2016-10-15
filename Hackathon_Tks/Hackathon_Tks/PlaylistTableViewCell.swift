@@ -11,6 +11,8 @@ import UIKit
 class PlaylistTableViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var lblCount : UILabel!
+    @IBOutlet weak var img : UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
