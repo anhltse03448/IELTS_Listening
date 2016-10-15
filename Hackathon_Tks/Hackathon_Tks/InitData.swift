@@ -13,11 +13,11 @@ class InitData: NSObject {
     
     class func initType() {
         InitData.clearData()
-        let categoryTitle = ["Art and Culture" , "Daily conversation" , "Education" , "IELTS Listening" ,"Joke" ,
-                             "Leisure & Entertainment", "Music", "Nature & Environment","News","Places",
+        let categoryTitle = ["Art and Culture" , "Conversation" , "Education" , "IELTS Listening" ,
+                             "Entertainment", "Music", "Environment","News","Places",
                              "Science", "Story" , "Technology"]
         let linkCategory = ["Art_culture","Daily","Education",
-                            "Ielts", "Joke","Leisure" ,
+                            "Ielts", "Leisure" ,
                             "Music","Nature","News",
                             "place","science","story","tech"]
         do {
@@ -33,12 +33,11 @@ class InitData: NSObject {
                 }
                 for i in 0 ..< 4 {
                     let song = Song()
-                    song.setValue(NSUUID().UUIDString , genreID: obj.uuid, title : "Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "Rqk-JqaAg1w", result: 0)
+                    song.setValue(NSUUID().UUIDString , genreID: obj.uuid, title : "Making Music", img: "making_music", length: " 01:16", number_word: 142, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8", result: 0)
                     try! realm.write {
                         realm.add(song)
                     }
                 }
-                
             }
         } catch let _ as NSError {
             // handle error

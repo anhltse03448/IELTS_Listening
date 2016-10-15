@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="UTM Avo.ttf">
@@ -20,20 +21,26 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCO-sl-iLc">
                     <rect key="frame" x="0.0" y="0.0" width="435" height="73"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdX-My-TgS">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdX-My-TgS">
                             <rect key="frame" x="8" y="8" width="43" height="19.5"/>
                             <fontDescription key="fontDescription" name="UTM-Avo" family="UTM Avo" pointSize="14"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiQ-em-NuE">
-                            <rect key="frame" x="205" y="41" width="25" height="25"/>
+                            <rect key="frame" x="202.5" y="41" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="5IR-Ot-GPS"/>
-                                <constraint firstAttribute="height" constant="25" id="qvu-mK-hyL"/>
+                                <constraint firstAttribute="width" constant="30" id="5IR-Ot-GPS"/>
+                                <constraint firstAttribute="height" constant="30" id="qvu-mK-hyL"/>
+                                <constraint firstAttribute="width" secondItem="EiQ-em-NuE" secondAttribute="height" multiplier="1:1" id="stP-st-r9i"/>
                             </constraints>
                             <state key="normal" image="ic-pause"/>
                             <state key="selected" image="ic-btnPlay"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="5IR-Ot-GPS"/>
+                                </mask>
+                            </variation>
                             <connections>
                                 <action selector="btnPlayTouchUp:" destination="Go7-O8-uHa" eventType="touchUpInside" id="I6f-Sy-fqR"/>
                             </connections>
@@ -46,36 +53,48 @@
                                 <action selector="sliderProgressValueChanged:" destination="Go7-O8-uHa" eventType="valueChanged" id="Pod-Mi-mfe"/>
                             </connections>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01 : 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-x4-TPa">
-                            <rect key="frame" x="384" y="8" width="43" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="01 : 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-x4-TPa">
+                            <rect key="frame" x="384" y="8" width="43" height="19.5"/>
                             <fontDescription key="fontDescription" name="UTM-Avo" family="UTM Avo" pointSize="14"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcO-fE-E9t">
-                            <rect key="frame" x="267" y="41" width="25" height="25"/>
+                            <rect key="frame" x="269.5" y="41" width="25" height="25"/>
                             <constraints>
+                                <constraint firstAttribute="width" secondItem="QcO-fE-E9t" secondAttribute="height" multiplier="1:1" id="6qq-I8-jZ1"/>
                                 <constraint firstAttribute="height" constant="25" id="XhZ-0F-6w2"/>
                                 <constraint firstAttribute="width" constant="25" id="nfs-Ym-Fk0"/>
                             </constraints>
                             <state key="normal" image="ic-next"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="nfs-Ym-Fk0"/>
+                                </mask>
+                            </variation>
                             <connections>
                                 <action selector="btnNextTouchUp:" destination="Go7-O8-uHa" eventType="touchUpInside" id="4vv-kU-Lx0"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulb-ZO-Hiq">
-                            <rect key="frame" x="143" y="41" width="25" height="25"/>
+                            <rect key="frame" x="140.5" y="41" width="25" height="25"/>
                             <constraints>
+                                <constraint firstAttribute="width" secondItem="Ulb-ZO-Hiq" secondAttribute="height" multiplier="1:1" id="hhB-LD-SIz"/>
                                 <constraint firstAttribute="height" constant="25" id="r12-ir-4S2"/>
                                 <constraint firstAttribute="width" constant="25" id="u60-i6-vTJ"/>
                             </constraints>
                             <state key="normal" image="ic-previous"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="u60-i6-vTJ"/>
+                                </mask>
+                            </variation>
                             <connections>
                                 <action selector="btnPreviousTouchUp:" destination="Go7-O8-uHa" eventType="touchUpInside" id="lQ2-tz-5mr"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.94901960780000005" green="0.51764705879999995" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="XdX-My-TgS" firstAttribute="top" secondItem="zCO-sl-iLc" secondAttribute="top" constant="8" id="4Ro-Ib-ZaP"/>
                         <constraint firstAttribute="trailing" secondItem="R7t-x4-TPa" secondAttribute="trailing" constant="8" id="6jX-GJ-bcn"/>
@@ -125,9 +144,9 @@
         </view>
     </objects>
     <resources>
-        <image name="ic-btnPlay" width="32" height="32"/>
-        <image name="ic-next" width="25" height="25"/>
-        <image name="ic-pause" width="25" height="25"/>
-        <image name="ic-previous" width="25" height="25"/>
+        <image name="ic-btnPlay" width="100" height="100"/>
+        <image name="ic-next" width="100" height="100"/>
+        <image name="ic-pause" width="100" height="100"/>
+        <image name="ic-previous" width="100" height="100"/>
     </resources>
 </document>

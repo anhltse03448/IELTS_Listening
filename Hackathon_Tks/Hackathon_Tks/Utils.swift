@@ -47,5 +47,20 @@ class Utils: NSObject {
         }        
         return ""
     }
+    
+    class func random() -> [Int] {
+        var result = [Int]()
+        while true {
+            let num = Int(arc4random_uniform(4))
+            if result.contains(num) {
+                
+            } else {
+                result.append(num)
+            }
+            if result.count == 4 {
+                return result
+            }
+        }
+    }
 }
 

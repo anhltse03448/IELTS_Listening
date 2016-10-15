@@ -13,7 +13,6 @@
 		360926EC1DAF6ADE00EDF8CC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360926EB1DAF6ADE00EDF8CC /* Song.swift */; };
 		3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8791DADEC350000F4E5 /* MyString.swift */; };
 		3612E87C1DADF8C80000F4E5 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E87B1DADF8C80000F4E5 /* MyLabel.swift */; };
-		3612E8811DAE22C00000F4E5 /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8801DAE22C00000F4E5 /* Configure.swift */; };
 		3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8821DAE22CC0000F4E5 /* Constant.swift */; };
 		3612E8851DAE24BE0000F4E5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8841DAE24BE0000F4E5 /* CategoryViewController.swift */; };
 		3612E8871DAE24CF0000F4E5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8861DAE24CF0000F4E5 /* SearchViewController.swift */; };
@@ -25,6 +24,7 @@
 		3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */; };
 		3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619985C1DAD397D00EBDB78 /* MyUIView.swift */; };
 		361998601DAD3DB900EBDB78 /* data1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3619985F1DAD3DB900EBDB78 /* data1.txt */; };
+		3619A0021DB167650050D240 /* making_music.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3619A0011DB167650050D240 /* making_music.txt */; };
 		361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AFA011DAF304D005D5768 /* BaseViewController.swift */; };
 		363453A21DB1017500D12CE0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363453A11DB1017500D12CE0 /* ResultViewController.swift */; };
 		366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */; };
@@ -52,7 +52,6 @@
 		360926EB1DAF6ADE00EDF8CC /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		3612E8791DADEC350000F4E5 /* MyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyString.swift; sourceTree = "<group>"; };
 		3612E87B1DADF8C80000F4E5 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
-		3612E8801DAE22C00000F4E5 /* Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		3612E8821DAE22CC0000F4E5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		3612E8841DAE24BE0000F4E5 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		3612E8861DAE24CF0000F4E5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		3612E8971DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		3619985C1DAD397D00EBDB78 /* MyUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUIView.swift; sourceTree = "<group>"; };
 		3619985F1DAD3DB900EBDB78 /* data1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data1.txt; sourceTree = "<group>"; };
+		3619A0011DB167650050D240 /* making_music.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = making_music.txt; sourceTree = "<group>"; };
 		361AFA011DAF304D005D5768 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		363453A11DB1017500D12CE0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Hex-Swift.swift"; sourceTree = "<group>"; };
@@ -113,10 +113,10 @@
 		3612E88E1DAE27410000F4E5 /* CustomeType */ = {
 			isa = PBXGroup;
 			children = (
+				619567331DB0B78E00B640DD /* CustomView */,
 				3619985C1DAD397D00EBDB78 /* MyUIView.swift */,
 				3612E8791DADEC350000F4E5 /* MyString.swift */,
 				3612E87B1DADF8C80000F4E5 /* MyLabel.swift */,
-				36E8C3B41DAFB9B500517E3B /* SongObject.swift */,
 			);
 			name = CustomeType;
 			sourceTree = "<group>";
@@ -153,9 +153,9 @@
 		3619985B1DAD396A00EBDB78 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				36EB21411DB1AF110092DFF9 /* Object */,
 				3612E88F1DAE274F0000F4E5 /* Cell */,
 				3612E88E1DAE27410000F4E5 /* CustomeType */,
-				368806B21DAF8BBB00210163 /* CategoryObject.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -164,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				3619985F1DAD3DB900EBDB78 /* data1.txt */,
+				3619A0011DB167650050D240 /* making_music.txt */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -171,8 +172,6 @@
 		366D706D1DACDE340056B487 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				619567331DB0B78E00B640DD /* CustomView */,
-				360926E81DAF6A1700EDF8CC /* InitData */,
 				3612E8961DAE28960000F4E5 /* Category */,
 				3678D1011DACD2D20000F342 /* TestViewController.swift */,
 				3612E8861DAE24CF0000F4E5 /* SearchViewController.swift */,
@@ -191,6 +190,7 @@
 				366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */,
 				366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */,
 				6195673F1DB0C21600B640DD /* UIView.swift */,
+				360926E81DAF6A1700EDF8CC /* InitData */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -200,7 +200,6 @@
 			children = (
 				6195673A1DB0BA5300B640DD /* Font */,
 				366D70761DACE0A90056B487 /* Utils.swift */,
-				3612E8801DAE22C00000F4E5 /* Configure.swift */,
 				3612E8821DAE22CC0000F4E5 /* Constant.swift */,
 			);
 			name = Utils;
@@ -240,6 +239,15 @@
 				3678D10B1DACD2D20000F342 /* Info.plist */,
 			);
 			path = Hackathon_Tks;
+			sourceTree = "<group>";
+		};
+		36EB21411DB1AF110092DFF9 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				36E8C3B41DAFB9B500517E3B /* SongObject.swift */,
+				368806B21DAF8BBB00210163 /* CategoryObject.swift */,
+			);
+			name = Object;
 			sourceTree = "<group>";
 		};
 		619567331DB0B78E00B640DD /* CustomView */ = {
@@ -343,6 +351,7 @@
 				3678D1071DACD2D20000F342 /* Assets.xcassets in Resources */,
 				361998601DAD3DB900EBDB78 /* data1.txt in Resources */,
 				3678D1051DACD2D20000F342 /* Main.storyboard in Resources */,
+				3619A0021DB167650050D240 /* making_music.txt in Resources */,
 				6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */,
 				61D1941B1DB0C6980065D677 /* PlayingView.xib in Resources */,
 			);
@@ -417,7 +426,6 @@
 				3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */,
 				366D70721DACDEB10056B487 /* UIView+IBInspectable.swift in Sources */,
 				3612E8911DAE27600000F4E5 /* CategoryTableViewCell.swift in Sources */,
-				3612E8811DAE22C00000F4E5 /* Configure.swift in Sources */,
 				3612E8871DAE24CF0000F4E5 /* SearchViewController.swift in Sources */,
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
 				3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */,

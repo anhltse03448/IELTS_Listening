@@ -68,15 +68,17 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         cell.lbl.text = listSong[indexPath.row].title
         cell.durationLbl.text = listSong[indexPath.row].length
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
-        var url = listSong[indexPath.row].img
-        cell.delegate = self
-        url = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%20Class.jpg"
+        cell.lblScore.text = "\(listSong[indexPath.row].result)"
+        let url = listSong[indexPath.row].img
+        cell.img.image = UIImage(named: url)
         
-        Alamofire.request( .GET , url).responseImage { response in
-            if let image = response.result.value {
-                cell.img.image = image
-            }
-        }
+        cell.delegate = self
+        
+//        Alamofire.request( .GET , url).responseImage { response in
+//            if let image = response.result.value {
+//                cell.img.image = image
+//            }
+//        }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+let TINT_COLOR = UIColor.init(rgba: "#5fb760")
 let RED_COLOR = UIColor.init(rgba: "#d75452")
 let GREEN_COLOR = UIColor.init(rgba: "#5fb760")
 class Constant: NSObject {

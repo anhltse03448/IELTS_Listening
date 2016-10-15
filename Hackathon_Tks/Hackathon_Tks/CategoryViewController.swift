@@ -20,6 +20,7 @@ class CategoryViewController: BaseViewController {
         super.viewDidLoad()
         tbl.showsVerticalScrollIndicator = false
         InitData.initType()
+        tbl.separatorStyle = .None
         loadData()
         self.navigationController?.navigationBarHidden = true
         tbl.tableFooterView = UIView(frame: CGRectZero)
@@ -43,26 +44,36 @@ extension CategoryViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCategory.count
+        return listCategory.count / 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("CategoryTableViewCell") as! CategoryTableViewCell
-        cell.lbl.text = listCategory[indexPath.row].title
-        cell.img.clipsToBounds = true
-        cell.img.image = UIImage(named: listCategory[indexPath.row].img)
+        cell.lbl.text = listCategory[indexPath.row * 2].title
+        cell.img.image = UIImage(named: listCategory[indexPath.row * 2].img)
+        
+        cell.lbl2.text = listCategory[indexPath.row * 2 + 1].title
+        cell.img2.image = UIImage(named: listCategory[indexPath.row * 2 + 1].img)
+        cell.delegate = self
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
-        dest.idCategory = listCategory[indexPath.row].uuid
-        tbl.deselectRowAtIndexPath(indexPath, animated: true)
-        dest.titleView = listCategory[indexPath.row].title
-        
-        self.navigationController?.pushViewController(dest, animated: true)
+            tbl.deselectRowAtIndexPath(indexPath, animated: true)
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return self.view.frame.width / 2
+    }
+}
+extension CategoryViewController : CategoryProtocol {
+    func tap(cell: CategoryTableViewCell, index: Int) {
+        let number = tbl.indexPathForCell(cell)
+        
+        let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
+        let item = listCategory[(number?.row)! * 2 + index]
+        dest.idCategory = item.uuid
+        dest.titleView = item.title
+        
+        self.navigationController?.pushViewController(dest, animated: true)
     }
 }

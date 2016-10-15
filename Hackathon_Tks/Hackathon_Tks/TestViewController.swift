@@ -30,6 +30,9 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     @IBOutlet weak var btnPre: UIButton!
     
     @IBOutlet weak var playSlider: UISlider!
+    
+    @IBOutlet weak var img_favorite : UIImageView!
+    
      var meterTimer:NSTimer?
     var duration : NSTimer?
     var seconds : Float64?
@@ -52,7 +55,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         initPlayerView()
         
         initViewController()
-        let str = Utils.readFile("data1")
+        let str = Utils.readFile((currentSong?.fileSource)!)
         let arrStr = Utils.seperateWord(str)
         SIZE_WIDTH = UIScreen.mainScreen().bounds.size.width - 8
         var currentLength : CGFloat = 0
@@ -153,6 +156,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.backTap(_:))))
         lblShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
         viewShowMyScore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.checkMyScore(_:))))
+        img_favorite.userInteractionEnabled = true
+        img_favorite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.heart_tap(_:))))
     }
     func initPlayerView(){
         let viewPlayer = UIView.loadFromNibNamed("PlayingView") as! PlayingView
@@ -181,7 +186,6 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                 if self.viewAnswers == nil {
                     self.viewAnswers = UIView()
                 }
-                lbl?.backgroundColor = UIColor.init(rgba: "#d38426")
                 
                 viewAnswers?.cornerRadius = 5
                 viewAnswers?.borderColor = UIColor.init(rgba: "#c5c5c5")
@@ -199,6 +203,8 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                 
                 self.view.layoutIfNeeded()
                 
+                let order = Utils.random()
+                
                 for item in (lbl?.answer)! {
                     let lblAnswer = UILabel()
                     let pos = lbl?.answer.indexOf(item)
@@ -210,7 +216,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                     lblAnswer.userInteractionEnabled = true
                     lblAnswer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.answerTap(_:))))
                     lblAnswer.snp_makeConstraints(closure: { (make) in
-                        make.top.equalTo(viewAnswers!).offset(37 * pos!)
+                        make.top.equalTo(viewAnswers!).offset(37 * order[pos!])
                         make.left.equalTo(viewAnswers!)
                         make.right.equalTo(viewAnswers!)
                         make.height.equalTo(37)
@@ -224,37 +230,50 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         let lbl = gesture.view as? UILabel
         if lbl != nil {
             currentTargetLabel?.text = lbl?.text
+            if gesture.view?.tag == 0 {
+                self.currentTargetLabel?.isTrue = true
+            } else {
+                self.currentTargetLabel?.isTrue = false
+            }
             self.viewAnswers?.removeFromSuperview()
         }
     }
     
     
     func checkMyScore(gesture : UITapGestureRecognizer) {
+        var count = 0
         for item in listLabel {
             if item.isTrue == true {
                 item.backgroundColor = GREEN_COLOR
+                count += 1
             } else {
                 item.backgroundColor = RED_COLOR
             }
         }
-        self.showResultViewController()
+        self.showResultViewController(listLabel.count, number_true_answer: count)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8 ) + 100)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8 ) + 180)
         //content.contentSize = CGSize(width: self.view.frame.width, height: 1000)
-        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8) + 100)
+        content.frame.size = CGSize(width: self.view.frame.width, height: CGFloat(countLine) * (sizeHeight + 8) + 180)
     }
     
     func showMyScore(gesture : UITapGestureRecognizer){
         NSLog("Show me score")
     }
     
-    func showResultViewController(){
-        let voteApp = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
-        let popupController = STPopupController(rootViewController: voteApp)
+    func heart_tap(gesture : UITapGestureRecognizer){
+        
+    }
+    
+    func showResultViewController(total : Int, number_true_answer : Int){
+        let resultViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
+        resultViewController.total = total
+        resultViewController.count_true_answer = number_true_answer
+        let popupController = STPopupController(rootViewController: resultViewController)
         popupController.presentInViewController(self)
     }
     
