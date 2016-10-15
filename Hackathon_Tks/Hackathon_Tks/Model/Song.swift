@@ -44,5 +44,17 @@ struct Song {
         self.fileSource  = ""
         self.linkYoutube  = ""
     }
+    
+    init(genreID : String , title : String , img : String , length : String , number_word : Int , result : Double , fileSource : String , linkYoutube : String){
+        self.uuid = NSUUID().UUIDString
+        self.genreID = genreID
+        self.title = title
+        self.img = img
+        self.length = length
+        self.number_word  = number_word
+        self.result  = result
+        self.fileSource  = fileSource
+        self.linkYoutube  = linkYoutube
+    }
 
 }

@@ -20,6 +20,7 @@ class DetailCategoryViewController: BaseViewController {
     var titleView : String?
     var idCategory : String = ""
     var currentSongID : String?
+    var isAddToFavorite : Bool = false
     
     var listSong = [Song]()
     override func viewDidLoad() {
@@ -68,15 +69,17 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         cell.lbl.text = listSong[indexPath.row].title
         cell.durationLbl.text = listSong[indexPath.row].length
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
-        var url = listSong[indexPath.row].img
-        cell.delegate = self
-        url = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%20Class.jpg"
+        cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result) //"\(listSong[indexPath.row].result)"
+        let url = listSong[indexPath.row].img
+        cell.img.image = UIImage(named: url)
         
-        Alamofire.request( .GET , url).responseImage { response in
-            if let image = response.result.value {
-                cell.img.image = image
-            }
-        }
+        cell.delegate = self
+        
+//        Alamofire.request( .GET , url).responseImage { response in
+//            if let image = response.result.value {
+//                cell.img.image = image
+//            }
+//        }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -89,12 +92,20 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
             self.hideLoadingHUD()
         }
     }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 103
+    }
 }
 extension DetailCategoryViewController : DetailCategoryDelegate {
     func click(cell: DetailCategoryTableViewCell) {
         let number = tbl.indexPathForCell(cell)
-        
-        let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Add to Favorites", "Add to Playlist")
+        var textToPlaylist = "Add to Favorite"
+        isAddToFavorite = true
+        if FavoriteDataManager.shareInstance.isInFavorites(listSong[(number?.row)!].uuid) {
+            textToPlaylist = "Remove From Favorite"
+            isAddToFavorite = false
+        }
+        let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: textToPlaylist, "Add to Playlist")
         actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
         currentSongID = listSong[(number?.row)!].uuid
         
@@ -104,13 +115,21 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         
         switch buttonIndex {
-        case 0:
-            
+        case 2:
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("PlayListViewController") as! PlayListViewController
+            self.presentViewController(dest, animated: true, completion: { 
+                
+            })
             break
         default:
-            var favorite = Favorite()
-            favorite.songID = currentSongID!
-            FavoriteData.shareInstance.insertFavoriteRealm(favorite)
+            if isAddToFavorite {
+                var favorite = Favorite()
+                favorite.songID = currentSongID!
+                FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
+            } else {
+                FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID(currentSongID!)
+            }
+            
         }
         
     }

@@ -17,12 +17,16 @@ class DetailCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var countLbl : UILabel!
     @IBOutlet weak var showMoreImg : UIImageView!
     @IBOutlet weak var showMoreView : UIView!
+    @IBOutlet weak var lblScore : UILabel!
+    @IBOutlet weak var viewScore : UIView!
     var delegate : DetailCategoryDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         showMoreImg.userInteractionEnabled = true
         showMoreImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryTableViewCell.showMore(_:))))
         showMoreView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryTableViewCell.showMore(_:))))
+        viewScore.clipsToBounds = true
+        viewScore.cornerRadius = viewScore.frame.width / 2
     }
     
     func showMore(gesture : UITapGestureRecognizer) {

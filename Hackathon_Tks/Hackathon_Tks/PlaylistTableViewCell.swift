@@ -9,7 +9,8 @@
 import UIKit
 
 class PlaylistTableViewCell: UITableViewCell {
-    @IBOutlet weak var lbl : UILabel!
+    @IBOutlet weak var lblTitle : UILabel!
+    @IBOutlet weak var lblCount : UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -26,7 +26,7 @@ class FavoriteViewController: BaseViewController {
     
     func loadData(){
         favorites.removeAll()
-        favorites = FavoriteData.shareInstance.getAllFavoriteRealm()
+        favorites = FavoriteDataManager.shareInstance.getAllFavoriteRealm()
     }
     
     func refresh(){
@@ -38,7 +38,7 @@ class FavoriteViewController: BaseViewController {
         let alertController = UIAlertController(title: "Delete All Favorite", message: "Do you sure want Delete All", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
-            FavoriteData.shareInstance.DeleteAllFavorite()
+            FavoriteDataManager.shareInstance.deleteAllFavorite()
             self.refresh() 
         }
         let Cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (result : UIAlertAction) -> Void in
@@ -63,7 +63,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
-        let song = SongData.shareInstance.findFistSongDbByID(favorites[indexPath.row].songID)
+        let song = SongDataManager.shareInstance.findFistSongDbByID(favorites[indexPath.row].songID)
         if song.uuid != ""{
             cell.img.sd_setImageWithURL(NSURL(string: song.img))
             cell.lbl.text = song.title
@@ -72,14 +72,16 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         }
         return cell
     }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 103
+    }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let favorite = favorites[indexPath.row]
-        let favoriteDB = FavoriteData.shareInstance.findFistFavoriteDbByID(favorite.songID)
+        let favoriteDB = FavoriteDataManager.shareInstance.findFistFavoriteDbByID(favorite.songID)
         if favoriteDB.songID != ""{
-            FavoriteData.shareInstance.DeleteFavoriteRealm(favoriteDB)
+            FavoriteDataManager.shareInstance.deleteFavoriteRealm(favoriteDB)
             self.refresh()
         }
     }
-    
 }

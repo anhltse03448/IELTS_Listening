@@ -27,18 +27,18 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         //        self.animate(duration: 0.4, animations: {
         //            self.center.y += -Constant.Systems.screen_size.height
         //            }, completion: nil)
-        initPlayerView()
+        //initPlayerView()
         sliderEditing = false
         btnPlay.selected = true
     }
     
     //MARK: Play youtube
-    func initPlayerView(){
+    func initPlayerView(videoID:String){
         playerView = YTPlayerView()
         self.playerView!.delegate = self
         let playerVars = ["playsinline": 1,"autohide":0]
         // if currentSong != nil{
-        playerView!.loadWithVideoId("Rqk-JqaAg1w", playerVars: playerVars)
+        playerView!.loadWithVideoId(videoID, playerVars: playerVars)
         playerView?.playVideo()
         
     }
@@ -48,8 +48,6 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                 print("play")
                 btnPlay.selected = false
                 playerView!.playVideo()
-                
-                
             }else{
                 self.playerPause()
                 print("pause")
@@ -103,6 +101,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         
     }
     
+    //MARK: youtubeAPI Delegate
     func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState) {
         switch (state) {
 //        case YTPlayerState.Unstarted:
