@@ -36,7 +36,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     
     var listLabel = [MyLabel]()
     @IBOutlet weak var playerView: UIView!
-    var currentSong : SongObject?
+    var currentSong : Song?
     var titleTab : String?
     var countLine : Int = 1
     var sizeHeight : CGFloat = 0

@@ -7,30 +7,79 @@
 //
 
 import UIKit
-
+import SDWebImage
 class FavoriteViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
-    var listSong = [SongObject]()
+    var favorites: [Favorite] = [Favorite]()
+
+    
+    @IBOutlet weak var tbvFavorite: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadData()
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        self.refresh()
+        self.viewWillAppear(true)
+    }
+    
+    func loadData(){
+        favorites.removeAll()
+        favorites = FavoriteData.shareInstance.getAllFavoriteRealm()
+    }
+    
+    func refresh(){
+        loadData()
+        tbvFavorite.reloadData()
+    }
+    
+    @IBAction func DeleteAllTouchUp(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Delete All Favorite", message: "Do you sure want Delete All", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+            FavoriteData.shareInstance.DeleteAllFavorite()
+            self.refresh() 
+        }
+        let Cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (result : UIAlertAction) -> Void in
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(Cancel)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()        
     }
 
 }
+
 extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return favorites.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell        
+        let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
+        let song = SongData.shareInstance.findFistSongDbByID(favorites[indexPath.row].songID)
+        if song.uuid != ""{
+            cell.img.sd_setImageWithURL(NSURL(string: song.img))
+            cell.lbl.text = song.title
+            cell.durationLbl.text = song.length
+            cell.countLbl.text = String(format: "%d",song.number_word)
+        }
         return cell
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let favorite = favorites[indexPath.row]
+        let favoriteDB = FavoriteData.shareInstance.findFistFavoriteDbByID(favorite.songID)
+        if favoriteDB.songID != ""{
+            FavoriteData.shareInstance.DeleteFavoriteRealm(favoriteDB)
+            self.refresh()
+        }
+    }
+    
 }

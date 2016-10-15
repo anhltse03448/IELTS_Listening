@@ -8,6 +8,9 @@ PODS:
   - Realm/Headers (1.0.2)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SnapKit (0.22.0)
   - STPopup (1.8.0)
   - youtube-ios-player-helper (0.1.6)
@@ -16,6 +19,7 @@ DEPENDENCIES:
   - AlamofireImage
   - MBProgressHUD
   - RealmSwift
+  - SDWebImage
   - SnapKit
   - STPopup
   - youtube-ios-player-helper
@@ -26,10 +30,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
   STPopup: af630a85628e4226ffcbda5caaead0d99aed13a8
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 4eef5e2d5ff85b33b584254d983b189ed1f2db7d
+PODFILE CHECKSUM: b8b9b54346eb9b50fb907f4bb8666edab9d6ee1d
 
 COCOAPODS: 1.0.1

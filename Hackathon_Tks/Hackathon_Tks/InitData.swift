@@ -10,44 +10,47 @@ import UIKit
 import RealmSwift
 
 class InitData: NSObject {
-    
+    // khi nào cần mới thêm data. Vì mỗi lần thêm data ID sẽ khác nhau.
     class func initType() {
-        InitData.clearData()
-        let categoryTitle = ["Art and Culture" , "Daily conversation" , "Education" , "IELTS Listening" ,"Joke" ,
-                             "Leisure & Entertainment", "Music", "Nature & Environment","News","Places",
-                             "Science", "Story" , "Technology"]
-        let linkCategory = ["Art_culture","Daily","Education",
-                            "Ielts", "Joke","Leisure" ,
-                            "Music","Nature","News",
-                            "place","science","story","tech"]
-        do {
-            let realm = try Realm()
-            for item in categoryTitle {
-                let obj = Genre()
-                let number = categoryTitle.indexOf(item)
-                obj.uuid = NSUUID().UUIDString
-                obj.title = item
-                obj.img = linkCategory[number!]
-                try! realm.write {
-                    realm.add(obj)
-                }
-                for i in 0 ..< 4 {
-                    let song = Song()
-                    song.setValue(NSUUID().UUIDString , genreID: obj.uuid, title : "Ballet Class", img: "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg", length: "01:11", number_word: 145, fileSource: "data1", linkYoutube: "Rqk-JqaAg1w", result: 0)
-                    try! realm.write {
-                        realm.add(song)
-                    }
-                }
-                
-            }
-        } catch let _ as NSError {
-            // handle error
-        }
+
+//        SongData.shareInstance.DeleteAllSong()
+//        GenreData.shareInstance.DeleteAllGenreDB()
+//        let categoryTitle = ["Art and Culture" , "Daily conversation" , "Education" , "IELTS Listening" ,"Joke" ,
+//                             "Leisure & Entertainment", "Music", "Nature & Environment","News","Places",
+//                             "Science", "Story" , "Technology"]
+//        let linkCategory = ["Art_culture","Daily","Education",
+//                            "Ielts", "Joke","Leisure" ,
+//                            "Music","Nature","News",
+//                            "place","science","story","tech"]
+//        
+//        do {
+//            for item in categoryTitle {
+//                var genre = Genre()
+//                let number = categoryTitle.indexOf(item)
+//                genre.title = item
+//                genre.img = linkCategory[number!]
+//                
+//                GenreData.shareInstance.insertGallryRealm(genre)
+//               
+//                for i in 0 ..< 4 {
+//                    var song = Song()
+//                    song.genreID = genre.uuid
+//                    song.title = "Ballet Class"
+//                    //song.img = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg"
+//                    song.img = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/ielts%2010/Writing%20the%20dissertation.jpg"
+//                    song.length = "01:11"
+//                    song.number_word  = 145
+//                    song.result  = 0
+//                    song.fileSource  = "data1"
+//                    song.linkYoutube  = "Rqk-JqaAg1w"
+//                    SongData.shareInstance.insertSongRealm(song)
+//                }
+//                
+//            }
+//        } catch let _ as NSError {
+//            // handle error
+//        }
     }
-    class func clearData() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-    }
+   
+
 }

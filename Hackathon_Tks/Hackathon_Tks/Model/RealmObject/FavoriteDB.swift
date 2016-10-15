@@ -10,6 +10,7 @@ import UIKit
 import Realm
 import RealmSwift
 
-class Favorite: Object {
+class FavoriteDB: Object {
     dynamic var songID : String = ""
+    dynamic var createDate = NSDate()
 }

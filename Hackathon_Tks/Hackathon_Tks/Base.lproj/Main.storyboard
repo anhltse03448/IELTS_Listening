@@ -512,7 +512,7 @@
                                                             <rect key="frame" x="396" y="0.0" width="50" height="102.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnMore" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-9N-Slx">
-                                                                    <rect key="frame" x="15" y="41.5" width="20" height="20"/>
+                                                                    <rect key="frame" x="15" y="41" width="20" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="yOh-9N-Slx" secondAttribute="height" multiplier="1:1" id="DqR-EA-iBK"/>
                                                                         <constraint firstAttribute="height" constant="20" id="mOw-5h-guD"/>
@@ -585,10 +585,21 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbW-5o-j8O">
+                                        <rect key="frame" x="532" y="7" width="45" height="30"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" red="0.93515220210000005" green="0.39910598650000001" blue="0.21763510829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="DeleteAllTouchUp:" destination="rf7-Fd-1vZ" eventType="touchUpInside" id="nkT-3o-Al6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xbW-5o-j8O" secondAttribute="trailing" constant="23" id="7UQ-Tt-F5O"/>
                                     <constraint firstItem="G4r-R5-Wv8" firstAttribute="centerY" secondItem="d3o-Ps-w6E" secondAttribute="centerY" id="Sma-KV-EN6"/>
+                                    <constraint firstItem="xbW-5o-j8O" firstAttribute="centerY" secondItem="d3o-Ps-w6E" secondAttribute="centerY" id="bya-Ej-R7h"/>
                                     <constraint firstAttribute="height" constant="44" id="k4e-FF-Jbf"/>
                                     <constraint firstItem="G4r-R5-Wv8" firstAttribute="centerX" secondItem="d3o-Ps-w6E" secondAttribute="centerX" id="qxa-xq-3h9"/>
                                 </constraints>
@@ -620,6 +631,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="2KC-8c-7dZ"/>
                     <connections>
                         <outlet property="tbl" destination="zQG-Hb-rp1" id="h68-9v-jii"/>
+                        <outlet property="tbvFavorite" destination="zQG-Hb-rp1" id="NPH-zt-dc9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOc-Gl-aHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1004,7 +1016,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oen-TG-X8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="-616"/>
+            <point key="canvasLocation" x="1332" y="-606"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1121,21 +1133,21 @@
                                         <rect key="frame" x="0.0" y="-64" width="30" height="30"/>
                                         <state key="normal" title="next"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-l3-hUR">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-l3-hUR">
                                         <rect key="frame" x="365" y="30" width="30" height="30"/>
                                         <state key="normal" title="next"/>
                                         <connections>
                                             <action selector="btnNextTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qvX-6t-gm1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-aK-zqa">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-aK-zqa">
                                         <rect key="frame" x="285" y="30" width="30" height="30"/>
                                         <state key="normal" title="play"/>
                                         <connections>
                                             <action selector="btnPlayTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJy-LV-tie"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
                                         <rect key="frame" x="192" y="0.0" width="215" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="211" id="nr3-dX-qXJ"/>
@@ -1144,7 +1156,7 @@
                                             <action selector="playSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zpl-HL-3aA"/>
                                         </connections>
                                     </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-SP-ggf">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-SP-ggf">
                                         <rect key="frame" x="189" y="30" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
@@ -1181,7 +1193,6 @@
                         </variation>
                     </view>
                     <connections>
-
                         <outlet property="backImg" destination="KRA-LE-mFr" id="e9t-Qc-1Z0"/>
                         <outlet property="backView" destination="Dta-i1-WZo" id="mhB-5L-7VS"/>
                         <outlet property="btnNextVideo" destination="sPW-l3-hUR" id="VKJ-H0-IoR"/>
