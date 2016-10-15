@@ -12,44 +12,35 @@ import RealmSwift
 class InitData: NSObject {
     // khi nào cần mới thêm data. Vì mỗi lần thêm data ID sẽ khác nhau.
     class func initType() {
-
-//        SongData.shareInstance.DeleteAllSong()
-//        GenreData.shareInstance.DeleteAllGenreDB()
-//        let categoryTitle = ["Art and Culture" , "Daily conversation" , "Education" , "IELTS Listening" ,"Joke" ,
-//                             "Leisure & Entertainment", "Music", "Nature & Environment","News","Places",
-//                             "Science", "Story" , "Technology"]
-//        let linkCategory = ["Art_culture","Daily","Education",
-//                            "Ielts", "Joke","Leisure" ,
-//                            "Music","Nature","News",
-//                            "place","science","story","tech"]
-//        
-//        do {
-//            for item in categoryTitle {
-//                var genre = Genre()
-//                let number = categoryTitle.indexOf(item)
-//                genre.title = item
-//                genre.img = linkCategory[number!]
-//                
-//                GenreData.shareInstance.insertGallryRealm(genre)
-//               
-//                for i in 0 ..< 4 {
-//                    var song = Song()
-//                    song.genreID = genre.uuid
-//                    song.title = "Ballet Class"
-//                    //song.img = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/Ballet%Class.jpg"
-//                    song.img = "http://elcontent.ieltsonlinetests.com/fileman/Uploads/Images/ielts/ielts%2010/Writing%20the%20dissertation.jpg"
-//                    song.length = "01:11"
-//                    song.number_word  = 145
-//                    song.result  = 0
-//                    song.fileSource  = "data1"
-//                    song.linkYoutube  = "Rqk-JqaAg1w"
-//                    SongData.shareInstance.insertSongRealm(song)
-//                }
-//                
-//            }
-//        } catch let _ as NSError {
-//            // handle error
-//        }
+        SongDataManager.shareInstance.DeleteAllSong()
+        GenreDataManager.shareInstance.DeleteAllGenreDB()
+        let categoryTitle = ["Art and Culture" , "Conversation" , "Education" , "IELTS Listening" ,
+                             "Entertainment", "Music", "Environment","News","Places",
+                             "Science", "Story" , "Technology"]
+        let linkCategory = ["Art_culture","Daily","Education",
+                            "Ielts", "Leisure" ,
+                            "Music","Nature","News",
+                            "place","science","story","tech"]
+        
+        do {
+            let realm = try! Realm()
+            for item in categoryTitle {
+                var genre = Genre()
+                let number = categoryTitle.indexOf(item)
+                genre.title = item
+                genre.img = linkCategory[number!]
+                
+                GenreDataManager.shareInstance.insertGallryRealm(genre)
+               
+                for i in 0 ..< 4 {
+                    let song = Song(genreID: genre.uuid, title: "Making Music", img: "making_music", length: "01:16", number_word: 142, result: 0, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8")
+                    
+                    SongDataManager.shareInstance.insertSongRealm(song)
+                }
+            }
+        } catch let _ as NSError {
+            // handle error
+        }
     }
    
 

@@ -13,17 +13,24 @@ class ResultViewController: BaseViewController {
     @IBOutlet weak var lblResult : UILabel!
     @IBOutlet weak var lblDone : UILabel!
     @IBOutlet weak var viewDone : UIView!
+    @IBOutlet weak var lblTotal : UILabel!
+    @IBOutlet weak var lblTrueAnswers : UILabel!
+    
+    var total : Int?
+    var count_true_answer : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contentSizeInPopup = CGSizeMake(300, 250)
+        self.contentSizeInPopup = CGSizeMake(300, 240)
         self.landscapeContentSizeInPopup = CGSizeMake(300, 170)
         self.popupController.navigationBar.hidden = true
         self.popupController.navigationBarHidden = true
-        self.popupController.cornerRadius = 5
         viewResult.cornerRadius = viewResult.frame.width / 2
         viewResult.backgroundColor = UIColor.init(rgba: "#5fb760")
-        lblResult.text = "100%"
+        
+        lblResult.text = String(format: "%.0f", (Float(count_true_answer!) / Float(total!) ) * 100) + "%"
+        lblTrueAnswers.text = "\(count_true_answer!)"
+        lblTotal.text = "\(total! - count_true_answer!)"
         
         lblDone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ResultViewController.dismisPopup(_:))))
         viewDone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ResultViewController.dismisPopup(_:))))

@@ -23,10 +23,12 @@ class BaseViewController: UIViewController {
     }
     func showLoadingHUD() {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "Loading..."
+        hud.label.text = "Loading..."
     }
     
     func hideLoadingHUD() {
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
+    
+    
 }
