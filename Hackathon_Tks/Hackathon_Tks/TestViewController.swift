@@ -289,6 +289,11 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     }
     
     func heart_tap(gesture : UITapGestureRecognizer){
+        if Utils.checkIsFavorite((currentSong?.uuid)!) == true {
+            img_favorite.image = UIImage(named: "heart_white")
+        } else {
+            img_favorite.image = UIImage(named: "heart_red")
+        }
         
     }
     
@@ -302,6 +307,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         
         if currentSong?.result < res {//update
             let realm = try! Realm()
+            currentSong?.result = res
             let result = realm.objects(Song.self).filter(" uuid = %@", (currentSong?.uuid)!)
             if result.count != 0 {
                 let song = result[0]

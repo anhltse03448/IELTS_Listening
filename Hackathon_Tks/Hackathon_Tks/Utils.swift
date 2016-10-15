@@ -62,5 +62,9 @@ class Utils: NSObject {
             }
         }
     }
+    
+    class func checkIsFavorite(uuid : String) -> Bool {
+        return false
+    }
 }
 
