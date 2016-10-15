@@ -37,6 +37,10 @@
 		3678D10A1DACD2D20000F342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3678D1081DACD2D20000F342 /* LaunchScreen.storyboard */; };
 		368806B31DAF8BBB00210163 /* CategoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368806B21DAF8BBB00210163 /* CategoryObject.swift */; };
 		36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B41DAFB9B500517E3B /* SongObject.swift */; };
+		61785B401DB20BA500077039 /* PlaylistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B3F1DB20BA500077039 /* PlaylistDataManager.swift */; };
+		61785B421DB20CC800077039 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B411DB20CC800077039 /* Playlist.swift */; };
+		61785B441DB20E5000077039 /* SongPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B431DB20E5000077039 /* SongPlaylist.swift */; };
+		61785B461DB20EB700077039 /* SongPlaylistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B451DB20EB700077039 /* SongPlaylistDataManager.swift */; };
 		619567381DB0B83900B640DD /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619567361DB0B83900B640DD /* PlayingView.swift */; };
 		6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673B1DB0BA5300B640DD /* UTM Avo.ttf */; };
 		6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */; };
@@ -86,6 +90,10 @@
 		3678D10B1DACD2D20000F342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		368806B21DAF8BBB00210163 /* CategoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryObject.swift; sourceTree = "<group>"; };
 		36E8C3B41DAFB9B500517E3B /* SongObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongObject.swift; sourceTree = "<group>"; };
+		61785B3F1DB20BA500077039 /* PlaylistDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDataManager.swift; sourceTree = "<group>"; };
+		61785B411DB20CC800077039 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		61785B431DB20E5000077039 /* SongPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylist.swift; sourceTree = "<group>"; };
+		61785B451DB20EB700077039 /* SongPlaylistDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylistDataManager.swift; sourceTree = "<group>"; };
 		619567361DB0B83900B640DD /* PlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
 		6195673B1DB0BA5300B640DD /* UTM Avo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM Avo.ttf"; sourceTree = "<group>"; };
 		6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM God's WordR.ttf"; sourceTree = "<group>"; };
@@ -287,9 +295,11 @@
 			children = (
 				61BB16CC1DB1C15D0084483D /* RealmQuery */,
 				61BB16C51DB1C1570084483D /* RealmObject */,
+				61785B411DB20CC800077039 /* Playlist.swift */,
 				61BB16CF1DB1C18D0084483D /* Song.swift */,
 				61BB16D31DB1C55A0084483D /* Genre.swift */,
 				61BB16D51DB1CA1F0084483D /* Favorite.swift */,
+				61785B431DB20E5000077039 /* SongPlaylist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +322,8 @@
 				61BB16D71DB1CC7A0084483D /* FavoriteDataManager.swift */,
 				61BB16CD1DB1C15D0084483D /* SongDataManager.swift */,
 				61BB16D11DB1C5200084483D /* GenreDataManager.swift */,
+				61785B3F1DB20BA500077039 /* PlaylistDataManager.swift */,
+				61785B451DB20EB700077039 /* SongPlaylistDataManager.swift */,
 			);
 			path = RealmQuery;
 			sourceTree = "<group>";
@@ -465,8 +477,11 @@
 				61BB16CB1DB1C1570084483D /* SongDB.swift in Sources */,
 				61BB16D41DB1C55A0084483D /* Genre.swift in Sources */,
 				3612E87A1DADEC350000F4E5 /* MyString.swift in Sources */,
+				61785B441DB20E5000077039 /* SongPlaylist.swift in Sources */,
+				61785B461DB20EB700077039 /* SongPlaylistDataManager.swift in Sources */,
 				3678D1021DACD2D20000F342 /* TestViewController.swift in Sources */,
 				360926EA1DAF6A2800EDF8CC /* InitData.swift in Sources */,
+				61785B401DB20BA500077039 /* PlaylistDataManager.swift in Sources */,
 				366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */,
 				361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */,
 				61BB16CE1DB1C15D0084483D /* SongDataManager.swift in Sources */,
@@ -482,6 +497,7 @@
 				3612E8871DAE24CF0000F4E5 /* SearchViewController.swift in Sources */,
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
 				3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */,
+				61785B421DB20CC800077039 /* Playlist.swift in Sources */,
 				61BB16D21DB1C5200084483D /* GenreDataManager.swift in Sources */,
 				364009121DB2063400DBCC07 /* PlaylistDB.swift in Sources */,
 				3612E8951DAE28930000F4E5 /* DetailCategoryViewController.swift in Sources */,

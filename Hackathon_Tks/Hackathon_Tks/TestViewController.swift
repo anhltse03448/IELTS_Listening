@@ -168,7 +168,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     func initPlayerView(){
         let viewPlayer = UIView.loadFromNibNamed("PlayingView") as! PlayingView
         viewPlayer.frame = CGRect(x: 0,y: 64,width: Constant.Systems.screen_size.width,height: 73)
-        viewPlayer.currentSong = currentSong!.linkYoutube
+        viewPlayer.initPlayerView(currentSong!.linkYoutube)
         self.view.addSubview(viewPlayer)
     }
     func backTap(gesture : UITapGestureRecognizer) {

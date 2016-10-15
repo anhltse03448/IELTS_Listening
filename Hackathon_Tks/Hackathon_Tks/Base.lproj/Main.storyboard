@@ -217,8 +217,8 @@
                                             <constraint firstAttribute="bottom" secondItem="k5P-6y-xeF" secondAttribute="bottom" id="o6B-9e-IJv"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PLAYLIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-Gl-GqX">
-                                        <rect key="frame" x="254" y="9" width="92.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYLIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-Gl-GqX">
+                                        <rect key="frame" x="254" y="10" width="92.5" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -397,7 +397,7 @@
                     <tabBarItem key="tabBarItem" title="Playlist" image="tabPlaylist" id="oQ0-hd-phA"/>
                     <connections>
                         <outlet property="lblCancel" destination="fDr-tC-C3w" id="Tpg-UM-uKd"/>
-                        <outlet property="tbl" destination="Cg3-Mz-FR0" id="Use-TU-AAy"/>
+                        <outlet property="tbvPlaylist" destination="Cg3-Mz-FR0" id="zCp-qh-Ojk"/>
                         <outlet property="viewAdd" destination="HeO-FK-YqJ" id="T34-2g-Dnr"/>
                     </connections>
                 </viewController>
