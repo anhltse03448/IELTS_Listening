@@ -25,7 +25,6 @@ class DetailCategoryViewController: BaseViewController {
     var listSong = [Song]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        listSong.removeAll()
         loadSongInCategory()
         tbl.tableFooterView = UIView(frame: CGRectZero)
         
@@ -36,8 +35,12 @@ class DetailCategoryViewController: BaseViewController {
         
         self.lblTitle.text = titleView
     }
+    override func viewWillAppear(animated: Bool) {
+        loadSongInCategory()
+    }
     
     func loadSongInCategory() {
+        listSong.removeAll()
         let realm = try! Realm()
         let listSongDB = realm.objects(SongDB).filter("genreID == %@",self.idCategory ?? "")
         if listSongDB.count != 0 {
@@ -45,6 +48,7 @@ class DetailCategoryViewController: BaseViewController {
                 listSong.append(Song(songDb: item))
             }
         }
+        tbl.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +73,7 @@ extension DetailCategoryViewController : UITableViewDataSource , UITableViewDele
         cell.lbl.text = listSong[indexPath.row].title
         cell.durationLbl.text = listSong[indexPath.row].length
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
-        cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result) //"\(listSong[indexPath.row].result)"
+        cell.lblScore.text =  String(format: "%.0f", listSong[indexPath.row].result * 100) + "%" //"\(listSong[indexPath.row].result)"
         let url = listSong[indexPath.row].img
         cell.img.image = UIImage(named: url)
         

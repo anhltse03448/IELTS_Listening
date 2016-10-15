@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+
 class FavoriteViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     var favorites: [Favorite] = [Favorite]()
@@ -68,6 +68,11 @@ class FavoriteViewController: BaseViewController {
     func loadData(){
         favorites.removeAll()
         favorites = FavoriteDataManager.shareInstance.getAllFavoriteRealm()
+        if favorites.count != 0 {
+            lblEdit.hidden = false
+        } else {
+            lblEdit.hidden = true
+        }
     }
     
     func refresh(){
@@ -98,7 +103,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
             cell.lbl.text = song.title
             cell.durationLbl.text = song.length
             cell.countLbl.text = String(format: "%d",song.number_word)
-            cell.lblScore.text = "0%"
+            cell.lblScore.text = String(format: "%.0f", song.result * 100) + "%"
         }
         return cell
     }

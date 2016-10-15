@@ -312,17 +312,16 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         
         let res = Double(number_true_answer) / Double(total)
         
-//        if currentSong?.result < res {//update
-//            let realm = try! Realm()
-//            currentSong?.result = res
-//            let result = realm.objects(Song.self).filter(" uuid = %@", (currentSong?.uuid)!)
-//            if result.count != 0 {
-//                let song = result[0]
-//                try! realm.write({ 
-//                    song.result = res
-//                })
-//            }
-//        }
+        if currentSong?.result < res {//update
+            let realm = try! Realm()
+            currentSong?.result = res
+            let song = SongDataManager.shareInstance.findFistSongDbByID(currentSong!.uuid)
+            if song.title != "" {
+                try! realm.write({ 
+                    song.result = res
+                })
+            }
+        }
         
         let popupController = STPopupController(rootViewController: resultViewController)
         

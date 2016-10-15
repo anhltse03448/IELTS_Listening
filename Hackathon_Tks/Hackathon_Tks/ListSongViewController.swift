@@ -56,7 +56,7 @@ extension ListSongViewController : UITableViewDataSource , UITableViewDelegate {
         cell.lbl.text = listSong[indexPath.row].title
         cell.durationLbl.text = listSong[indexPath.row].length
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
-        cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result) //"\(listSong[indexPath.row].result)"
+        cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result * 100) + "%" //"\(listSong[indexPath.row].result)"
         let url = listSong[indexPath.row].img
         cell.img.image = UIImage(named: url)
         

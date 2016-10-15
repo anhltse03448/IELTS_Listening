@@ -3,10 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SongPlaylistDataManager.getCountPlaylistRealmById(String) -&gt; Int:SongPlaylistDataManager.swift">
+         contextName = "SongPlaylistDataManager.findFistSongPlaylistDbByID(String) -&gt; SongPlaylistDB:SongPlaylistDataManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayListViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:PlayListViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "playlistsDb.count">
+               value = "listPlayList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SearchViewController.textFieldDidChange(UITextField) -&gt; ():SearchViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayListViewController.alertView(UIAlertView, clickedButtonAtIndex : Int) -&gt; ():PlayListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listPlayList">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -22,26 +41,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "TestViewController.heart_tap(UITapGestureRecognizer) -&gt; ():TestViewController.swift">
+         contextName = "DetailCategoryViewController.loadSongInCategory() -&gt; ():DetailCategoryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentSong">
+               value = "item">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.viewDidLoad() -&gt; ():ViewController.swift">
+         contextName = "PlayListViewController.refresh() -&gt; ():PlayListViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "arrStr">
+               value = "listPlayList">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "FavoriteViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:FavoriteViewController.swift">
+         contextName = "DetailCategoryViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:DetailCategoryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "favorites[indexPath.row].songID">
+               value = "listSong[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailCategoryViewController.actionSheet(UIActionSheet, clickedButtonAtIndex : Int) -&gt; ():DetailCategoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentSongID">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -54,18 +81,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SearchViewController.textFieldDidChange(UITextField) -&gt; ():SearchViewController.swift">
+         contextName = "DetailCategoryViewController.viewDidLoad() -&gt; ():DetailCategoryViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "textField.text">
+               value = "listSong">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DetailCategoryViewController.actionSheet(UIActionSheet, clickedButtonAtIndex : Int) -&gt; ():DetailCategoryViewController.swift">
+         contextName = "ViewController.viewDidLoad() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentSongID">
+               value = "arrStr">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

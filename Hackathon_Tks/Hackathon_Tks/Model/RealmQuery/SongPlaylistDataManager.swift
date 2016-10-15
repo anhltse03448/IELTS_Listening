@@ -39,7 +39,6 @@ class SongPlaylistDataManager: NSObject {
         
         return playlists
     }
-    
     func getAllSongPlaylistRealmById(uuid:String) -> [SongPlaylist]{
         var songPlaylists = [SongPlaylist]()
         for playlistsDb in realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@",uuid){

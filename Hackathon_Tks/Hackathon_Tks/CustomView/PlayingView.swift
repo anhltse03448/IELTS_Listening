@@ -52,8 +52,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                     playerView!.playVideo()
                 let duration : CMTime = CMTimeMake(Int64(self.playerView!.duration()),1)
                 let seconds : Float64 = CMTimeGetSeconds(duration)
-                sliderProgress.minimumValue = 0.0
-                sliderProgress.maximumValue = Float(seconds)
+                sliderProgress.maximumValue = Float(Int(Float(seconds))) - 1
                 sliderProgress.continuous = true
                 sliderProgress.tintColor = UIColor.greenColor()
             }else{
@@ -70,18 +69,23 @@ class PlayingView: UIView,YTPlayerViewDelegate {
     
     //var i = 0
     func UpdateSlider(){
-        if playerView != nil{
-            if sliderEditing == false {
-                sliderProgress.value = Float(self.playerView!.currentTime())
-                lblCurentTime.text = self.formatTime(CGFloat(self.playerView!.currentTime())) as String
-//                print(i)
-//                i = i + 1
+        if lblCurentTime.text != lblDuration.text{
+            if playerView != nil{
+                if sliderEditing == false {
+                    sliderProgress.value = Float(Int(Float(playerView!.currentTime())))
+                    lblCurentTime.text = self.formatTime(CGFloat(Int(Float(playerView!.currentTime())))) as String
+                    //                print(i)
+                    //                i = i + 1
+                    
+                }
             }
         }else{
             sliderProgress.value = 0
-            meterTimer?.invalidate()
+           playerView!.seekToSeconds(0, allowSeekAhead: true)
+            lblCurentTime.text = "00:00"
+            playerView?.pauseVideo()
+            btnPlay.selected = true
         }
-        
     }
     @IBAction func sliderProgressValueChanged(sender: AnyObject) {
         let newProgress:Float = self.sliderProgress.value
@@ -97,6 +101,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
     
     @IBAction func sliderProgressTouchUp(sender: AnyObject) {
         sliderEditing = false
+        btnPlay.selected = false
         playerView!.playVideo()
     }
     
@@ -105,21 +110,30 @@ class PlayingView: UIView,YTPlayerViewDelegate {
             var timeCurent = Float(playerView!.currentTime())
             if timeCurent <= 5.0 {
                 timeCurent = 0
-                playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
             }else{
                 timeCurent = timeCurent - 5.0
-              playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
             }
+            playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
             self.UpdateSlider()
         }
     }
     
     @IBAction func btnNextTouchUp(sender: AnyObject) {
-       // playerView?.pauseVideo()
-        let timeCurent = Float(playerView!.currentTime()) + 5.0
-        playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
-        self.UpdateSlider()
+        if playerView?.currentTime() != 0{
+            var timeCurent = Float(Int(Float(playerView!.currentTime())))
+            if Float(playerView!.duration()) - timeCurent <= 5.0 {
+                timeCurent = Float(Int(Float(playerView!.duration())))
+            }else{
+                timeCurent = timeCurent + 5.0
+                
+            }
+            playerView!.seekToSeconds(timeCurent, allowSeekAhead: true)
+            meterTimer?.invalidate()
+            self.UpdateSlider()
+            
+        }
     }
+    
     func checkPlayer(){
         if playerView?.duration() != 0{
             btnPlay.selected = true
