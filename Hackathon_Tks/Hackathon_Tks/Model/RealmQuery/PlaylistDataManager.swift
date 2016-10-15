@@ -51,6 +51,14 @@ class PlaylistDataManager: NSObject {
         }
     }
     
+    func deletePlaylist(uuidPlaylist:String){
+        let playlists = realm.objects(PlaylistDB).filter("uuid = %@",uuidPlaylist)
+        if playlists.count != 0{
+            let playlist = playlists[0]
+            deletePlaylistRealm(playlist)
+        }
+        
+    }
     func deletePlaylistRealm(playlistDB:PlaylistDB){
         try! realm.write {
             realm.delete(playlistDB)

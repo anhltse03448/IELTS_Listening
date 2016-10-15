@@ -38,6 +38,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PlayListViewController.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():PlayListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listPlayList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PlayListViewController.alertView(UIAlertView, clickedButtonAtIndex : Int) -&gt; ():PlayListViewController.swift">
          <PersistentStrings>
             <PersistentString

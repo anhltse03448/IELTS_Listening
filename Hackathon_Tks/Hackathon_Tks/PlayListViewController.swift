@@ -152,4 +152,8 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
             self.navigationController?.pushViewController(dest, animated: true)
         }
     }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        PlaylistDataManager.shareInstance.deletePlaylist(listPlayList[indexPath.row].uuid)
+        refresh()
+    }
 }

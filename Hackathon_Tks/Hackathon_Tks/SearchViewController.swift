@@ -15,6 +15,8 @@ class SearchViewController: BaseViewController {
     var listSong = [Song]()
     var realm : Realm?
     @IBOutlet weak var searchTextField: UITextField!
+    var isAddToFavorite : Bool = false
+    var currentSongID : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewController()
@@ -47,6 +49,7 @@ class SearchViewController: BaseViewController {
         cancelButton.addTarget(self, action: #selector(SearchViewController.clearSearchTextField), forControlEvents: UIControlEvents.TouchUpInside)
         searchTextField.rightView = cancelButton
         searchTextField.rightViewMode = .WhileEditing
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
     }
     
     func clearSearchTextField() {
@@ -55,8 +58,8 @@ class SearchViewController: BaseViewController {
         //tbl.hidden = true
     }
     func textFieldDidChange(textField: UITextField) {
-        NSLog("\(textField.text)")
-        let result = realm?.objects(SongDB).filter("title CONTAINS %@",textField.text!).sorted("title")
+        NSLog("\(searchTextField.text)")
+        let result = realm?.objects(SongDB).filter("title CONTAINS[c] %@",textField.text!).sorted("title")
         listSong.removeAll()
         if result != nil {
             for item in result! {
@@ -78,10 +81,9 @@ extension SearchViewController : UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.textFieldDidChange(self.searchTextField)
+        //self.textFieldDidChange(self.searchTextField)
         return true
     }
-    
 }
 extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -99,7 +101,7 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
         cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result) //"\(listSong[indexPath.row].result)"
         let url = listSong[indexPath.row].img
         cell.img.image = UIImage(named: url)
-        
+        cell.delegate = self
         return cell
     }
     
@@ -117,3 +119,49 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
     }
 }
 
+extension SearchViewController : DetailCategoryDelegate {
+    func click(cell: DetailCategoryTableViewCell) {
+        let number = tbl.indexPathForCell(cell)
+        var textToPlaylist = "Add to Favorite"
+        isAddToFavorite = true
+        if FavoriteDataManager.shareInstance.isInFavorites(listSong[(number?.row)!].uuid) {
+            textToPlaylist = "Remove From Favorite"
+            isAddToFavorite = false
+        }
+        let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: textToPlaylist, "Add to Playlist")
+        actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
+        currentSongID = listSong[(number?.row)!].uuid
+        
+        actionSheet.showInView(self.view)    }
+}
+
+extension SearchViewController : UIActionSheetDelegate {
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch buttonIndex {
+        case 2:
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("PlayListViewController") as! PlayListViewController
+            dest.uuidSong = currentSongID
+            dest.isFromOther = true
+            self.presentViewController(dest, animated: true, completion: {
+                
+            })
+            break
+        case 1:
+            if isAddToFavorite {
+                var favorite = Favorite()
+                favorite.songID = currentSongID!
+                FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
+                //self.view.toastViewForMessage("", title: "", image: UIImage(named: "recycle"), style: nil)
+                self.view.makeToast("Add To Favorites")
+            } else {
+                FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID(currentSongID!)
+                self.view.makeToast("Remove From Favorites")
+            }
+        default:
+            break
+            
+        }
+        
+    }
+}

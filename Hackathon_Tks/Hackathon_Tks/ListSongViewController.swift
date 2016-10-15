@@ -32,6 +32,9 @@ class ListSongViewController: BaseViewController {
         
         self.lblTitle.text = titleView
     }
+    override func viewWillAppear(animated: Bool) {
+        reloadData()
+    }
     
     func backTap(gesture : UITapGestureRecognizer) {
         self.navigationController?.popViewControllerAnimated(true)
