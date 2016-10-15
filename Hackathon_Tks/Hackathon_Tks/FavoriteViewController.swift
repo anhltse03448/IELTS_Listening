@@ -45,6 +45,8 @@ class FavoriteViewController: BaseViewController {
         } else {
             lblEdit.text = "Edit"
             if listCellTap.count == 0 {
+                tbl.allowsMultipleSelectionDuringEditing = false
+                tbl.setEditing(false, animated: true)
                 return
             }
             let alertController = UIAlertController(title: "Delete \(listCellTap.count) Favorite Songs", message: "Do you sure want Delete", preferredStyle: UIAlertControllerStyle.Alert)
@@ -147,6 +149,9 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
                 self.hideLoadingHUD()
             }
         }
+    }
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        listCellTap.removeAtIndex(listCellTap.indexOf(indexPath.row)!)
     }
 }
 extension FavoriteViewController : UIActionSheetDelegate {

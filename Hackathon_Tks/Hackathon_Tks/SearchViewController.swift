@@ -22,8 +22,20 @@ class SearchViewController: BaseViewController {
         initViewController()
         searchTextField.text = ""
         
+        let keyboardDoneButtonView = UIToolbar.init()
+        keyboardDoneButtonView.sizeToFit()
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done,
+                                              target: self,
+                                              action: #selector(SearchViewController.doneClicked(_:)))
+        
+        keyboardDoneButtonView.items = [doneButton]
+        searchTextField.inputAccessoryView = keyboardDoneButtonView
+        
         try! realm = Realm()
 
+    }
+    func doneClicked(sender: AnyObject) {
+        self.view.endEditing(true)
     }
     
     func initViewController() {

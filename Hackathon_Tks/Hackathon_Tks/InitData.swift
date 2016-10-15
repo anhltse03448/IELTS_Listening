@@ -31,11 +31,19 @@ class InitData: NSObject {
                 genre.img = linkCategory[number!]
                 
                 GenreDataManager.shareInstance.insertGallryRealm(genre)
-               
+                
                 for i in 0 ..< 4 {
-                    let song = Song(genreID: genre.uuid, title: "Making Music", img: "making_music", length: "01:16", number_word: 142, result: 0, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8")
+                    if i == 0 {
+                        let song = Song(genreID: genre.uuid, title: "Making Music", img: "making_music", length: "01:16", number_word: 142, result: 0, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8")
+                        SongDataManager.shareInstance.insertSongRealm(song)
+                    } else if i == 1 {
+                        let song = Song(genreID: genre.uuid, title: "Didier Drogba", img: "drogba", length: "02:41", number_word: 454, result: 0, fileSource: "drogba", linkYoutube: "9bVzXT0B-04")
+                        SongDataManager.shareInstance.insertSongRealm(song)
+                    } else if i == 2 {
+                        let song = Song(genreID: genre.uuid, title: "Central Park Playground", img: "central", length: "01:51", number_word: 285, result: 0, fileSource: "central", linkYoutube: "G1PF7ECvtpQ")
+                        SongDataManager.shareInstance.insertSongRealm(song)
+                    }
                     
-                    SongDataManager.shareInstance.insertSongRealm(song)
                 }
             }
         } catch let _ as NSError {

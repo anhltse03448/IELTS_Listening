@@ -205,7 +205,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
                 self.content.addSubview(viewAnswers!)
                 viewAnswers!.backgroundColor = UIColor.whiteColor()
                 var ok = false
-                if (lbl?.frame.maxY)! + 150 > scrollView.frame.maxY {
+                if (lbl?.frame.maxY)! + 150 > scrollView.frame.height + scrollView.contentOffset.y {
                     ok = false
                 } else {
                     ok = true

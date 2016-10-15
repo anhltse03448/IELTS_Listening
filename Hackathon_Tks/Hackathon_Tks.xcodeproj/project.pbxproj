@@ -39,6 +39,8 @@
 		36B639511DB237E100C9466A /* ListSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B639501DB237E100C9466A /* ListSongViewController.swift */; };
 		36CAD6B81DB26E2300779D35 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CAD6B71DB26E2300779D35 /* SettingTableViewCell.swift */; };
 		36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E8C3B41DAFB9B500517E3B /* SongObject.swift */; };
+		36E93B9B1DB295DD00B6D936 /* drogba.txt in Resources */ = {isa = PBXBuildFile; fileRef = 36E93B9A1DB295DD00B6D936 /* drogba.txt */; };
+		36E93B9D1DB297F400B6D936 /* central.txt in Resources */ = {isa = PBXBuildFile; fileRef = 36E93B9C1DB297F400B6D936 /* central.txt */; };
 		61785B401DB20BA500077039 /* PlaylistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B3F1DB20BA500077039 /* PlaylistDataManager.swift */; };
 		61785B421DB20CC800077039 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B411DB20CC800077039 /* Playlist.swift */; };
 		61785B441DB20E5000077039 /* SongPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B431DB20E5000077039 /* SongPlaylist.swift */; };
@@ -95,6 +97,8 @@
 		36B639501DB237E100C9466A /* ListSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSongViewController.swift; sourceTree = "<group>"; };
 		36CAD6B71DB26E2300779D35 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		36E8C3B41DAFB9B500517E3B /* SongObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongObject.swift; sourceTree = "<group>"; };
+		36E93B9A1DB295DD00B6D936 /* drogba.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = drogba.txt; sourceTree = "<group>"; };
+		36E93B9C1DB297F400B6D936 /* central.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = central.txt; sourceTree = "<group>"; };
 		61785B3F1DB20BA500077039 /* PlaylistDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDataManager.swift; sourceTree = "<group>"; };
 		61785B411DB20CC800077039 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		61785B431DB20E5000077039 /* SongPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylist.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				3619985F1DAD3DB900EBDB78 /* data1.txt */,
 				3619A0011DB167650050D240 /* making_music.txt */,
+				36E93B9A1DB295DD00B6D936 /* drogba.txt */,
+				36E93B9C1DB297F400B6D936 /* central.txt */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -416,11 +422,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E93B9D1DB297F400B6D936 /* central.txt in Resources */,
 				3678D10A1DACD2D20000F342 /* LaunchScreen.storyboard in Resources */,
 				6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */,
 				3678D1071DACD2D20000F342 /* Assets.xcassets in Resources */,
 				361998601DAD3DB900EBDB78 /* data1.txt in Resources */,
 				3678D1051DACD2D20000F342 /* Main.storyboard in Resources */,
+				36E93B9B1DB295DD00B6D936 /* drogba.txt in Resources */,
 				3619A0021DB167650050D240 /* making_music.txt in Resources */,
 				6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */,
 				61785B4D1DB25ACB00077039 /* LaunchScreen.xib in Resources */,
