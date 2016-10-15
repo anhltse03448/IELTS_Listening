@@ -48,8 +48,6 @@ class PlayingView: UIView,YTPlayerViewDelegate {
                 print("play")
                 btnPlay.selected = false
                 playerView!.playVideo()
-                
-                
             }else{
                 self.playerPause()
                 print("pause")
@@ -103,6 +101,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         
     }
     
+    //MARK: youtubeAPI Delegate
     func playerView(playerView: YTPlayerView, didChangeToState state: YTPlayerState) {
         switch (state) {
 //        case YTPlayerState.Unstarted:

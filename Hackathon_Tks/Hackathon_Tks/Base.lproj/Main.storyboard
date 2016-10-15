@@ -1124,43 +1124,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxa-uU-gRl">
                                 <rect key="frame" x="0.0" y="64" width="600" height="73"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-OU-P3X">
-                                        <rect key="frame" x="0.0" y="-64" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPJ-k0-cox">
-                                        <rect key="frame" x="0.0" y="-64" width="30" height="30"/>
-                                        <state key="normal" title="next"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-l3-hUR">
-                                        <rect key="frame" x="365" y="30" width="30" height="30"/>
-                                        <state key="normal" title="next"/>
-                                        <connections>
-                                            <action selector="btnNextTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qvX-6t-gm1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-aK-zqa">
-                                        <rect key="frame" x="285" y="30" width="30" height="30"/>
-                                        <state key="normal" title="play"/>
-                                        <connections>
-                                            <action selector="btnPlayTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJy-LV-tie"/>
-                                        </connections>
-                                    </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-OZ-K1a">
-                                        <rect key="frame" x="192" y="0.0" width="215" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="211" id="nr3-dX-qXJ"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="playSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zpl-HL-3aA"/>
-                                        </connections>
-                                    </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-SP-ggf">
-                                        <rect key="frame" x="189" y="30" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -1195,13 +1158,10 @@
                     <connections>
                         <outlet property="backImg" destination="KRA-LE-mFr" id="e9t-Qc-1Z0"/>
                         <outlet property="backView" destination="Dta-i1-WZo" id="mhB-5L-7VS"/>
-                        <outlet property="btnNextVideo" destination="sPW-l3-hUR" id="VKJ-H0-IoR"/>
-                        <outlet property="btnPre" destination="RUg-SP-ggf" id="c9J-Sk-gWj"/>
                         <outlet property="lblShowMyScore" destination="X1C-Ht-jSO" id="nFF-KE-whB"/>
                         <outlet property="lblTitle" destination="Lzj-2a-wOh" id="HUS-G7-FLA"/>
                         <outlet property="playerView" destination="dxa-uU-gRl" id="2ds-L6-eDQ"/>
                         <outlet property="scrollView" destination="aKR-ft-Ome" id="cdw-Xw-8FD"/>
-                        <outlet property="tbnPlayVideo" destination="dPu-aK-zqa" id="nf0-it-IE7"/>
                         <outlet property="viewShowMyScore" destination="Beg-fR-07h" id="U7q-td-grR"/>
                     </connections>
                 </viewController>
@@ -1254,7 +1214,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6X-HL-BOn">
                                                                 <rect key="frame" x="53" y="6" width="18" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1270,7 +1230,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Gap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ3-Ta-P3c">
                                                                 <rect key="frame" x="25" y="6" width="74" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1302,7 +1262,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgc-0W-kmW">
                                                                 <rect key="frame" x="54" y="6" width="16" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1318,7 +1278,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAl-on-sUv">
                                                                 <rect key="frame" x="-2" y="7" width="128" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
