@@ -38,6 +38,7 @@ class PlayListViewController: BaseViewController {
         tbvPlaylist.reloadData()
     }
     func initViewController() {
+        self.navigationController?.navigationBarHidden = true
         tbvPlaylist.showsVerticalScrollIndicator = false
         tbvPlaylist.tableFooterView = UIView(frame: CGRectZero)
         viewAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.addTap(_:))))
@@ -135,7 +136,17 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
             })
             
         } else {
-            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("ListSongViewController") as! ListSongViewController
+            
+            dest.titleView = listPlayList[indexPath.row].title
+//            let songPlaylist = SongPlaylistDataManager.shareInstance.getAllSongPlaylistRealmById(listPlayList[indexPath.row].uuid)
+//            //dest.listSong =
+//            var listSong = [Song]()
+//            for item in songPlaylist {
+//                let songDB = SongDataManager.shareInstance.findFistSongDbByID(item.uuidSong)
+//                listSong.append(Song(songDb: songDB))
+//            }
+            dest.idPlaylist = listPlayList[indexPath.row].uuid
             
             
             self.navigationController?.pushViewController(dest, animated: true)

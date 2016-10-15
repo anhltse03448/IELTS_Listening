@@ -28,6 +28,7 @@ class PlayingView: UIView,YTPlayerViewDelegate {
         //            }, completion: nil)
         //initPlayerView()
         sliderEditing = false
+        sliderProgress.setThumbImage(UIImage(named: "ic-thumb"), forState: .Normal)
         check = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(checkPlayer), userInfo: nil, repeats: true)
     }
     

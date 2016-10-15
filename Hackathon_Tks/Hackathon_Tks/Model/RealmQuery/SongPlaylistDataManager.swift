@@ -39,6 +39,14 @@ class SongPlaylistDataManager: NSObject {
         
         return playlists
     }
+    func getAllSongPlaylistRealmById(uuid:String) -> [SongPlaylist]{
+        var songPlaylists = [SongPlaylist]()
+        for playlistsDb in realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@",uuid){
+            let ga = SongPlaylist(songPlaylistDB:playlistsDb)
+            songPlaylists.append(ga)
+        }
+        return songPlaylists
+    }
     //truyen id -> sl bai
     func getCountPlaylistRealmById(uuid:String) -> Int{
         let playlistsDb = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@", uuid)
@@ -56,7 +64,14 @@ class SongPlaylistDataManager: NSObject {
             return songPlaylist
         }
     }
-    
+    func deleteSongpFromPlaylist(uuidPlaylist:String,uuidSong:String){
+        let songPlaylists = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@ AND uuidSong = %@",uuidPlaylist,uuidSong)
+        if songPlaylists.count != 0{
+            let song = songPlaylists[0]
+            deleteSongPlaylistRealm(song)
+        }
+
+    }
     func deleteSongPlaylistRealm(songPlaylistDB:SongPlaylistDB){
         try! realm.write {
             realm.delete(songPlaylistDB)
