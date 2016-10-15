@@ -139,14 +139,15 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
             let dest = self.storyboard?.instantiateViewControllerWithIdentifier("ListSongViewController") as! ListSongViewController
             
             dest.titleView = listPlayList[indexPath.row].title
-            let songPlaylist = SongPlaylistDataManager.shareInstance.getAllSongPlaylistRealmById(listPlayList[indexPath.row].uuid)
-            //dest.listSong =
-            var listSong = [Song]()
-            for item in songPlaylist {
-                let songDB = SongDataManager.shareInstance.findFistSongDbByID(item.uuidSong)
-                listSong.append(Song(songDb: songDB))
-            }
-            dest.listSong = listSong
+//            let songPlaylist = SongPlaylistDataManager.shareInstance.getAllSongPlaylistRealmById(listPlayList[indexPath.row].uuid)
+//            //dest.listSong =
+//            var listSong = [Song]()
+//            for item in songPlaylist {
+//                let songDB = SongDataManager.shareInstance.findFistSongDbByID(item.uuidSong)
+//                listSong.append(Song(songDb: songDB))
+//            }
+            dest.idPlaylist = listPlayList[indexPath.row].uuid
+            
             
             self.navigationController?.pushViewController(dest, animated: true)
         }

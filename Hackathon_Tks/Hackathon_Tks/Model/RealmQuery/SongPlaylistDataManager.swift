@@ -64,7 +64,14 @@ class SongPlaylistDataManager: NSObject {
             return songPlaylist
         }
     }
+    func deleteSongpFromPlaylist(uuidPlaylist:String,uuidSong:String){
+        let songPlaylists = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@ AND uuidSong = %@",uuidPlaylist,uuidSong)
+        if songPlaylists.count != 0{
+            let song = songPlaylists[0]
+            deleteSongPlaylistRealm(song)
+        }
 
+    }
     func deleteSongPlaylistRealm(songPlaylistDB:SongPlaylistDB){
         try! realm.write {
             realm.delete(songPlaylistDB)

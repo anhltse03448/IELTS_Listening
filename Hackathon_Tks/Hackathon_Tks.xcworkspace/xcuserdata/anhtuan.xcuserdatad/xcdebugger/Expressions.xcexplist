@@ -14,10 +14,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DetailCategoryViewController.click(DetailCategoryTableViewCell) -&gt; ():DetailCategoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "number.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SearchViewController.textFieldDidChange(UITextField) -&gt; ():SearchViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "textField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FavoriteDataManager.isInFavorites(String) -&gt; Bool:FavoriteDataManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "favorites.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -11,6 +11,7 @@ import Realm
 import RealmSwift
 import Alamofire
 import AlamofireImage
+import Toast_Swift
 
 class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
@@ -127,14 +128,19 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
                 
             })
             break
-        default:
+        case 1:
             if isAddToFavorite {
                 var favorite = Favorite()
                 favorite.songID = currentSongID!
                 FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
+                //self.view.toastViewForMessage("", title: "", image: UIImage(named: "recycle"), style: nil)
+                self.view.makeToast("Add To Favorites")
             } else {
                 FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID(currentSongID!)
+                self.view.makeToast("Remove From Favorites")
             }
+        default:
+            break
             
         }
         

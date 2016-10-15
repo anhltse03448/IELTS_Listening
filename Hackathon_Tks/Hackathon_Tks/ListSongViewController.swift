@@ -14,7 +14,7 @@ class ListSongViewController: BaseViewController {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var backView : UIView!
     var titleView : String?
-    var idCategory : String = ""
+    var idPlaylist : String?
     var currentSongID : String?
     var isAddToFavorite : Bool = false
     
@@ -24,7 +24,7 @@ class ListSongViewController: BaseViewController {
         super.viewDidLoad()
         
         tbl.tableFooterView = UIView(frame: CGRectZero)
-        
+        reloadData()
         self.navigationController?.navigationBarHidden = true
         back_img.userInteractionEnabled = true
         back_img.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ListSongViewController.backTap(_:))))
@@ -35,6 +35,17 @@ class ListSongViewController: BaseViewController {
     
     func backTap(gesture : UITapGestureRecognizer) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func reloadData() {
+        let songPlaylist = SongPlaylistDataManager.shareInstance.getAllSongPlaylistRealmById(idPlaylist!)
+        //dest.listSong =
+        self.listSong.removeAll()
+        for item in songPlaylist {
+            let songDB = SongDataManager.shareInstance.findFistSongDbByID(item.uuidSong)
+            listSong.append(Song(songDb: songDB))
+        }
+        tbl.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +64,9 @@ extension ListSongViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
         
+        cell.showMoreImg.hidden = true
+        cell.showMoreView.hidden = true
+        
         cell.lbl.text = listSong[indexPath.row].title
         cell.durationLbl.text = listSong[indexPath.row].length
         cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
@@ -60,7 +74,7 @@ extension ListSongViewController : UITableViewDataSource , UITableViewDelegate {
         let url = listSong[indexPath.row].img
         cell.img.image = UIImage(named: url)
         
-        cell.delegate = self
+        //cell.delegate = self
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -75,6 +89,17 @@ extension ListSongViewController : UITableViewDataSource , UITableViewDelegate {
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 103
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let currentSongID = listSong[indexPath.row].uuid
+        SongPlaylistDataManager.shareInstance.deleteSongpFromPlaylist(idPlaylist!, uuidSong: currentSongID)
+        reloadData()
+//        let favorite = favorites[indexPath.row]
+//        let favoriteDB = FavoriteDataManager.shareInstance.findFistFavoriteDbByID(favorite.songID)
+//        if favoriteDB.songID != ""{
+//            FavoriteDataManager.shareInstance.deleteFavoriteRealm(favoriteDB)
+//            self.refresh()
+//        }
     }
 
 }

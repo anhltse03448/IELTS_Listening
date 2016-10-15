@@ -706,7 +706,7 @@
                                                                     <rect key="frame" x="0.0" y="22" width="60" height="60"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SW7-8u-FXa">
-                                                                            <rect key="frame" x="1.5" y="16.5" width="57.5" height="26.5"/>
+                                                                            <rect key="frame" x="1" y="16" width="57.5" height="26.5"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                                             <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -791,6 +791,23 @@
                                     <outlet property="delegate" destination="rf7-Fd-1vZ" id="8JV-83-rMW"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZa-K9-pf8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add some lessons to Favorites and enjoy music" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a33-M9-hsZ">
+                                        <rect key="frame" x="60" y="233" width="480" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="a33-M9-hsZ" firstAttribute="centerX" secondItem="XZa-K9-pf8" secondAttribute="centerX" id="k1w-qR-Mt8"/>
+                                    <constraint firstItem="a33-M9-hsZ" firstAttribute="centerY" secondItem="XZa-K9-pf8" secondAttribute="centerY" id="mw4-dU-YnS"/>
+                                    <constraint firstItem="a33-M9-hsZ" firstAttribute="width" secondItem="XZa-K9-pf8" secondAttribute="width" multiplier="1.6 : 2" id="ro0-la-hN8"/>
+                                </constraints>
+                            </view>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIf-cv-oVI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -808,7 +825,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZz-Yb-nkd">
-                                        <rect key="frame" x="554" y="11.5" width="30" height="21"/>
+                                        <rect key="frame" x="554" y="11" width="30" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -829,8 +846,11 @@
                             <constraint firstItem="QRL-on-DbD" firstAttribute="top" secondItem="JBi-9n-xnP" secondAttribute="top" id="06F-FT-RUw"/>
                             <constraint firstAttribute="trailing" secondItem="d3o-Ps-w6E" secondAttribute="trailing" id="0Kq-Aq-8jo"/>
                             <constraint firstItem="kIf-cv-oVI" firstAttribute="top" secondItem="JBi-9n-xnP" secondAttribute="top" id="0tV-Iq-1uB"/>
+                            <constraint firstItem="XZa-K9-pf8" firstAttribute="leading" secondItem="zQG-Hb-rp1" secondAttribute="leading" id="2sg-TF-4vq"/>
                             <constraint firstItem="zQG-Hb-rp1" firstAttribute="top" secondItem="G8u-59-oeg" secondAttribute="bottom" id="B5m-r3-6Eh"/>
+                            <constraint firstItem="XZa-K9-pf8" firstAttribute="trailing" secondItem="zQG-Hb-rp1" secondAttribute="trailing" id="HEp-iU-5nR"/>
                             <constraint firstItem="1wQ-5s-rLj" firstAttribute="top" secondItem="zQG-Hb-rp1" secondAttribute="bottom" id="HdN-B6-qbd"/>
+                            <constraint firstItem="XZa-K9-pf8" firstAttribute="bottom" secondItem="zQG-Hb-rp1" secondAttribute="bottom" id="P6K-FK-faf"/>
                             <constraint firstItem="kIf-cv-oVI" firstAttribute="leading" secondItem="JBi-9n-xnP" secondAttribute="leading" id="VDC-oJ-BBj"/>
                             <constraint firstItem="zQG-Hb-rp1" firstAttribute="top" secondItem="d3o-Ps-w6E" secondAttribute="bottom" id="ZBN-Lj-Chy"/>
                             <constraint firstItem="QRL-on-DbD" firstAttribute="leading" secondItem="JBi-9n-xnP" secondAttribute="leading" id="ak4-ks-79y"/>
@@ -838,6 +858,7 @@
                             <constraint firstAttribute="trailing" secondItem="zQG-Hb-rp1" secondAttribute="trailing" id="eKz-Ma-D1W"/>
                             <constraint firstAttribute="trailing" secondItem="kIf-cv-oVI" secondAttribute="trailing" id="gnD-Zz-z9o"/>
                             <constraint firstItem="zQG-Hb-rp1" firstAttribute="leading" secondItem="JBi-9n-xnP" secondAttribute="leading" id="hsd-6K-sZh"/>
+                            <constraint firstItem="XZa-K9-pf8" firstAttribute="top" secondItem="zQG-Hb-rp1" secondAttribute="top" id="t4G-AW-dYe"/>
                             <constraint firstAttribute="trailing" secondItem="QRL-on-DbD" secondAttribute="trailing" id="v6L-DI-3ZX"/>
                             <constraint firstItem="d3o-Ps-w6E" firstAttribute="leading" secondItem="JBi-9n-xnP" secondAttribute="leading" id="zQW-O3-hDd"/>
                         </constraints>
@@ -852,6 +873,7 @@
                         <outlet property="lblEdit" destination="xZz-Yb-nkd" id="Ctm-uH-sSz"/>
                         <outlet property="tbl" destination="zQG-Hb-rp1" id="h68-9v-jii"/>
                         <outlet property="tbvFavorite" destination="zQG-Hb-rp1" id="NPH-zt-dc9"/>
+                        <outlet property="viewNil" destination="XZa-K9-pf8" id="d8t-dY-8QS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOc-Gl-aHU" userLabel="First Responder" sceneMemberID="firstResponder"/>

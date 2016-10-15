@@ -12,14 +12,16 @@ class FavoriteViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     var favorites: [Favorite] = [Favorite]()
     @IBOutlet weak var lblEdit : UILabel!
+    @IBOutlet weak var viewNil : UIView!
     var isEditting : Bool = false
     var listCellTap = [Int]()
 
+    var currentFavorite : Favorite?
     
     @IBOutlet weak var tbvFavorite: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewNil.hidden = false
         lblEdit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FavoriteViewController.btnTapEdit(_:))))
         tbl.tableFooterView = UIView(frame: CGRectZero)
         tbl.tintColor = GREEN_COLOR
@@ -73,6 +75,11 @@ class FavoriteViewController: BaseViewController {
         } else {
             lblEdit.hidden = true
         }
+        if favorites.count == 0 {
+            viewNil.hidden = false
+        } else {
+            viewNil.hidden = true
+        }
     }
     
     func refresh(){
@@ -105,6 +112,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
             cell.countLbl.text = String(format: "%d",song.number_word)
             cell.lblScore.text = String(format: "%.0f", song.result * 100) + "%"
         }
+        cell.delegate = self
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -139,5 +147,39 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
                 self.hideLoadingHUD()
             }
         }
+    }
+}
+extension FavoriteViewController : UIActionSheetDelegate {
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch buttonIndex {
+        case 2:
+            let dest = self.storyboard?.instantiateViewControllerWithIdentifier("PlayListViewController") as! PlayListViewController
+            let currentSongID = currentFavorite?.songID
+            dest.uuidSong = currentSongID
+            dest.isFromOther = true
+            self.presentViewController(dest, animated: true, completion: {
+                
+            })
+            break
+        case 1:
+            FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID((currentFavorite?.songID)!)
+            refresh()
+            self.view.makeToast("Remove From Favorites")
+        default:
+            break
+        }
+        
+    }
+}
+extension FavoriteViewController : DetailCategoryDelegate {
+    func click(cell: DetailCategoryTableViewCell) {
+        let number = tbl.indexPathForCell(cell)
+        currentFavorite = favorites[number!.row]
+        var textToPlaylist = "Remove From Favorite"
+        let actionSheet = UIActionSheet(title: "Choose Option", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: textToPlaylist, "Add to Playlist")
+        actionSheet.tintColor = UIColor.init(rgba: "#5fb760")
+        
+        actionSheet.showInView(self.view)
     }
 }
