@@ -42,6 +42,7 @@
 		61785B421DB20CC800077039 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B411DB20CC800077039 /* Playlist.swift */; };
 		61785B441DB20E5000077039 /* SongPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B431DB20E5000077039 /* SongPlaylist.swift */; };
 		61785B461DB20EB700077039 /* SongPlaylistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61785B451DB20EB700077039 /* SongPlaylistDataManager.swift */; };
+		61785B4D1DB25ACB00077039 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61785B4C1DB25ACB00077039 /* LaunchScreen.xib */; };
 		619567381DB0B83900B640DD /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619567361DB0B83900B640DD /* PlayingView.swift */; };
 		6195673D1DB0BA5300B640DD /* UTM Avo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673B1DB0BA5300B640DD /* UTM Avo.ttf */; };
 		6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */; };
@@ -96,6 +97,7 @@
 		61785B411DB20CC800077039 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		61785B431DB20E5000077039 /* SongPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylist.swift; sourceTree = "<group>"; };
 		61785B451DB20EB700077039 /* SongPlaylistDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylistDataManager.swift; sourceTree = "<group>"; };
+		61785B4C1DB25ACB00077039 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		619567361DB0B83900B640DD /* PlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
 		6195673B1DB0BA5300B640DD /* UTM Avo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM Avo.ttf"; sourceTree = "<group>"; };
 		6195673C1DB0BA5300B640DD /* UTM God's WordR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UTM God's WordR.ttf"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				366D706D1DACDE340056B487 /* ViewController */,
 				3678D0FF1DACD2D20000F342 /* AppDelegate.swift */,
 				3678D1061DACD2D20000F342 /* Assets.xcassets */,
+				61785B4C1DB25ACB00077039 /* LaunchScreen.xib */,
 				3678D1031DACD2D20000F342 /* Main.storyboard */,
 				3678D1081DACD2D20000F342 /* LaunchScreen.storyboard */,
 				3678D10B1DACD2D20000F342 /* Info.plist */,
@@ -383,6 +386,7 @@
 				TargetAttributes = {
 					3678D0FB1DACD2D20000F342 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9K25G2ZLRD;
 					};
 				};
 			};
@@ -416,6 +420,7 @@
 				3678D1051DACD2D20000F342 /* Main.storyboard in Resources */,
 				3619A0021DB167650050D240 /* making_music.txt in Resources */,
 				6195673E1DB0BA5300B640DD /* UTM God's WordR.ttf in Resources */,
+				61785B4D1DB25ACB00077039 /* LaunchScreen.xib in Resources */,
 				61D1941B1DB0C6980065D677 /* PlayingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,10 +636,13 @@
 			baseConfigurationReference = 9F9970AA41C3F23C38754C6B /* Pods-Hackathon_Tks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hackathon_Tks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TuanAnh.Hackathon-Tks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -643,10 +651,13 @@
 			baseConfigurationReference = C3FEACDB8A850774FF059C4D /* Pods-Hackathon_Tks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hackathon_Tks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TuanAnh.Hackathon-Tks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
