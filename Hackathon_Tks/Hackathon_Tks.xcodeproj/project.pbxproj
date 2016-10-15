@@ -25,6 +25,8 @@
 		3619A0021DB167650050D240 /* making_music.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3619A0011DB167650050D240 /* making_music.txt */; };
 		361AFA021DAF304D005D5768 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AFA011DAF304D005D5768 /* BaseViewController.swift */; };
 		363453A21DB1017500D12CE0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363453A11DB1017500D12CE0 /* ResultViewController.swift */; };
+		364009121DB2063400DBCC07 /* PlaylistDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364009111DB2063400DBCC07 /* PlaylistDB.swift */; };
+		364009141DB2068F00DBCC07 /* SongPlaylistDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364009131DB2068F00DBCC07 /* SongPlaylistDB.swift */; };
 		366D70711DACDEB10056B487 /* UIColor-Hex-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */; };
 		366D70721DACDEB10056B487 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */; };
 		366D70771DACE0A90056B487 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366D70761DACE0A90056B487 /* Utils.swift */; };
@@ -70,6 +72,8 @@
 		3619A0011DB167650050D240 /* making_music.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = making_music.txt; sourceTree = "<group>"; };
 		361AFA011DAF304D005D5768 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		363453A11DB1017500D12CE0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		364009111DB2063400DBCC07 /* PlaylistDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDB.swift; sourceTree = "<group>"; };
+		364009131DB2068F00DBCC07 /* SongPlaylistDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlaylistDB.swift; sourceTree = "<group>"; };
 		366D706F1DACDEB10056B487 /* UIColor-Hex-Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Hex-Swift.swift"; sourceTree = "<group>"; };
 		366D70701DACDEB10056B487 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		366D70761DACE0A90056B487 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 				61BB16C61DB1C1570084483D /* FavoriteDB.swift */,
 				61BB16C71DB1C1570084483D /* GenreDB.swift */,
 				61BB16C81DB1C1570084483D /* SongDB.swift */,
+				364009111DB2063400DBCC07 /* PlaylistDB.swift */,
+				364009131DB2068F00DBCC07 /* SongPlaylistDB.swift */,
 			);
 			path = RealmObject;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				61BB16C91DB1C1570084483D /* FavoriteDB.swift in Sources */,
 				3619985D1DAD397D00EBDB78 /* MyUIView.swift in Sources */,
 				3612E88D1DAE24F70000F4E5 /* SettingViewController.swift in Sources */,
+				364009141DB2068F00DBCC07 /* SongPlaylistDB.swift in Sources */,
 				3612E8981DAE2AD50000F4E5 /* DetailCategoryTableViewCell.swift in Sources */,
 				366D70721DACDEB10056B487 /* UIView+IBInspectable.swift in Sources */,
 				3612E8911DAE27600000F4E5 /* CategoryTableViewCell.swift in Sources */,
@@ -476,6 +483,7 @@
 				3678D1001DACD2D20000F342 /* AppDelegate.swift in Sources */,
 				3612E8831DAE22CC0000F4E5 /* Constant.swift in Sources */,
 				61BB16D21DB1C5200084483D /* GenreDataManager.swift in Sources */,
+				364009121DB2063400DBCC07 /* PlaylistDB.swift in Sources */,
 				3612E8951DAE28930000F4E5 /* DetailCategoryViewController.swift in Sources */,
 				36E8C3B51DAFB9B500517E3B /* SongObject.swift in Sources */,
 				3612E8891DAE24DC0000F4E5 /* FavoriteViewController.swift in Sources */,

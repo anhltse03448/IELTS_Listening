@@ -52,13 +52,29 @@ class FavoriteDataManager: NSObject {
         }
     }
     
-    func DeleteFavoriteRealm(favoriteDB:FavoriteDB){
+    func isInFavorites(songID : String) -> Bool {
+        let favorites = realm.objects(FavoriteDB).filter("songID = %@",songID)
+        var favorite = FavoriteDB()
+        if favorites.count != 0{            
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    func deleteFavoriteRealm(favoriteDB:FavoriteDB){
         try! realm.write {
             realm.delete(favoriteDB)
         }
     }
     
-    func DeleteAllFavorite(){
+    func deleteFavoriteRealmByUUID(songID : String){
+        let favoriteDB = findFistFavoriteDbByID(songID)
+        deleteFavoriteRealm(favoriteDB)
+    }
+        
+    
+    func deleteAllFavorite(){
         for favoriteDb in realm.objects(FavoriteDB){
             try! realm.write {
                 realm.delete(favoriteDb)

@@ -11,6 +11,7 @@ import UIKit
 class PlayListViewController: BaseViewController {
     @IBOutlet weak var viewAdd : UIView!
     @IBOutlet weak var tbl : UITableView!
+    @IBOutlet weak var lblCancel : UILabel!
     
     var listPlayList = [String]()
     
@@ -19,13 +20,25 @@ class PlayListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViewController()        
+    }
+    
+    func initViewController() {
         viewAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.addTap(_:))))
+        lblCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.dismisViewController(_:))))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
+    
+    func dismisViewController(gesture : UITapGestureRecognizer) {
+        self.dismissViewControllerAnimated(true) {
+            
+        }
+    }
+
     
     func addTap(gesture : UITapGestureRecognizer){
         alert.delegate = self
@@ -59,7 +72,7 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("PlaylistTableViewCell") as! PlaylistTableViewCell
-        cell.lbl.text = listPlayList[indexPath.row]
+        
         return cell
     }
 }

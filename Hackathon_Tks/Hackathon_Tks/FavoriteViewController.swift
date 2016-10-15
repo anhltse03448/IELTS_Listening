@@ -38,7 +38,7 @@ class FavoriteViewController: BaseViewController {
         let alertController = UIAlertController(title: "Delete All Favorite", message: "Do you sure want Delete All", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
-            FavoriteDataManager.shareInstance.DeleteAllFavorite()
+            FavoriteDataManager.shareInstance.deleteAllFavorite()
             self.refresh() 
         }
         let Cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (result : UIAlertAction) -> Void in
@@ -80,7 +80,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         let favorite = favorites[indexPath.row]
         let favoriteDB = FavoriteDataManager.shareInstance.findFistFavoriteDbByID(favorite.songID)
         if favoriteDB.songID != ""{
-            FavoriteDataManager.shareInstance.DeleteFavoriteRealm(favoriteDB)
+            FavoriteDataManager.shareInstance.deleteFavoriteRealm(favoriteDB)
             self.refresh()
         }
     }

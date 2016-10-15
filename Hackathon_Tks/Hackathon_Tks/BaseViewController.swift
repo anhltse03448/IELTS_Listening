@@ -29,4 +29,6 @@ class BaseViewController: UIViewController {
     func hideLoadingHUD() {
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
+    
+    
 }
