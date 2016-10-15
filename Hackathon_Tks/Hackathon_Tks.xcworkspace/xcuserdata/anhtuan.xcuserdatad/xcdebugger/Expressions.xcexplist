@@ -14,10 +14,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CategoryViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:CategoryViewController.swift">
+         contextName = "SongPlaylistDataManager.getCountPlaylistRealmById(String) -&gt; Int:SongPlaylistDataManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "listCategory[indexPath.row].img">
+               value = "playlistsDb.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -26,6 +26,14 @@
          <PersistentStrings>
             <PersistentString
                value = "currentSongID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CategoryViewController.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:CategoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listCategory[indexPath.row].img">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

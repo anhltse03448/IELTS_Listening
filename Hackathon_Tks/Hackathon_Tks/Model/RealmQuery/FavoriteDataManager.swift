@@ -44,7 +44,7 @@ class FavoriteDataManager: NSObject {
     func findFistFavoriteDbByID(songID:String) -> FavoriteDB{
         let favorites = realm.objects(FavoriteDB).filter("songID = %@",songID)
         var favorite = FavoriteDB()
-        if favorites.count == 1{
+        if favorites.count != 0{
             favorite = favorites[0]
             return favorite
         }else {

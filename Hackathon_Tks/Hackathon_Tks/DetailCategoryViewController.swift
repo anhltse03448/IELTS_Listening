@@ -117,6 +117,8 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
         switch buttonIndex {
         case 2:
             let dest = self.storyboard?.instantiateViewControllerWithIdentifier("PlayListViewController") as! PlayListViewController
+            dest.uuidSong = currentSongID
+            dest.isFromOther = true
             self.presentViewController(dest, animated: true, completion: { 
                 
             })

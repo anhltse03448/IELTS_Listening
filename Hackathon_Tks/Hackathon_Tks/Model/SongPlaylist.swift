@@ -11,12 +11,16 @@ struct SongPlaylist {
     var uuidPlaylist : String
     var uuidSong : String
     init(){
-        self.uuidPlaylist = ""
+        self.uuidPlaylist = NSUUID().UUIDString
         self.uuidSong = ""
     }
     
     init(songPlaylistDB:SongPlaylistDB){
         self.uuidPlaylist = songPlaylistDB.uuidPlaylist
         self.uuidSong = songPlaylistDB.uuidSong
+    }
+    init(uuidPlaylist : String , uuidSong : String) {
+        self.uuidPlaylist = uuidPlaylist
+        self.uuidSong = uuidSong
     }
 }
