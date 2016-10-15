@@ -10,11 +10,11 @@ import UIKit
 
 class PlayListViewController: BaseViewController {
     @IBOutlet weak var viewAdd : UIView!
-    @IBOutlet weak var tbl : UITableView!
     @IBOutlet weak var lblCancel : UILabel!
     
-    var listPlayList = [String]()
-    
+    @IBOutlet weak var tbvPlaylist: UITableView!
+  //  var listPlayList = [String]()
+    var listPlayList:[Playlist] = [Playlist]()
     let alert = UIAlertView()
     
     
@@ -22,7 +22,19 @@ class PlayListViewController: BaseViewController {
         super.viewDidLoad()
         initViewController()        
     }
+    override func viewDidAppear(animated: Bool) {
+        self.refresh()
+        self.viewWillAppear(true)
+    }
+    func loadData(){
+        listPlayList.removeAll()
+        listPlayList = PlaylistDataManager.shareInstance.getAllPlaylistRealm()
+    }
     
+    func refresh(){
+        loadData()
+        tbvPlaylist.reloadData()
+    }
     func initViewController() {
         viewAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.addTap(_:))))
         lblCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PlayListViewController.dismisViewController(_:))))
@@ -57,8 +69,11 @@ extension PlayListViewController : UIAlertViewDelegate {
         if buttonIndex == 0 { //cancel
             
         } else {
-            listPlayList.insert("\(alert.textFieldAtIndex(0)?.text)", atIndex: 0)
-            self.tbl.reloadData()
+            let namTexfiled = alert.textFieldAtIndex(0)?.text
+            var playList = Playlist()
+            playList.title = namTexfiled!
+            PlaylistDataManager.shareInstance.insertPlaylistRealm(playList)
+            self.tbvPlaylist.reloadData()
         }
     }
 }
@@ -71,7 +86,7 @@ extension PlayListViewController : UITableViewDataSource , UITableViewDelegate {
         return listPlayList.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tbl.dequeueReusableCellWithIdentifier("PlaylistTableViewCell") as! PlaylistTableViewCell
+        let cell = tbvPlaylist.dequeueReusableCellWithIdentifier("PlaylistTableViewCell") as! PlaylistTableViewCell
         
         return cell
     }

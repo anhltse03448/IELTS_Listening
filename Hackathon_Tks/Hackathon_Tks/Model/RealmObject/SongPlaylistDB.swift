@@ -12,4 +12,5 @@ import RealmSwift
 class SongPlaylistDB: Object {
     dynamic var uuidPlaylist : String = ""
     dynamic var uuidSong : String = ""
+    dynamic var createDate = NSDate()
 }
