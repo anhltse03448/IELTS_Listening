@@ -12,24 +12,16 @@ import RealmSwift
 
 class SearchViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
+    @IBOutlet weak var searchBar : UISearchBar!
+    @IBOutlet weak var viewNil : UIView!
     var listSong = [Song]()
     var realm : Realm?
-    @IBOutlet weak var searchTextField: UITextField!
+    
     var isAddToFavorite : Bool = false
     var currentSongID : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewController()
-        searchTextField.text = ""
-        
-        let keyboardDoneButtonView = UIToolbar.init()
-        keyboardDoneButtonView.sizeToFit()
-        let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done,
-                                              target: self,
-                                              action: #selector(SearchViewController.doneClicked(_:)))
-        
-        keyboardDoneButtonView.items = [doneButton]
-        searchTextField.inputAccessoryView = keyboardDoneButtonView
         
         try! realm = Realm()
 
@@ -39,50 +31,20 @@ class SearchViewController: BaseViewController {
     }
     
     func initViewController() {
-        customizeSearchTextField()
+        tbl.showsVerticalScrollIndicator = false
+        tbl.tableFooterView = UIView(frame: CGRectZero)
+        viewNil.hidden = false
+        //customizeSearchTextField()
+    }
+    
+    func cancelTap(gesture : UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func customizeSearchTextField() {
-        searchTextField.leftViewMode = .UnlessEditing
-        let leftImageView = UIImageView(frame: CGRectMake(4, 0, 26, 18))
-        leftImageView.contentMode = .ScaleAspectFit
-        leftImageView.image = UIImage(named: "searchIcon")
-        searchTextField.leftView = leftImageView
-        
-        let cancelButton = UIButton(frame: CGRectMake(0, 0, 50, 30))
-        cancelButton.setTitle("Cancel", forState: .Normal)
-        cancelButton.titleLabel?.font = UIFont.systemFontOfSize(13)
-        cancelButton.setTitleColor(UIColor.init(rgba: "#5FB760"), forState: .Normal)
-        cancelButton.addTarget(self, action: #selector(SearchViewController.clearSearchTextField), forControlEvents: UIControlEvents.TouchUpInside)
-        searchTextField.rightView = cancelButton
-        searchTextField.rightViewMode = .WhileEditing
-        searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-    }
-    
-    func clearSearchTextField() {
-        searchTextField.resignFirstResponder()
-        searchTextField.text = ""
-        //tbl.hidden = true
-    }
-    func textFieldDidChange(textField: UITextField) {
-        NSLog("\(searchTextField.text)")
-        let result = realm?.objects(SongDB).filter("title CONTAINS[c] %@",textField.text!).sorted("title")
-        listSong.removeAll()
-        if result != nil {
-            for item in result! {
-                listSong.append(Song(songDb: item))
-            }
-        }
-        tbl.reloadData()
-    }
-    
-    
-
 }
 extension SearchViewController : UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -175,5 +137,36 @@ extension SearchViewController : UIActionSheetDelegate {
             
         }
         
+    }
+}
+extension SearchViewController : UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
+        let result = realm?.objects(SongDB).filter("title CONTAINS[c] %@",searchText).sorted("title")
+        listSong.removeAll()
+        if result != nil {
+            for item in result! {
+                listSong.append(Song(songDb: item))
+            }
+        }
+        if listSong.count != 0 {
+            viewNil.hidden = true
+        } else {
+            viewNil.hidden = false
+        }
+        tbl.reloadData()
+
+    }
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        self.view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        self.view.endEditing(true)
     }
 }
