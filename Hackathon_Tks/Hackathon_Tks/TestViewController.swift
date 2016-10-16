@@ -90,7 +90,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
             content.addSubview(lbl)
             sizeHeight = lbl.frame.height
             
-            if currentLength + lbl.frame.width < SIZE_WIDTH {
+            if currentLength + lbl.frame.width < SIZE_WIDTH - 10 {
                 currentLength = currentLength + lbl.frame.width
                 if previousLeft == nil {
                     if previousTop == nil {

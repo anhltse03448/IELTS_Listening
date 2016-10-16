@@ -84,6 +84,7 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tbl.deselectRowAtIndexPath(indexPath, animated: true)
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("TestViewController") as! TestViewController
         dest.currentSong = listSong[indexPath.row]
         dest.titleTab = listSong[indexPath.row].title

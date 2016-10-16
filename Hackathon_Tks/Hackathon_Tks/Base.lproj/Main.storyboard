@@ -31,7 +31,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Search lessons" translatesAutoresizingMaskIntoConstraints="NO" id="JSQ-uK-JvJ">
                                         <rect key="frame" x="16" y="0.0" width="568" height="44"/>
-                                        <color key="tintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="barTintColor" red="0.37254901959999998" green="0.71764705880000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>

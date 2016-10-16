@@ -31,8 +31,10 @@ class InitData: NSObject {
                 genre.img = linkCategory[number!]
                 
                 GenreDataManager.shareInstance.insertGallryRealm(genre)
-                
-                for i in 0 ..< 4 {
+                if number != 0 {
+                    //continue
+                }
+                for i in 0 ..< 5 {
                     if i == 0 {
                         let song = Song(genreID: genre.uuid, title: "Making Music", img: "making_music", length: "01:16", number_word: 142, result: 0, fileSource: "making_music", linkYoutube: "bfLCtQWPNl8")
                         SongDataManager.shareInstance.insertSongRealm(song)
@@ -42,6 +44,14 @@ class InitData: NSObject {
                     } else if i == 2 {
                         let song = Song(genreID: genre.uuid, title: "Central Park Playground", img: "central", length: "01:51", number_word: 285, result: 0, fileSource: "central", linkYoutube: "G1PF7ECvtpQ")
                         SongDataManager.shareInstance.insertSongRealm(song)
+                    } else if i == 3 {
+                        let song = Song(genreID: genre.uuid, title: "Hongkong", img: "hongkong", length: "01:26", number_word: 218, result: 0, fileSource: "Hongkong", linkYoutube: "LYWrPHaYAws")
+                        SongDataManager.shareInstance.insertSongRealm(song)
+                        //https://youtu.be/LYWrPHaYAws
+                    } else if i == 4 {
+                        let song = Song(genreID: genre.uuid, title: "A survey on transport", img: "survey", length: "01:21", number_word: 223, result: 0, fileSource: "survey", linkYoutube: "YUPq2tUkiRo")
+                        SongDataManager.shareInstance.insertSongRealm(song)
+                        //https://youtu.be/YUPq2tUkiRo
                     }
                     
                 }
