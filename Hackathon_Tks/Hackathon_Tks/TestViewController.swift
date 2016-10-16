@@ -23,15 +23,6 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     @IBOutlet weak var viewShowMyScore : UIView!
     
     @IBOutlet weak var backView : UIView!
-
-    @IBOutlet weak var btnNextVideo: UIButton!
-    
-    @IBOutlet weak var tbnPlayVideo: UIButton!
-    
-    @IBOutlet weak var btnPre: UIButton!
-    
-    @IBOutlet weak var playSlider: UISlider!
-    
     @IBOutlet weak var img_favorite : UIImageView!
     
      var meterTimer:NSTimer?
