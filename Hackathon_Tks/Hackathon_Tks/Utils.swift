@@ -64,7 +64,7 @@ class Utils: NSObject {
     }
     
     class func checkIsFavorite(uuid : String) -> Bool {
-        return false
+        return FavoriteDataManager.shareInstance.isInFavorites(uuid)
     }
 }
 

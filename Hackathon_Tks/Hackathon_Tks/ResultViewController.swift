@@ -21,12 +21,12 @@ class ResultViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contentSizeInPopup = CGSizeMake(300, 240)
+        self.contentSizeInPopup = CGSizeMake(280, 220)
         self.landscapeContentSizeInPopup = CGSizeMake(300, 170)
         self.popupController.navigationBar.hidden = true
         self.popupController.navigationBarHidden = true
+        self.popupController.containerView.cornerRadius = 3
         viewResult.cornerRadius = viewResult.frame.width / 2
-        viewResult.backgroundColor = UIColor.init(rgba: "#5fb760")
         
         lblResult.text = String(format: "%.0f", (Float(count_true_answer!) / Float(total!) ) * 100) + "%"
         lblTrueAnswers.text = "\(count_true_answer!)"

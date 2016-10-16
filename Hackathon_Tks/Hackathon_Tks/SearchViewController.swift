@@ -18,6 +18,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewController()
+        searchTextField.text = ""
         
         try! realm = Realm()
 
@@ -54,6 +55,7 @@ class SearchViewController: BaseViewController {
         //tbl.hidden = true
     }
     func textFieldDidChange(textField: UITextField) {
+        NSLog("\(textField.text)")
         let result = realm?.objects(SongDB).filter("title CONTAINS %@",textField.text!).sorted("title")
         listSong.removeAll()
         if result != nil {
@@ -90,12 +92,19 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate {
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCellWithIdentifier("DetailCategoryTableViewCell") as! DetailCategoryTableViewCell
+        
         cell.lbl.text = listSong[indexPath.row].title
+        cell.durationLbl.text = listSong[indexPath.row].length
+        cell.countLbl.text = "\(listSong[indexPath.row].number_word)"
+        cell.lblScore.text =  String(format: "%.0f%", listSong[indexPath.row].result) //"\(listSong[indexPath.row].result)"
+        let url = listSong[indexPath.row].img
+        cell.img.image = UIImage(named: url)
+        
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 61
+        return 103
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
