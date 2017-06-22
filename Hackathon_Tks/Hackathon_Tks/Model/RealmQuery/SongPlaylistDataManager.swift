@@ -7,14 +7,15 @@
 //
 
 import Foundation
-import RealmSwift
+import Realm
 
 class SongPlaylistDataManager: NSObject {
     static var shareInstance = SongPlaylistDataManager()
     var realm = try! Realm()
     
     func insertSongPlaylistRealm(songPlayListDb:SongPlaylist){
-        let newSongPlaylistDb = findFistSongPlaylistDbByID(songPlayListDb.uuidSong)
+        //let newSongPlaylistDb = findFistSongPlaylistDbByID(songPlayListDb.uuidSong)
+        let newSongPlaylistDb = isExistSongByPlayID(songPlayListDb.uuidPlaylist, uuidSong: songPlayListDb.uuidSong)
         if newSongPlaylistDb.uuidSong != "" {
             try! realm.write {
                 newSongPlaylistDb.createDate = NSDate()
@@ -83,6 +84,18 @@ class SongPlaylistDataManager: NSObject {
             try! realm.write {
                 realm.delete(songplaylistDB)
             }
+        }
+    }
+    
+    func isExistSongByPlayID(uuidPlaylist:String , uuidSong : String) -> SongPlaylistDB{
+        //let pre = NSPredicate.init(format: "uuidSong = %@", uuid)
+        let songPlaylists = realm.objects(SongPlaylistDB).filter("uuidPlaylist = %@ AND uuidSong = %@",uuidPlaylist , uuidSong)
+        var songPlaylist = SongPlaylistDB()
+        if songPlaylists.count != 0{
+            songPlaylist = songPlaylists[0]
+            return songPlaylist
+        }else {
+            return songPlaylist
         }
     }
 }

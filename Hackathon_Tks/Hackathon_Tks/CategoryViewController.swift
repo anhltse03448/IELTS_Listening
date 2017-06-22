@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import AlamofireImage
 import Alamofire
+import JLToast
 
 class CategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
@@ -77,10 +78,16 @@ extension CategoryViewController : CategoryProtocol {
         let number = tbl.indexPathForCell(cell)
         
         let dest = self.storyboard?.instantiateViewControllerWithIdentifier("DetailCategoryViewController") as! DetailCategoryViewController
-        let item = listCategory[(number?.row)! * 2 + index]
-        dest.idCategory = item.uuid
-        dest.titleView = item.title
+        if number?.row != 0 {
+            //Toast(text: "This version is not available!", duration: Delay.long)
+            JLToast.makeText("This version is not avaiable", duration: 1).show()
+        } else {
+            let item = listCategory[(number?.row)! * 2 + index]
+            dest.idCategory = item.uuid
+            dest.titleView = item.title
+            
+            self.navigationController?.pushViewController(dest, animated: true)
+        }
         
-        self.navigationController?.pushViewController(dest, animated: true)
     }
 }

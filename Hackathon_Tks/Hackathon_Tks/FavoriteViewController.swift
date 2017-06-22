@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JLToast
 
 class FavoriteViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
@@ -27,6 +28,10 @@ class FavoriteViewController: BaseViewController {
         tbl.tintColor = GREEN_COLOR
         tbl.showsVerticalScrollIndicator = false
         
+        loadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         loadData()
     }
     
@@ -126,6 +131,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         let favoriteDB = FavoriteDataManager.shareInstance.findFistFavoriteDbByID(favorite.songID)
         if favoriteDB.songID != ""{
             FavoriteDataManager.shareInstance.deleteFavoriteRealm(favoriteDB)
+            JLToast.makeText("Remove from Favorites", duration: 2).show()
             self.refresh()
         }
     }
@@ -170,7 +176,8 @@ extension FavoriteViewController : UIActionSheetDelegate {
         case 1:
             FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID((currentFavorite?.songID)!)
             refresh()
-            self.view.makeToast("Remove From Favorites")
+            JLToast.makeText("Remove from favorites", duration: 2).show()
+            //self.view.makeToast("Remove From Favorites")
         default:
             break
         }

@@ -11,13 +11,14 @@ import Realm
 import RealmSwift
 import Alamofire
 import AlamofireImage
-import Toast_Swift
+import JLToast
 
 class DetailCategoryViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     @IBOutlet weak var back_img : UIImageView!
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var backView : UIView!
+    @IBOutlet weak var viewNil : UIView!
     var titleView : String?
     var idCategory : String = ""
     var currentSongID : String?
@@ -34,6 +35,7 @@ class DetailCategoryViewController: BaseViewController {
         back_img.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryViewController.backTap(_:))))
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DetailCategoryViewController.backTap(_:))))
         
+        
         self.lblTitle.text = titleView
     }
     override func viewWillAppear(animated: Bool) {
@@ -48,6 +50,11 @@ class DetailCategoryViewController: BaseViewController {
             for item in listSongDB {
                 listSong.append(Song(songDb: item))
             }
+        }
+        if listSong.count == 0 {
+            viewNil.hidden = false
+        } else {
+            viewNil.hidden = true
         }
         tbl.reloadData()
     }
@@ -133,11 +140,13 @@ extension DetailCategoryViewController : UIActionSheetDelegate {
                 var favorite = Favorite()
                 favorite.songID = currentSongID!
                 FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
+                JLToast.makeText("Add to Favorites", duration: 2).show()
                 //self.view.toastViewForMessage("", title: "", image: UIImage(named: "recycle"), style: nil)
-                self.view.makeToast("Add To Favorites")
+                
             } else {
                 FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID(currentSongID!)
-                self.view.makeToast("Remove From Favorites")
+                JLToast.makeText("Remove from Favorites", duration: 2).show()
+                //self.view.makeToast("Remove From Favorites")
             }
         default:
             break

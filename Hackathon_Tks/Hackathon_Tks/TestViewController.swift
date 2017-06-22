@@ -13,6 +13,8 @@ import youtube_ios_player_helper
 import Realm
 import RealmSwift
 import STPopup
+import JLToast
+
 
 class TestViewController : BaseViewController,YTPlayerViewDelegate {
 
@@ -40,6 +42,7 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
     var FONT_SIZE : CGFloat = 19
     var viewAnswers : UIView?
     var currentTargetLabel : MyLabel?
+    var viewPlayer : PlayingView?
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -162,16 +165,17 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         img_favorite.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(TestViewController.heart_tap(_:))))
     }
     func initPlayerView(){
-        let viewPlayer = UIView.loadFromNibNamed("PlayingView") as! PlayingView
-        viewPlayer.frame = CGRect(x: 0,y: 64,width: Constant.Systems.screen_size.width,height: 73)
-        viewPlayer.initPlayerView(currentSong!.linkYoutube)
-        self.view.addSubview(viewPlayer)
+        viewPlayer = UIView.loadFromNibNamed("PlayingView") as! PlayingView
+        viewPlayer!.frame = CGRect(x: 0,y: 64,width: Constant.Systems.screen_size.width,height: 73)
+        viewPlayer!.initPlayerView(currentSong!.linkYoutube)
+        self.view.addSubview(viewPlayer!)
     }
     func backTap(gesture : UITapGestureRecognizer) {
         self.dismissViewControllerAnimated(true) { 
-            
+            self.viewPlayer!.playerView?.stopVideo()
         }
     }
+    
     func labelTap (gesture : UITapGestureRecognizer){
         currentTargetLabel = nil
         if self.viewAnswers != nil {
@@ -288,9 +292,11 @@ class TestViewController : BaseViewController,YTPlayerViewDelegate {
         if Utils.checkIsFavorite((currentSong?.uuid)!) {
             FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID((currentSong?.uuid)!)
             img_favorite.image = UIImage(named: "heart_white")
+            JLToast.makeText("Remove from Favorites", duration: 2).show()
         } else {
             FavoriteDataManager.shareInstance.insertFavoriteRealm(Favorite(songID: (currentSong?.uuid)!))
             img_favorite.image = UIImage(named: "heart_red")
+            JLToast.makeText("Add to Favorites", duration: 2).show()
         }
         
     }

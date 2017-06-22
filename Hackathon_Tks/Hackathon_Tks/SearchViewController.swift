@@ -9,6 +9,7 @@
 import UIKit
 import Realm
 import RealmSwift
+import JLToast
 
 class SearchViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
@@ -127,11 +128,13 @@ extension SearchViewController : UIActionSheetDelegate {
                 var favorite = Favorite()
                 favorite.songID = currentSongID!
                 FavoriteDataManager.shareInstance.insertFavoriteRealm(favorite)
+                JLToast.makeText("Add to Favorites", duration: 1)
                 //self.view.toastViewForMessage("", title: "", image: UIImage(named: "recycle"), style: nil)
-                self.view.makeToast("Add To Favorites")
+                //self.view.makeToast("Add To Favorites")
             } else {
                 FavoriteDataManager.shareInstance.deleteFavoriteRealmByUUID(currentSongID!)
-                self.view.makeToast("Remove From Favorites")
+                JLToast.makeText("Remove From Favorites", duration: 1)
+                //self.view.makeToast("Remove From Favorites")
             }
         default:
             break

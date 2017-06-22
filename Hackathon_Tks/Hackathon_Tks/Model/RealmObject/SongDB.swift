@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+import Realm
 
 class SongDB: Object {
     dynamic var uuid : String = ""
